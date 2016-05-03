@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="165" id="KGk-i7-Jjw" customClass="SJSCTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="134"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="417" height="133"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="360-quanjing.png" translatesAutoresizingMaskIntoConstraints="NO" id="dmm-UP-TdU">
+                        <rect key="frame" x="13" y="17" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="dmm-UP-TdU" secondAttribute="height" multiplier="1:1" id="9bq-Xp-2AA"/>
+                            <constraint firstAttribute="width" constant="100" id="pvH-MS-lLP"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sadfsadfasdfasldkfjalsdkjflkajsldkfjlkjasdf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIC-gU-jMr">
+                        <rect key="frame" x="113" y="8" width="296" height="41"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$349.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSH-Zw-sAq">
+                        <rect key="frame" x="341" y="102" width="68" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="YJl-3m-nMo"/>
+                            <constraint firstAttribute="width" constant="68" id="goU-WR-JOm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="widthClass=compact" misplaced="YES">
+                            <rect key="frame" x="350" y="104" width="59" height="21"/>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    $249.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Haa-oJ-JYT">
+                        <rect key="frame" x="223" y="92" width="118" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="118" id="OzM-tK-dlB"/>
+                            <constraint firstAttribute="height" constant="31" id="PRA-MV-BpK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="widthClass=compact" misplaced="YES">
+                            <rect key="frame" x="239" y="93" width="94" height="31"/>
+                        </variation>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="UIC-gU-jMr" firstAttribute="leading" secondItem="dmm-UP-TdU" secondAttribute="trailing" id="2Md-2Z-zsT"/>
+                    <constraint firstItem="tSH-Zw-sAq" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="5Y3-Fe-Zuf"/>
+                    <constraint firstItem="UIC-gU-jMr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="7E5-mQ-ue3"/>
+                    <constraint firstItem="dmm-UP-TdU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="9MN-77-1Xw"/>
+                    <constraint firstItem="tSH-Zw-sAq" firstAttribute="leading" secondItem="Haa-oJ-JYT" secondAttribute="trailing" id="CTk-ja-1f9"/>
+                    <constraint firstItem="dmm-UP-TdU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Db6-7v-dc8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="tSH-Zw-sAq" secondAttribute="bottom" constant="2" id="Ef6-lK-MwA"/>
+                    <constraint firstItem="dmm-UP-TdU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Kkb-Kn-qZU"/>
+                    <constraint firstItem="tSH-Zw-sAq" firstAttribute="bottom" secondItem="Haa-oJ-JYT" secondAttribute="bottom" id="fFd-7C-OHh"/>
+                    <constraint firstItem="dmm-UP-TdU" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" constant="-33" id="oK1-MC-rBh"/>
+                    <constraint firstItem="dmm-UP-TdU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qJB-H0-o2k"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="UIC-gU-jMr" secondAttribute="trailing" id="zOf-QY-CGH"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="9MN-77-1Xw"/>
+                        <exclude reference="Db6-7v-dc8"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="goodsDescription" destination="UIC-gU-jMr" id="veF-5a-pPI"/>
+                <outlet property="goodsImage" destination="dmm-UP-TdU" id="TSg-gC-UPK"/>
+                <outlet property="originalPrice" destination="tSH-Zw-sAq" id="Iqe-tW-3zK"/>
+                <outlet property="price" destination="Haa-oJ-JYT" id="ZhB-Y0-c8z"/>
+            </connections>
+            <point key="canvasLocation" x="634.5" y="353"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="360-quanjing.png" width="100" height="100"/>
+    </resources>
+</document>

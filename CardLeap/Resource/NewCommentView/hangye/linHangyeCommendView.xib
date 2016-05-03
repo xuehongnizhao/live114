@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="linHangyeCommendView">
+            <rect key="frame" x="0.0" y="0.0" width="563" height="387"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3z3-Az-mF1">
+                    <rect key="frame" x="0.0" y="0.0" width="563" height="367"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8yb-eA-uGE" userLabel="contentView">
+                            <rect key="frame" x="0.0" y="0.0" width="563" height="367"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" secondItem="8yb-eA-uGE" secondAttribute="height" id="9Ut-bU-sxF"/>
+                        <constraint firstItem="8yb-eA-uGE" firstAttribute="top" secondItem="3z3-Az-mF1" secondAttribute="top" id="PhL-QX-uHX"/>
+                        <constraint firstItem="8yb-eA-uGE" firstAttribute="leading" secondItem="3z3-Az-mF1" secondAttribute="leading" id="SiI-cu-Jbu"/>
+                        <constraint firstAttribute="bottom" secondItem="8yb-eA-uGE" secondAttribute="bottom" id="ftq-Qj-chM"/>
+                        <constraint firstAttribute="width" secondItem="8yb-eA-uGE" secondAttribute="width" id="gWl-4K-psh"/>
+                        <constraint firstAttribute="trailing" secondItem="8yb-eA-uGE" secondAttribute="trailing" id="rmj-NT-4JZ"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="cCb-zk-93k"/>
+                    </connections>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3z3-Az-mF1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0vx-rW-cxj"/>
+                <constraint firstAttribute="trailing" secondItem="3z3-Az-mF1" secondAttribute="trailing" id="jzF-1Y-yAF"/>
+                <constraint firstItem="3z3-Az-mF1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="k7c-sr-hLK"/>
+                <constraint firstAttribute="bottom" secondItem="3z3-Az-mF1" secondAttribute="bottom" constant="20" id="sTv-IR-IO3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="contentView" destination="8yb-eA-uGE" id="qFa-SS-Qo5"/>
+                <outlet property="contentWidthConstraint" destination="gWl-4K-psh" id="kOj-LC-NOP"/>
+                <outlet property="industryScrollView" destination="3z3-Az-mF1" id="LdL-Wi-EDE"/>
+            </connections>
+            <point key="canvasLocation" x="581.5" y="230.5"/>
+        </view>
+    </objects>
+</document>

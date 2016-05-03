@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>无标题文档</title>
+        <meta name="Keywords" content="SHOPAPP手机网站"/>
+        <meta name="Description" content="SHOPAPP手机网站！"/>
+        <meta charset="UTF-8">
+            <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+                <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" name="viewport">
+                    <meta content="yes" name="apple-mobile-web-app-capable">
+                        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+                            <meta content="telephone=no" name="format-detection" />
+                            <meta http-equiv="Cache-Control" content="no-transform " />
+                            <div id="change_css">
+                                <link href="index.css" rel="stylesheet" type="text/css" />
+                            </div>
+                            <script src="jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <div class="bigbox">
+            <div class="change">
+                <div class="changeLeft" onclick="change_message(1)">
+                    <div><p>订单详情</p></div>
+                </div>
+                <div class="changeRight" onclick="change_message(2)">
+                    <div><p>订单进度</p></div>
+                </div>
+            </div>
+            <div style="display:none;" id="right">
+                <div class="leftbox">
+                    <img class="i1" src="touxiang01.jpg" />
+                    <img class="i2" src="" id="shop_img" style="display:none;"/>
+                    <img class="i3" src="touxiang01.jpg" id="shipping_img" style="display:none;"/>
+                    <div style=" margin-bottom:320px;"></div>
+                </div>
+                <div class="rightbox">
+                    <div class="top">
+                        <p class="p1"  id="confirm">等待商家确认</p>
+                        <p class="p2" id="add_time">14:27</p>
+                    </div>
+                    <div class="bottom" id="shop_ok" style="display:none;">
+                        <p class="p1">餐厅已确认</p>
+                        <p class="p2" id="shop_time"></p>
+                    </div>
+                    <div class="bottom" id="shipping" style="display:none;">
+                        <p class="p1">已确认收货</p>
+                        <p class="p2" id="shop_time"></p>
+                    </div>
+                    <div class="bottom" id="back_time" style="display:none;">
+                        <p class="p1">退款成功</p>
+                        <p class="p2" id="back_time_message"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="left">
+                <div class="titlebox">
+                    <div class="top">
+                        <div class="leftbox">
+                            <img src="" id="shop_pic" style="width:70px;"/>
+                            <div class="text">
+                                <div class="l1" id="shop_name" style="width:110px;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;"></div>
+                                <div class="l2" ><span id="all_num"></span>份 ￥<span id="all_price"></span></div>
+                            </div>
+                        </div>
+                        <div class="rightbox">
+                            <a href="#" onclick="call_phone()"><img src="phone.png" /></a>
+                            <div class="d0" id="time_status">
+                                <div class="d01">商家确认</div>
+                                <div class="d02">7分钟前</div>
+                            </div>
+                        </div>
+                    </div><!--top-->
+                    <div class="bottom" id="button_status">
+                        <!-- <a href="#"><div class="d1">发布评价</div></a>
+                         <a href="#"><div class="d2">取消订单</div></a> -->
+                    </div><!--bottom-->
+                </div><!--title-->
+                <div class="list">
+                    <div class="first">
+                        <p class="p1">美食列表</p>
+                        <p class="p2">￥<span id="all_price_down"></span></p>
+                        <p class="p3"><span id="all_num_down"></span>份</p>
+                    </div>
+                    <div id="goods_list">
+                        
+                    </div>
+                </div><!--list-->
+                <div class="information">
+                    <div>
+                        <p class="p1">订单号码:</p>
+                        <p class="p2" id="order_id"> 2954461528065031</p>
+                    </div>
+                    <div class="songcan">
+                        <p class="p1">送餐地址:</p>
+                        <p class="p2" id="address"> 柏林四季A16栋，3单元，502柏林四季A16栋，3单元，502</p>
+                    </div>
+                    <div>
+                        <p class="p1">联系电话:</p>
+                        <p class="p2" id="tel"> 15846312518</p>
+                    </div>
+                    <div>
+                        <p class="p1">送餐时间:</p>
+                        <p class="p2" id="pay_time"> 立即送出</p>
+                    </div>
+                    <div>
+                        <p class="p1">支付方式:</p>
+                        <p class="p2" id="cash"> 餐到付款</p>
+                    </div>
+                </div><!--information-->
+                <div class="bottombox">
+                    <div class="first">备注信息</div>
+                    <div id="note">无</div>
+                </div><!--bottom-->
+            </div>
+        </div>
+        <input id="call_phone" type="hidden" value=''>
+    </body>
+    <script>
+        
+        function takeout_message(data)
+        {
+            data = eval(data);
+            takeout_message		= data.obj;
+            if(takeout_message.confirm_status==0){
+                $("#time_status").html('<div class="d03">尚未确认</div>');
+            }else if(takeout_message.confirm_status==1||takeout_message.confirm_status==2){
+                $("#time_status").html("<div class='d01'>商家确认</div><div class='d02'>"+takeout_message.result_time+"</div>");
+            }else if(takeout_message.confirm_status==3){
+                $("#time_status").html('<div class="d01">订餐成功</div><div class="d02">&nbsp;</div>');
+            }else if(takeout_message.confirm_status==4){
+                $("#time_status").html('<div class="d03">等待商家取消</div>');
+            }else if(takeout_message.confirm_status==5){
+                $("#time_status").html('<div class="d03">订单已取消</div>');
+            }else if(takeout_message.confirm_status==6){
+                $("#time_status").html('<div class="d03">申请退款中</div>');
+            }else if(takeout_message.confirm_status==7){
+                $("#time_status").html('<div class="d03">退款成功</div>');
+            }
+            if(takeout_message.confirm_status==0){
+                $("#add_time").text(takeout_message.add_time);
+            }else if(takeout_message.confirm_status==1||takeout_message.confirm_status==2||takeout_message.confirm_status==3){
+                $("#shop_img").show();$("#shop_ok").show();
+                $("#add_time").text(takeout_message.add_time);
+                $("#shop_time").text(takeout_message.shop_time);
+                $("#shop_img").attr('src',takeout_message.shop_pic);
+            }else if(takeout_message.confirm_status==7){
+                $("#back_time").show();
+                $("#back_time_message").text(takeout_message.back_time);
+            }
+            if(takeout_message.cash==1){
+                $("#cash").text('餐到付款');
+            }else{
+                $("#cash").text('在线支付');
+            }
+            $("#shop_name").text(takeout_message.shop_name);
+            $("#call_phone").val(takeout_message.shop_tel);
+            $("#all_num").text(takeout_message.total_num);
+            $("#all_price").text(takeout_message.total_price);
+            $("#all_price_down").text(takeout_message.total_price);
+            $("#all_num_down").text(takeout_message.total_num);
+            $("#order_id").text(takeout_message.order_id);
+            $("#address").text(takeout_message.send_address);
+            $("#tel").text(takeout_message.order_tel);
+            $("#pay_time").text(takeout_message.pay_time);
+            $("#note").text(takeout_message.note);
+            $("#shop_pic").attr("src",takeout_message.shop_pic);
+            if(takeout_message.confirm_status==0){
+                $("#button_status").html("<a href='#' onclick='status_no("+takeout_message.confirm_status+","+takeout_message.order_id+")'><div class='d3' style='width:100%'>取消订单</div></a> ");
+            }else if(takeout_message.confirm_status==1){
+                $("#button_status").html("<a href='#' onclick='status_ok("+takeout_message.confirm_status+","+takeout_message.order_id+")'><div class='d1'>确认收货</div></a><a href='#' onclick='status_no("+takeout_message.confirm_status+","+takeout_message.order_id+")'><div class='d2'>取消订单</div></a>");
+            }else if(takeout_message.confirm_status==2){
+                $("#button_status").html("<a href='#' onclick='review()'><div class='d1'>发布评价</div></a><a href='#'><div class='d2'>取消订单</div></a>");
+            }else if(takeout_message.confirm_status==5){
+                $("#button_status").html("");
+            }else if(takeout_message.confirm_status==4){
+                $("#button_status").html("<a href='#' onclick='status_ok("+takeout_message.confirm_status+","+takeout_message.order_id+")'><div class='d1'>确认收货</div></a><a href='#'><div class='d2'>取消订单</div></a>");
+            }
+            goods_num		= takeout_message.order_desc.length;
+            for(i=0;i<goods_num;i++){
+                $("#goods_list").append("<div><p class='p1' id='take_goods'>"+takeout_message.order_desc[i].take_name+"</p><p class='p2'>￥<span id='goods_price'>"+takeout_message.order_desc[i].take_price+"</span></p><p class='p3'>x<span id='goods_num'>"+takeout_message.order_desc[i].num+"</span></p></div>");
+            }
+        }
+    
+    function status_ok(confirm_status,order_id){
+        //alert(order_id);
+        var url = "testapp:"+"order_id:"+order_id+":"+confirm_status;
+        document.location = url;
+    }
+    
+    function status_no(confirm_status,order_id){
+        var url = "testapp:"+"delete_order_id:"+order_id+":"+confirm_status;
+        document.location = url;
+    }
+    
+    function call_phone(){
+        phone   = $("#call_phone").val();
+        var url = "testapp:"+"phone:"+phone;
+        document.location = url;
+    }
+    
+    function review(){
+        var url = "testapp:"+"review";
+        document.location = url;
+    }
+    
+    function takeout_message_two(data){
+        data = eval(data);
+        takeout_message		= data.obj;
+        if(takeout_message.confirm_status==0){
+            $("#time_status").html('<div class="d03">尚未确认</div>');
+        }else if(takeout_message.confirm_status==1||takeout_message.confirm_status==2){
+            $("#time_status").html("<div class='d01'>商家确认</div><div class='d02'>"+takeout_message.result_time+"</div>");
+        }else if(takeout_message.confirm_status==3){
+            $("#time_status").html('<div class="d01">订餐成功</div><div class="d02">&nbsp;</div>');
+        }else if(takeout_message.confirm_status==4){
+            $("#time_status").html('<div class="d03">等待商家取消</div>');
+        }else if(takeout_message.confirm_status==5){
+            $("#time_status").html('<div class="d03">订单已取消</div>');
+        }else if(takeout_message.confirm_status==6){
+            $("#time_status").html('<div class="d03">申请退款中</div>');
+        }else if(takeout_message.confirm_status==7){
+            $("#time_status").html('<div class="d03">退款成功</div>');
+        }
+        if(takeout_message.confirm_status==0){
+            $("#add_time").text(takeout_message.add_time);
+        }else if(takeout_message.confirm_status==1){
+            //alert(1);
+            $("#shop_img").show();$("#shop_ok").show();
+            $("#add_time").text(takeout_message.add_time);
+            $("#shop_time").text(takeout_message.shop_time);
+            $("#shop_img").attr('src',takeout_message.shop_pic);
+        }else if(takeout_message.confirm_status==2||takeout_message.confirm_status==3){
+            $("#shop_img").show();$("#shop_ok").show();$("#shipping").show();$("#shipping_img").show();
+            $("#add_time").text(takeout_message.add_time);
+            $("#shop_time").text(takeout_message.shop_time);
+            $("#shop_img").attr('src',takeout_message.shop_pic);
+        }else if(takeout_message.confirm_status==5){
+            $("#confirm").text('订单已取消');
+        }else if(takeout_message.confirm_status==7){
+            $("#back_time").show();
+            $("#back_time_message").text(takeout_message.back_time);
+        }
+        $("#shop_name").text(takeout_message.shop_name);
+        $("#all_num").text(takeout_message.total_num);
+        $("#all_price").text(takeout_message.total_price);
+        $("#shop_pic").attr("src",takeout_message.shop_pic);
+        if(takeout_message.confirm_status==0){
+            $("#button_status").html("<a href='#' onclick='status_no("+takeout_message.confirm_status+","+takeout_message.order_id+")'><div class='d3' style='width:100%'>取消订单</div></a> ");
+        }else if(takeout_message.confirm_status==1){
+            $("#button_status").html("<a href='#' onclick='status_ok("+takeout_message.confirm_status+","+takeout_message.order_id+")'><div class='d1'>确认收货</div></a><a href='#' onclick='status_no("+takeout_message.confirm_status+","+takeout_message.order_id+")'><div class='d2'>取消订单</div></a>");
+        }else if(takeout_message.confirm_status==2){
+            //alert(2);
+            $("#button_status").html("<a href='#' onclick='review()'><div class='d1'>发布评价</div></a><a href='#'><div class='d2'>取消订单</div></a>");
+        }else if(takeout_message.confirm_status==5){
+            $("#button_status").html("");
+        }else if(takeout_message.confirm_status==4){
+            $("#button_status").html("<a href='#' onclick='status_ok("+takeout_message.confirm_status+","+takeout_message.order_id+")'><div class='d1'>确认收货</div></a><a href='#'><div class='d2'>取消订单</div></a>");
+        }else if(takeout_message.confirm_status==3){
+            $("#button_status").html("<a href='#'><div class='d3' style='width:100%'>订单完成</div></a> ");
+        }
+    }
+    
+    function change_message(id){
+        if(id==1){
+            $("#left").show();$("#right").hide();
+            $("#change_css").html("<link href='index.css' rel='stylesheet' type='text/css' />");
+        }else if(id==2){
+            $("#change_css").html("<link href='index2.css' rel='stylesheet' type='text/css' />");
+            $("#right").show();$("#left").hide();
+        }
+    }
+    </script>
+</html>

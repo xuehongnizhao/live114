@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>userShake</key>
+	<array>
+		<string>gift</string>
+		<string>my_business</string>
+		<string>group</string>
+		<string>take_out</string>
+		<string>seat</string>
+		<string>hotel</string>
+		<string>spike</string>
+		<string>collection</string>
+		<string>password</string>
+		<string>more</string>
+	</array>
+	<key>userIcon</key>
+	<array>
+		<string>person_gift</string>
+		<string>my_business</string>
+		<string>person_group</string>
+		<string>person_wm</string>
+		<string>person_sf</string>
+		<string>person_order</string>
+		<string>person_coupon</string>
+		<string>person_collection</string>
+		<string>person_pwd</string>
+		<string>person_more</string>
+	</array>
+	<key>userText</key>
+	<array>
+		<string>礼品中心</string>
+		<string>个人业务</string>
+		<string>我的团购</string>
+		<string>我的外卖</string>
+		<string>我的订座</string>
+		<string>酒店预定</string>
+		<string>我的优惠券</string>
+		<string>我的收藏</string>
+		<string>修改密码</string>
+		<string>更多</string>
+	</array>
+	<key>configurationName</key>
+	<array>
+		<string>首页</string>
+		<string>商家</string>
+		<string>我的</string>
+	</array>
+	<key>configurationIcon</key>
+	<array>
+		<string>tabbar_home</string>
+		<string>tabbar_business</string>
+		<string>tabbar_our</string>
+	</array>
+</dict>
+</plist>

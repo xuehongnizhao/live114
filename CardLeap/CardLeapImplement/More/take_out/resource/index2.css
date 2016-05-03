@@ -1,0 +1,18 @@
+*{ padding:0; margin:0; font-family:"Microsoft YaHei";}
+img{ border:none;}
+li{ list-style:none;}
+a{ text-decoration:none;}
+.bigbox{ max-width:720px; background-color:#ffffff; margin:0 auto; overflow:hidden;}
+.change{ width:100%; overflow:hidden; border-bottom:1px solid #cdcdcd;}
+.changeLeft{ width:50%; float:left; }
+.changeLeft div{ width:100%; line-height:25px; text-align:center; font-size:16px; padding:10px 0; color:#717070; border-right:2px solid #e0e0e0;}
+.changeRight{ width:50%; float:right;border-bottom:1px solid #c7373b;}
+.changeRight div{ width:100%; line-height:25px; text-align:center; font-size:16px;padding:10px 0; color:#717070;   }
+.leftbox{ float:left; border-right:1px solid #d8d7d7; width:30%;}
+.leftbox img{ display:block; margin:36% auto 34% auto; width:45px}
+.rightbox{ width:50%; float:left;}
+.rightbox .top{ margin-left:14%; margin-top:25%; width:86%;}
+.rightbox .bottom{ margin-left:14%; margin-top:26%; width:86%;}
+.rightbox .p1{ color:#595959; font-size:16px;}
+.rightbox .p2{ color:#747474; font-size:14px;}
+

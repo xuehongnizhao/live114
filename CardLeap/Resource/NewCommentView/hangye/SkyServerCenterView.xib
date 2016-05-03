@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SkyServerCenterView">
+            <rect key="frame" x="0.0" y="0.0" width="444" height="344"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5G-zE-MDI">
+                    <rect key="frame" x="0.0" y="0.0" width="444" height="324"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8u-gw-Qqr" userLabel="contentView">
+                            <rect key="frame" x="0.0" y="0.0" width="444" height="324"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="j8u-gw-Qqr" firstAttribute="width" secondItem="I5G-zE-MDI" secondAttribute="width" id="48r-Ds-Go6"/>
+                        <constraint firstItem="j8u-gw-Qqr" firstAttribute="top" secondItem="I5G-zE-MDI" secondAttribute="top" id="5QA-9B-ecF"/>
+                        <constraint firstItem="j8u-gw-Qqr" firstAttribute="height" secondItem="I5G-zE-MDI" secondAttribute="height" id="8Li-gN-jVn"/>
+                        <constraint firstItem="j8u-gw-Qqr" firstAttribute="leading" secondItem="I5G-zE-MDI" secondAttribute="leading" id="PqA-K1-E0n"/>
+                        <constraint firstAttribute="trailing" secondItem="j8u-gw-Qqr" secondAttribute="trailing" id="R1q-fl-w7U"/>
+                        <constraint firstAttribute="bottom" secondItem="j8u-gw-Qqr" secondAttribute="bottom" id="wFe-wh-MU6"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="zOP-ij-Stv"/>
+                    </connections>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="I5G-zE-MDI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0RR-ne-d0H"/>
+                <constraint firstItem="I5G-zE-MDI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dae-hz-kcx"/>
+                <constraint firstAttribute="bottom" secondItem="I5G-zE-MDI" secondAttribute="bottom" constant="20" id="ges-cI-eVD"/>
+                <constraint firstAttribute="trailing" secondItem="I5G-zE-MDI" secondAttribute="trailing" id="kaD-v8-JV6"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="buttonSrollView" destination="I5G-zE-MDI" id="Zyg-zi-voP"/>
+                <outlet property="contentView" destination="j8u-gw-Qqr" id="z2b-YW-lvI"/>
+                <outlet property="contentWidthConstraint" destination="48r-Ds-Go6" id="D7Q-jz-Cdg"/>
+            </connections>
+            <point key="canvasLocation" x="522" y="314"/>
+        </view>
+    </objects>
+</document>
