@@ -55,7 +55,7 @@
     
     [self setSelectedIndex:[self selectedIndex]];
     
-    [self setTabBarHidden:self.isTabBarHidden animated:NO];
+    [self setTabBarHidden:NO animated:NO];
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -147,11 +147,8 @@
     if (!_tabBar) {
         _tabBar = [[RDVTabBar alloc] init];
         [_tabBar setBackgroundColor:[UIColor clearColor]];
-        [_tabBar setAutoresizingMask:(UIViewAutoresizingFlexibleWidth|
-                                      UIViewAutoresizingFlexibleTopMargin|
-                                      UIViewAutoresizingFlexibleLeftMargin|
-                                      UIViewAutoresizingFlexibleRightMargin|
-                                      UIViewAutoresizingFlexibleBottomMargin)];
+        [_tabBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth|
+         UIViewAutoresizingFlexibleTopMargin];
         [_tabBar setDelegate:self];
     }
     return _tabBar;
@@ -161,8 +158,8 @@
     if (!_contentView) {
         _contentView = [[UIView alloc] init];
         [_contentView setBackgroundColor:[UIColor whiteColor]];
-        [_contentView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth|
-                                           UIViewAutoresizingFlexibleHeight)];
+        [_contentView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|
+         UIViewAutoresizingFlexibleHeight];
     }
     return _contentView;
 }
@@ -173,13 +170,19 @@
     __weak RDVTabBarController *weakSelf = self;
     
     void (^block)() = ^{
-        CGSize viewSize = weakSelf.view.bounds.size;
+        CGSize viewSize = weakSelf.view.frame.size;
         CGFloat tabBarStartingY = viewSize.height;
         CGFloat contentViewHeight = viewSize.height;
         CGFloat tabBarHeight = CGRectGetHeight([[weakSelf tabBar] frame]);
         
         if (!tabBarHeight) {
             tabBarHeight = 49;
+        }
+        
+        if (![weakSelf parentViewController]) {
+            if (UIInterfaceOrientationIsLandscape([weakSelf interfaceOrientation])) {
+                viewSize = CGSizeMake(viewSize.height, viewSize.width);
+            }
         }
         
         if (!hidden) {
@@ -264,6 +267,7 @@
 
 - (RDVTabBarController *)rdv_tabBarController {
     RDVTabBarController *tabBarController = objc_getAssociatedObject(self, @selector(rdv_tabBarController));
+    
     if (!tabBarController && self.parentViewController) {
         tabBarController = [self.parentViewController rdv_tabBarController];
     }
@@ -293,7 +297,3 @@
 }
 
 @end
-
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com

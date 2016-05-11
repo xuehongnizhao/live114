@@ -479,7 +479,7 @@
     adView.SJSC=SJSC;
     adView.shop_name=detailInfo.shop_name;
     adView.backgroundColor=[UIColor whiteColor];
-    CGFloat height=5;
+    CGFloat height=10;
     if (section==2) {
         if (SJHDP.count!=0) {
             height+=SCREEN_WIDTH/3;

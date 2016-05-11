@@ -49,4 +49,5 @@
 // 获取NSUserDefault中的数据
 #define GetUserDefault(key) [[NSUserDefaults standardUserDefaults] objectForKey:key]
 
+#define GaoDeKey @"a1dc1078153f05f524b8785c4f1a4d7a"
 #endif

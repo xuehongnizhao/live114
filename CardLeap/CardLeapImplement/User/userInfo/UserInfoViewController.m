@@ -23,6 +23,7 @@
 #import "myPointGiftViewController.h"
 #import "myPointDetailViewController.h"//记录获取记录
 #import "linNewFunctionWebController.h"
+#import "ShakeViewController.h"
 #pragma mark 2016.4 我的页面
 @interface UserInfoViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (strong, nonatomic) UITableView *userInfoTableview;//个人中心显示列表
@@ -432,19 +433,23 @@
     }
     //return [_iconArray count]+1;
 }
+#pragma mark --- 2016.5 登录修改
 #pragma mark-------action
 -(void)logoutAction :(UIButton*)sender
 {
-    if(ApplicationDelegate.islogin == YES){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确认注销吗" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-        [alert show];
-    }else{
-        NSLog(@"去登录接口");
-        LoginViewController *firVC = [[LoginViewController alloc] init];
-        firVC.navigationItem.title = @"登录";
-        firVC.identifier = @"0";
-        [self.navigationController pushViewController:firVC animated:YES];
-    }
+    
+    ShakeViewController *shakeView=[[ShakeViewController alloc]init];
+    [self.navigationController pushViewController:shakeView animated:YES];
+//    if(ApplicationDelegate.islogin == YES){
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确认注销吗" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+//        [alert show];
+//    }else{
+//        NSLog(@"去登录接口");
+//        LoginViewController *firVC = [[LoginViewController alloc] init];
+//        firVC.navigationItem.title = @"登录";
+//        firVC.identifier = @"0";
+//        [self.navigationController pushViewController:firVC animated:YES];
+//    }
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
