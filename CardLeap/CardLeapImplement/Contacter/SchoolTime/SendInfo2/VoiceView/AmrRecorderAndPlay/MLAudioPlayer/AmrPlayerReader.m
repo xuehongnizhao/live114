@@ -148,7 +148,7 @@ long filesize(FILE *stream)
     //忽略文件头大小
     char magic[8];
     static const char* amrHeader = AMR_MAGIC_NUMBER;
-    int realReadedLength = fread(magic, sizeof(char), strlen(amrHeader), _file);
+    int realReadedLength = (int)fread(magic, sizeof(char), strlen(amrHeader), _file);
 	if (strncmp(magic, amrHeader, strlen(amrHeader)))
 	{
 		return NO;
@@ -203,7 +203,7 @@ long filesize(FILE *stream)
         // 如果是坏帧(不是标准帧头)，则继续读下一个字节，直到读到标准帧头
         while(1)
         {
-            bytes = fread(&frameHeader, 1, sizeof(unsigned char), _file);
+            bytes = (int)fread(&frameHeader, 1, sizeof(unsigned char), _file);
             if (feof(_file)) break;
             if (frameHeader == _stdFrameHeader) break;
             
@@ -216,7 +216,7 @@ long filesize(FILE *stream)
         
         // 读该帧的语音数据(帧头已经读过)
         amrFrame[0] = frameHeader;
-        bytes = fread(&(amrFrame[1]), 1, (_stdFrameSize-1)*sizeof(unsigned char), _file);
+        bytes = (int)fread(&(amrFrame[1]), 1, (_stdFrameSize-1)*sizeof(unsigned char), _file);
         if (feof(_file)) break;
         
         self.readedLength += bytes;

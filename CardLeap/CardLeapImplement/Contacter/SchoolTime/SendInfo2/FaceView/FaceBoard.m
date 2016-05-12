@@ -154,7 +154,7 @@
 
         if ([self.send isEqualToString:@"1"])
         {
-            faceString = [NSString stringWithFormat:@"%@%@",self.inputTextView.text,faceString];
+            faceString = (NSMutableString *)[NSString stringWithFormat:@"%@%@",self.inputTextView.text,faceString];
             self.inputTextView.text = faceString;
             [delegate faceBoardTextViewDidChange:self.inputTextView andDelete:NO];
         }

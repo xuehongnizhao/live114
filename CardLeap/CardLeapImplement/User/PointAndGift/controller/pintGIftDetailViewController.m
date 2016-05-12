@@ -9,7 +9,7 @@
 #import "pintGIftDetailViewController.h"
 #import "ExchangeGiftViewController.h"
 
-@interface pintGIftDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface pintGIftDetailViewController ()
 @property (strong,nonatomic)UIView *headerView;//展示头视图
 @property (strong,nonatomic)UIImageView *headerImage;//图片
 @property (strong,nonatomic)UILabel *pointNumLable;//积分数量

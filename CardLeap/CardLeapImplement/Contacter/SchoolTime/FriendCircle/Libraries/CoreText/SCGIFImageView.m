@@ -9,6 +9,7 @@
 #import "SCGIFImageView.h"
 
 @implementation AnimatedGifFrame
+static CGRect clipRect;
 
 @synthesize data, delay, disposalMethod, area, header;
 
@@ -87,7 +88,7 @@
 - (void)loadImageData {
 	// Add all subframes to the animation
 	NSMutableArray *array = [[NSMutableArray alloc] init];
-	for (NSUInteger i = 0; i < [GIF_frames count]; i++)
+	for (int i = 0; i < [GIF_frames count]; i++)
 	{		
 		[array addObject: [self getFrameAsImageAtIndex:i]];
 	}
@@ -117,8 +118,6 @@
 		CGContextScaleCTM(ctx, 1.0, -1.0);
 		CGContextTranslateCTM(ctx, 0.0, -size.height);
 		
-		// Check if lastFrame exists
-		CGRect clipRect;
 		
 		// Disposal Method (Operations before draw frame)
 		switch (frame.disposalMethod)
@@ -274,7 +273,7 @@
 	
     // Copy the read bytes into a local buffer on the stack
     // For easy byte access in the following lines.
-    int length = [GIF_buffer length];
+    int length = (int)[GIF_buffer length];
 	unsigned char aBuffer[length];
 	[GIF_buffer getBytes:aBuffer length:length];
 	
@@ -486,7 +485,7 @@
 	frame.data = GIF_string;
 }
 
-- (bool) GIFGetBytes:(int)length {
+- (bool) GIFGetBytes:(long)length {
     if (GIF_buffer != nil)
     {
         [GIF_buffer release]; // Release old buffer

@@ -31,7 +31,7 @@
 - (CGRect)offscreenFrame
 {
 	CGRect frame = [self onscreenFrame];
-	switch ([UIApplication sharedApplication].statusBarOrientation)
+	switch ([[UIApplication sharedApplication] statusBarOrientation])
     {
 		case UIInterfaceOrientationPortrait:
 			frame.origin.y = frame.size.height;

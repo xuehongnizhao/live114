@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSArray *nameArray;//title数组
 @property (strong, nonatomic) NSArray *actionArray;//权限数组
 @property (copy, nonatomic) NSString *myBusinessURL;
+@property (assign, nonatomic) BOOL isResign;
 @end
 
 @implementation UserInfoViewController

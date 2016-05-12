@@ -240,7 +240,7 @@
                 
             }else{
                 height = 20.0f;
-#warning 12.10 优化计算cell高度 by CC
+#pragma mark --- 12.10 优化计算cell高度 by CC
                 if (detailInfo == nil) {
                     NSString *shop_name = self.info.shop_name;
                     if (shop_name != nil && [shop_name isEqualToString:@""] == NO) {
@@ -413,7 +413,7 @@
     [UMSocialData defaultData].extConfig.sinaData.shareText = sinaText;
 //    [UMSocialData defaultData].extConfig.sinaData.urlResource.url = detailInfo.share_url;
 }
-#warning 11.28 点击分享按钮就加积分
+#pragma mark --- 11.28 点击分享按钮就加积分
 - (void) UserSharePoint {
     if (ApplicationDelegate.islogin == YES) {
         NSString *url = connect_url(@"share_point");

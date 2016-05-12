@@ -92,7 +92,6 @@
     TenLat = (int)(yGps.latitude*10);
     TenLog = (int)(yGps.longitude*10);
     NSString *sql = [[NSString alloc]initWithFormat:@"select offLat,offLog from gpsT where lat=%d and log = %d",TenLat,TenLog];
-    NSLog(sql);
     sqlite3_stmt* stmtL = [m_sqlite NSRunSql:sql];
     int offLat=0;
     int offLog=0;
@@ -531,7 +530,6 @@
     //--------------------------------
     hintLable.text = info.location_name;
     //--------------------------------
-    NSString *currentPos = info.location_name;
     NSString *lng = info.location_lng;
     NSString *lat = info.location_lat;
     //--------------刷新列表------------

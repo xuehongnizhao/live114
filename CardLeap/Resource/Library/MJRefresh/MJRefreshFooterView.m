@@ -76,7 +76,7 @@
         // 调整frame
         [self adjustFrameWithContentSize];
     } else if ([MJRefreshContentOffset isEqualToString:keyPath]) {
-#warning 这个返回一定要放这个位置
+#pragma mark --- 这个返回一定要放这个位置
         // 如果正在刷新，直接返回
         if (self.state == MJRefreshStateRefreshing) return;
         
@@ -147,7 +147,7 @@
             }
             
             CGFloat deltaH = [self heightForContentBreakView];
-            int currentCount = [self totalDataCountInScrollView];
+            int currentCount = (int)[self totalDataCountInScrollView];
             // 刚刷新完毕
             if (MJRefreshStateRefreshing == oldState && deltaH > 0 && currentCount != self.lastRefreshCount) {
                 self.scrollView.mj_contentOffsetY = self.scrollView.mj_contentOffsetY;
@@ -166,7 +166,7 @@
         case MJRefreshStateRefreshing:
         {
             // 记录刷新前的数量
-            self.lastRefreshCount = [self totalDataCountInScrollView];
+            self.lastRefreshCount = (int)[self totalDataCountInScrollView];
             
             [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
                 CGFloat bottom = self.mj_height + self.scrollViewOriginalInset.bottom;

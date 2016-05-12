@@ -54,7 +54,7 @@
     [_priceLable autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0f];
     [_priceLable autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_submitButton withOffset:-5.0f];
     [_priceLable autoSetDimension:ALDimensionHeight toSize:20.0f];
-    int width = self.total_price.length * 8;
+    int width = (int)self.total_price.length * 8;
     [_priceLable autoSetDimension:ALDimensionWidth toSize:width];
     CGFloat price = (self.ship_price == nil) ?[self.total_price floatValue]:[self.ship_price floatValue] + [self.total_price floatValue];
     _priceLable.text = [NSString stringWithFormat:@"￥%0.2f",price];

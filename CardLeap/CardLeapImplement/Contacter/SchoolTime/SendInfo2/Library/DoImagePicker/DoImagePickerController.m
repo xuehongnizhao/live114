@@ -11,7 +11,6 @@
 #import "DoAlbumCell.h"
 #import "DoPhotoCell.h"
 
-static NSInteger lastCount=0;
 @implementation DoImagePickerController
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

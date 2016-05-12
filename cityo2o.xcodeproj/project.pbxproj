@@ -639,6 +639,7 @@
 		04DBA1C41AB165E40074F9AB /* UpdateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DBA1C31AB165E40074F9AB /* UpdateGroupViewController.m */; };
 		04DD39B01A834E6F008AB82F /* UZGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DD39AF1A834E6F008AB82F /* UZGuideViewController.m */; };
 		04DD3B2B1BABF8DA0091619D /* commodityDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DD3B2A1BABF8DA0091619D /* commodityDisplayModel.m */; };
+		04DFDFB91CE410DA00D447DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DFDFB81CE410DA00D447DC /* AVFoundation.framework */; };
 		04E0F9531BCCF4870063C7E5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E0F9521BCCF4870063C7E5 /* libc++.tbd */; };
 		04E0F9551BCCF4900063C7E5 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E0F9541BCCF4900063C7E5 /* libiconv.tbd */; };
 		04E0F9571BCCF4990063C7E5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E0F9561BCCF4990063C7E5 /* libsqlite3.tbd */; };
@@ -731,6 +732,8 @@
 		04F929751CE2CB2B002093E5 /* showImageVie.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F9296B1CE2CB2B002093E5 /* showImageVie.png */; };
 		04F929771CE2CB71002093E5 /* shakeEntry.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F929761CE2CB71002093E5 /* shakeEntry.png */; };
 		04F929801CE2DBE6002093E5 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F9297F1CE2DBE6002093E5 /* HMSegmentedControl.m */; };
+		04FDF4281CE4515E00506511 /* ImageUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF4271CE4515E00506511 /* ImageUploadViewController.m */; };
+		04FDF42B1CE4517000506511 /* TextUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF42A1CE4517000506511 /* TextUploadViewController.m */; };
 		333BDA211A1D7EFF009BAB8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 333BDA201A1D7EFF009BAB8E /* main.m */; };
 		333BDA241A1D7EFF009BAB8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 333BDA231A1D7EFF009BAB8E /* AppDelegate.m */; };
 		333BDA271A1D7EFF009BAB8E /* CardLeap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 333BDA251A1D7EFF009BAB8E /* CardLeap.xcdatamodeld */; };
@@ -1840,6 +1843,7 @@
 		04DD39AF1A834E6F008AB82F /* UZGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UZGuideViewController.m; sourceTree = "<group>"; };
 		04DD3B291BABF8DA0091619D /* commodityDisplayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commodityDisplayModel.h; sourceTree = "<group>"; };
 		04DD3B2A1BABF8DA0091619D /* commodityDisplayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commodityDisplayModel.m; sourceTree = "<group>"; };
+		04DFDFB81CE410DA00D447DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		04E0F9521BCCF4870063C7E5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		04E0F9541BCCF4900063C7E5 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		04E0F9561BCCF4990063C7E5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -2073,6 +2077,10 @@
 		04F929761CE2CB71002093E5 /* shakeEntry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shakeEntry.png; sourceTree = "<group>"; };
 		04F9297E1CE2DBE6002093E5 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
 		04F9297F1CE2DBE6002093E5 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
+		04FDF4261CE4515E00506511 /* ImageUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploadViewController.h; sourceTree = "<group>"; };
+		04FDF4271CE4515E00506511 /* ImageUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUploadViewController.m; sourceTree = "<group>"; };
+		04FDF4291CE4517000506511 /* TextUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextUploadViewController.h; sourceTree = "<group>"; };
+		04FDF42A1CE4517000506511 /* TextUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextUploadViewController.m; sourceTree = "<group>"; };
 		1AC03C008314475E4452F93E /* Pods-CardLeapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardLeapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardLeapTests/Pods-CardLeapTests.release.xcconfig"; sourceTree = "<group>"; };
 		2521CC349136E3A340759539 /* Pods-CardLeapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardLeapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardLeapTests/Pods-CardLeapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		27FB2DDFBC1A70E7121A000A /* libPods-CardLeapTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardLeapTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2302,6 +2310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04DFDFB91CE410DA00D447DC /* AVFoundation.framework in Frameworks */,
 				04E0F95F1BCCF4C10063C7E5 /* libPods-CardLeapTests.a in Frameworks */,
 				04E0F95D1BCCF4B40063C7E5 /* libicucore.tbd in Frameworks */,
 				04E0F95B1BCCF4AB0063C7E5 /* libz.1.2.5.tbd in Frameworks */,
@@ -4972,6 +4981,10 @@
 				04D772AA1CE319A700CD477D /* UploadConditonViewController.m */,
 				04D772A61CE3199100CD477D /* HighWayViewController.h */,
 				04D772A71CE3199100CD477D /* HighWayViewController.m */,
+				04FDF4261CE4515E00506511 /* ImageUploadViewController.h */,
+				04FDF4271CE4515E00506511 /* ImageUploadViewController.m */,
+				04FDF4291CE4517000506511 /* TextUploadViewController.h */,
+				04FDF42A1CE4517000506511 /* TextUploadViewController.m */,
 			);
 			name = shake;
 			sourceTree = "<group>";
@@ -5821,6 +5834,7 @@
 		990E4560AAD115C78D820A91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04DFDFB81CE410DA00D447DC /* AVFoundation.framework */,
 				04E0F95E1BCCF4C10063C7E5 /* libPods-CardLeapTests.a */,
 				04E0F95C1BCCF4B40063C7E5 /* libicucore.tbd */,
 				04E0F95A1BCCF4AB0063C7E5 /* libz.1.2.5.tbd */,
@@ -5901,7 +5915,7 @@
 		333BDA131A1D7EFF009BAB8E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Sky;
 				TargetAttributes = {
 					333BDA1A1A1D7EFF009BAB8E = {
@@ -6433,6 +6447,7 @@
 				042895101A3E6EBD00CC2407 /* MRZoomScrollView.m in Sources */,
 				045F0EB81A5D010A0040A914 /* CouponCollectionViewCell.m in Sources */,
 				0452C1AD1A58EACF004F7F04 /* userAddressInfo.m in Sources */,
+				04FDF42B1CE4517000506511 /* TextUploadViewController.m in Sources */,
 				04F102951A84B05A009D084C /* bitstream.c in Sources */,
 				04F101C81A848DEB009D084C /* MD5DataSigner.m in Sources */,
 				04457C4A1A4A690800E186FA /* reviewTableViewCell.m in Sources */,
@@ -6499,6 +6514,7 @@
 				042895181A3E6EBD00CC2407 /* AFURLSessionManager.m in Sources */,
 				469AC1BA1A709E9700DBD0C7 /* CityAddressOneCate.m in Sources */,
 				041641F21A661A63006C19B7 /* orderRoomDetailTableViewCell.m in Sources */,
+				04FDF4281CE4515E00506511 /* ImageUploadViewController.m in Sources */,
 				04F102981A84B05A009D084C /* qrinput.c in Sources */,
 				047E0C821A37DBC500304FF1 /* CalendarMonthHeaderView.m in Sources */,
 				047E0C7E1A37DBC500304FF1 /* CalendarDayModel.m in Sources */,
@@ -6872,6 +6888,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lei yu (K82F6M9A8A)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -7118,6 +7135,7 @@
 				);
 				INFOPLIST_FILE = CardLeapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.youdro. live114";
 				PRODUCT_NAME = cityo2oTests;
 				PROVISIONING_PROFILE = "3e491c2e-ca5c-4fa7-a3ed-ea72ae937325";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cityo2o.app/cityo2o";
@@ -7137,6 +7155,7 @@
 				);
 				INFOPLIST_FILE = CardLeapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.youdro. live114";
 				PRODUCT_NAME = cityo2oTests;
 				PROVISIONING_PROFILE = "3e491c2e-ca5c-4fa7-a3ed-ea72ae937325";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cityo2o.app/cityo2o";

@@ -68,7 +68,7 @@
                   moduleName = "cityo2o"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/Documents/live114/CardLeap/CardLeapImplement/More/group/controller/GroupReviewViewController.m"
-                  timestampString = "484643988.139442"
+                  timestampString = "484731166.70804"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "127"
@@ -83,7 +83,7 @@
                   moduleName = "cityo2o"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/Documents/live114/CardLeap/CardLeapImplement/More/group/controller/GroupReviewViewController.m"
-                  timestampString = "484643988.139555"
+                  timestampString = "484731166.708143"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "128"
@@ -91,6 +91,22 @@
                   offsetFromSymbolStart = "64">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CardLeap/CardLeapImplement/User/userInfo/EditUserInfoViewController.m"
+            timestampString = "484727036.60494"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
+            landmarkName = "-postMessage"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

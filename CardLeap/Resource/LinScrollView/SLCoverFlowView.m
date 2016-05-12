@@ -250,7 +250,7 @@ static const CGFloat SLCoverHeight = 100.0;
             coverView.layer.transform = [self transform3DWithRotation:self.parentView.coverAngle scale:1.0 perspective:(-1.0/500.0)];
             coverView.layer.zPosition = -10000.0;
         } else if (distance < 0.0 && distance > -distanceThreshold) {
-            CGFloat percentage = fabsf(distance)/distanceThreshold;
+            CGFloat percentage = fabs(distance)/distanceThreshold;
             CGFloat scale = 1.0 + (self.parentView.coverScale - 1.0) * (1.0 - percentage);
             coverView.layer.transform = [self transform3DWithRotation:self.parentView.coverAngle*percentage scale:scale perspective:(-1.0/500.0)];
             coverView.layer.zPosition = -10000.0;
@@ -258,7 +258,7 @@ static const CGFloat SLCoverHeight = 100.0;
             coverView.layer.transform = [self transform3DWithRotation:0.0 scale:self.parentView.coverScale perspective:(1.0/500.0)];
             coverView.layer.zPosition = 10000.0;
         } else if (distance > 0.0 && distance < distanceThreshold) {
-            CGFloat percentage = fabsf(distance)/distanceThreshold;
+            CGFloat percentage = fabs(distance)/distanceThreshold;
             CGFloat scale = 1.0 + (self.parentView.coverScale - 1.0) * (1.0 - percentage);
             coverView.layer.transform = [self transform3DWithRotation:-self.parentView.coverAngle*percentage scale:scale perspective:(-1.0/500.0)];
             coverView.layer.zPosition = -10000.0;
@@ -404,7 +404,7 @@ static const CGFloat SLCoverHeight = 100.0;
         *targetContentOffset = [self nearByOffsetOfScrollViewContentOffset:_scrollView.contentOffset];
     } else {
         // calculate the slide distance and end scrollview content offset
-        CGFloat startVelocityX = fabsf(_endDraggingVelocity.x);
+        CGFloat startVelocityX = fabs(_endDraggingVelocity.x);
         CGFloat decelerationRate = 1.0 - _scrollView.decelerationRate;
 
         CGFloat decelerationSeconds = startVelocityX / decelerationRate;

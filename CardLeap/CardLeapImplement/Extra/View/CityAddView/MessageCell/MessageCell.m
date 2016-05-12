@@ -50,7 +50,7 @@
     
     static NSString *cellName = @"messageCell";
 
-    MessageCell *cell = [tableView dequeueReusableHeaderFooterViewWithIdentifier:cellName];
+    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
     if (cell == nil) {
         cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
     }

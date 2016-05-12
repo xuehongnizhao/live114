@@ -48,7 +48,7 @@
         _view.titleLabel.text = thumbnail.title;
         _view.subtitleLabel.text = thumbnail.subtitle;
         _view.imageView.image = [UIImage imageNamed:@"store_map_smallimg_no.png"];
-        [_view.imageView setImageWithURL:[NSURL URLWithString:thumbnail.image] placeholderImage:nil];
+        [_view.imageView sd_setImageWithURL:[NSURL URLWithString:thumbnail.image] placeholderImage:nil];
         //[_view.imageView setImage:[UIImage imageNamed:@"store_unfold_no@2x.png"]];
         _view.disclosureBlock = thumbnail.disclosureBlock;
     }

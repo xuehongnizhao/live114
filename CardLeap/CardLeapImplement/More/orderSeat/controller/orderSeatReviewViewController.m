@@ -132,8 +132,8 @@
             //                [self.navigationController popViewControllerAnimated:YES];
             for (UIViewController *object in self.navigationController.viewControllers) {
                 if ([object isKindOfClass:NSClassFromString(@"myOrderSeatCenterViewController")]== YES) {
-                    self.delegate = object;
-                    [self.delegate refreshAction];
+                    self.myDelegate = object;
+                    [self.myDelegate refreshAction];
                     [self.navigationController popToViewController:object animated:YES];
                 }
             }

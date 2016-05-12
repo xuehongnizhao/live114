@@ -12,7 +12,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"tag : %d",self.tag];
+    return [NSString stringWithFormat:@"tag : %ld",self.tag];
 }
 
 @end

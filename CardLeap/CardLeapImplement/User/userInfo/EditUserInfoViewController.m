@@ -10,7 +10,7 @@
 
 @interface EditUserInfoViewController ()<UITableViewDataSource,UITableViewDelegate,
                                         UIActionSheetDelegate,UIImagePickerControllerDelegate,
-                                        UITextFieldDelegate>
+                                        UITextFieldDelegate,UINavigationControllerDelegate>
 {
     UIImage *user_image_local;
 }

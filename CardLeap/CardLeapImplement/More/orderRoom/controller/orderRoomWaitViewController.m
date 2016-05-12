@@ -35,7 +35,7 @@
 #pragma mark-------set UI
 -(void)setUI
 {
-#warning 2015.12.21 查看订单进度按钮，去掉。（预定酒店和订座位）
+#pragma mark --- 2015.12.21 查看订单进度按钮，去掉。（预定酒店和订座位）
 //    [self.view addSubview:self.checkButton];
 //    [_checkButton autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10.0f];
 //    [_checkButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0f];

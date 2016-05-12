@@ -16,6 +16,7 @@
 {
     BOOL isFirstShake;
     NSString *_annotationImageName;
+    UITextField *_textField;
 }
 @property (strong, nonatomic) UIImageView *firstEntry;
 @property (strong, nonatomic) MAMapView *mapView;
@@ -40,7 +41,6 @@
     [self setHiddenTabbar:YES];
     self.navigationController.navigationBarHidden=YES;
     [self setUI];
-    
 }
 - (UIButton *)highwayCondition{
     if (!_highwayCondition) {
@@ -66,14 +66,15 @@
 }
 - (UIView *)tableHeadView{
     if (!_tableHeadView) {
-        UITextField *textField=[[UITextField alloc]initForAutoLayout];
-        textField.borderStyle = UITextBorderStyleRoundedRect;
-        textField.returnKeyType =UIReturnKeyDone;
-        textField.placeholder=@"搜地点、查路况";
-        textField.textAlignment=NSTextAlignmentCenter;
-        textField.delegate=self;
+        _textField=[[UITextField alloc]initForAutoLayout];
+        _textField.borderStyle = UITextBorderStyleRoundedRect;
+        _textField.returnKeyType =UIReturnKeyDone;
+        _textField.placeholder=@"搜地点、查路况";
+        _textField.textAlignment=NSTextAlignmentCenter;
+        _textField.delegate=self;
+        [_textField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
         UIButton *dissMissSearchView=[[UIButton alloc]initForAutoLayout];
-        [dissMissSearchView addTarget:self action:@selector(dissMissSearchViewAction) forControlEvents:UIControlEventTouchUpInside];
+        [dissMissSearchView addTarget:self action:@selector(dissMissSearchViewAction2) forControlEvents:UIControlEventTouchUpInside];
         dissMissSearchView .backgroundColor=[UIColor blackColor];
         [dissMissSearchView setImage:[UIImage imageNamed:@"UMS_nav_button_back"] forState:UIControlStateNormal];
         _tableHeadView=[[UIView alloc]initForAutoLayout];
@@ -81,11 +82,11 @@
         [dissMissSearchView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:5];
         [dissMissSearchView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5];
         [dissMissSearchView autoSetDimensionsToSize:CGSizeMake(40, 40)];
-        [_tableHeadView addSubview:textField];
-        [textField autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5];
-        [textField autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
-        [textField autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
-        [textField autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:dissMissSearchView withOffset:5];
+        [_tableHeadView addSubview:_textField];
+        [_textField autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5];
+        [_textField autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
+        [_textField autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
+        [_textField autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:dissMissSearchView withOffset:5];
         
     }
     return _tableHeadView;
@@ -184,7 +185,6 @@
     }
     return _firstEntry;
 }
-
 - (void)uploadConditionAction{
     UploadConditonViewController *uploadVC=[[UploadConditonViewController alloc]init];
     [self.navigationController pushViewController:uploadVC animated:NO];
@@ -199,9 +199,19 @@
     [textField resignFirstResponder];
     return YES;
 }
+- (void)textDidChange:(UITextField *)textField{
+    [self searchPOI:textField.text requestTypes:@""];
+}
 - (void)dissMissSearchViewAction{
     self.navigationController.navigationBarHidden=NO;
     [self.view sendSubviewToBack:self.searchView];
+    [_textField resignFirstResponder];
+}
+- (void)dissMissSearchViewAction2{
+    self.navigationController.navigationBarHidden=NO;
+    [self.view sendSubviewToBack:self.searchView];
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    [_textField resignFirstResponder];
 }
 - (void)rightItemAction{
     self.navigationController.navigationBarHidden=YES;
@@ -263,7 +273,6 @@
     self.shakeForService.frame=self.view.bounds;
     switch (sender.selectedSegmentIndex) {
         case 0:
-
             [self searchPOI:@"停车场" requestTypes:@"汽车服务"];
             _annotationImageName=@"park";
             break;
@@ -307,15 +316,15 @@
 //实现POI搜索对应的回调函数
 - (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response
 {
-    [self.searchDataList removeAllObjects];
     if(response.pois.count == 0)
     {
         return;
     }
-    
+    [self.searchDataList removeAllObjects];
+
     for (AMapPOI *poi in response.pois) {
-        [self addAnnotation:CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude) with:poi.name and:poi.address];
         [self.searchDataList addObject:poi];
+        [self addAnnotation:CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude) with:poi.name and:poi.address];
         [self.searchTableVeiw reloadData];
     }
 
@@ -344,6 +353,7 @@
     [self dissMissSearchViewAction];
 }
 - (void)setUI{
+    self.title=@"摇一摇路况";
     [self.view addSubview:self.searchView];
     [_searchView autoPinEdgeToSuperviewEdge:ALEdgeTop];
     [_searchView autoPinEdgeToSuperviewEdge:ALEdgeRight];

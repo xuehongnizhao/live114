@@ -222,7 +222,7 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     currentIndex=(int)(scrollView.contentOffset.x/scrollView.frame.size.width);
-    indexLabel.text=[NSString stringWithFormat:@"%d / %d",currentIndex+1,count];
+    indexLabel.text=[NSString stringWithFormat:@"%ld / %d",currentIndex+1,count];
 }
 
 -(void)singleDoubleTap:(UITapGestureRecognizer*)recognizer

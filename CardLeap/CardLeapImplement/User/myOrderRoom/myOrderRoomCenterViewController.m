@@ -228,7 +228,7 @@
 //    [firVC.navigationItem setTitle:@"评价"];
     firVC.shop_id = info.shop_id;
     firVC.hotel_id = info.hotel_id;
-    firVC.delegate = self;
+    firVC.myDelegate = self;
     [self.navigationController pushViewController:firVC animated:YES];
 }
 

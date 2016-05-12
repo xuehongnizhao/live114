@@ -298,7 +298,6 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
     TenLat = (int)(yGps.latitude*10);
     TenLog = (int)(yGps.longitude*10);
     NSString *sql = [[NSString alloc]initWithFormat:@"select offLat,offLog from gpsT where lat=%d and log = %d",TenLat,TenLog];
-    NSLog(sql);
     sqlite3_stmt* stmtL = [m_sqlite NSRunSql:sql];
     int offLat=0;
     int offLog=0;
@@ -603,7 +602,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
 {
     NSString *string = nil;
     NSLog(@"%@",str );
-    NSLog(@"%d",str.length);
+    NSLog(@"%ld",str.length);
     NSInteger stringLength = str.length;
     if (stringLength == 0) {
         return 0;
@@ -705,12 +704,12 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
             [lable autoAlignAxisToSuperviewAxis:ALAxisVertical];
             [lable autoSetDimension:ALDimensionWidth toSize:200.0f];
         }else{
-            NSInteger count1 = indexPath.row-1;
+            int count1 = (int)indexPath.row-1;
             UIView *cellView = [cellArray ImageLayout:count1];
             [cell addSubview:cellView];
         }
     }else{
-        int count1 = indexPath.row;
+        int count1 = (int)indexPath.row;
         UIView *cellView = [cellArray ImageLayout:count1];
         [cell addSubview:cellView];
     }
@@ -736,7 +735,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (is_reply) {
-        NSLog(@"%d",indexPath.row);
+        NSLog(@"%ld",indexPath.row);
         if (indexPath.row == 0) {
             return 40;
         }else{
@@ -771,7 +770,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            selectRow = indexPath.row;
+            selectRow = (int)indexPath.row;
             LinFriendCircleInfo *info = [_friendCircleList objectAtIndex:indexPath.row-1];
             LinFriendCircleDetailController *firVC = [[LinFriendCircleDetailController alloc] init];
             //传递至详情 不需要加载可以显示
@@ -795,7 +794,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
     }else{
         //点击进入帖子详情
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        selectRow = indexPath.row;
+        selectRow = (int)indexPath.row;
         LinFriendCircleInfo *info = [_friendCircleList objectAtIndex:indexPath.row];
         LinFriendCircleDetailController *firVC = [[LinFriendCircleDetailController alloc] init];
         [firVC setNavBarTitle:@"发现详情" withFont:14.0f];
@@ -828,7 +827,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
     NSLog(@"传来的array之前是什么%@",info.com_list);
     //info.review_num = [NSString stringWithFormat:@"%d",[info.com_list count]];
     if ([info.com_list count]<5) {
-        info.com_list = temp_review_list;
+        info.com_list = (NSMutableArray *)temp_review_list;
         NSLog(@"传来的array之后是什么%@",info.com_list);
         cellArray = [[CellViewMgrController alloc] initWithDictionary:_friendCircleList];
         [_FriendTableview reloadData];

@@ -115,7 +115,7 @@
         CGFloat numY    = self.cityDescTextView.frame.size.height - numH - padding;
         textNumLabelView.frame = CGRectMake(numX, numY, numW, numH);
         textNumLabelView.backgroundColor = [UIColor whiteColor];
-        textNumLabelView.text  = [NSString stringWithFormat:@"%i/200", self.num];
+        textNumLabelView.text  = [NSString stringWithFormat:@"%li/200", (long)self.num];
         
         textNumLabelView.textColor = Color(191, 191, 191, 255);
         textNumLabelView.textAlignment = NSTextAlignmentRight;
@@ -206,7 +206,7 @@
  */
 - (BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
-    self.textNumLabelView.text = [NSString stringWithFormat:@"%i/200", textView.text.length];
+    self.textNumLabelView.text = [NSString stringWithFormat:@"%lu/200", (unsigned long)textView.text.length];
     return YES;
 }
 

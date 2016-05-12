@@ -227,7 +227,7 @@
     firVC.shop_id = info.shop_id;
     firVC.seat_id = info.seat_id;
     NSLog(@"去评价%ld。seat_id：%@   shop_id:%@",(long)tag,info.seat_id,info.shop_id);
-    firVC.delegate = self;
+    firVC.myDelegate = self;
     [self.navigationController pushViewController:firVC animated:YES];
 }
 

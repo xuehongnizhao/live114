@@ -28,7 +28,7 @@ CGSizeEqualToSize(CGSizeMake(640, 1136),                                    \
 
 static NSString *pageCount = @"10";
 
-@interface orderRoomMapViewController (){
+@interface orderRoomMapViewController ()<MKMapViewDelegate>{
     NSMutableArray *shopArray;
     int page;
     double baidu_lat;
@@ -67,9 +67,6 @@ static NSString *pageCount = @"10";
 @property (strong, nonatomic) NSArray *shops;
 /*!< 地图中注释的数据 */
 @property (strong, nonatomic) NSArray *annotations;                 /*!< 地图中注释的数据 */
-
-// SUPPORT
-@property (assign, nonatomic) NSInteger page;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGes;       /*!< 单击手势对象 */
 
@@ -213,7 +210,7 @@ static NSString *pageCount = @"10";
     NSInteger beginPage = (page-1) * [pageCount integerValue] + 1;
     NSInteger endPage = beginPage + 9;
     
-    self.descriptionLabel.text = [NSString stringWithFormat:@"第%d-%d家",beginPage,endPage];
+    self.descriptionLabel.text = [NSString stringWithFormat:@"第%ld-%ld家",beginPage,endPage];
     
     if (page <= 1) {
         [self.leftButton setEnabled:NO];
@@ -459,7 +456,7 @@ static NSString *pageCount = @"10";
 -(void)getShopList:(float)lat lng:(float)lng
 {
     NSString *tmp_url  = connect_url(@"hotel_map");
-#warning 11.20日修改（酒店地图）
+#pragma mark --- 11.20日修改（酒店地图）
     if (self.category == nil) {
         self.category = @"0";
     }

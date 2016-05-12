@@ -144,7 +144,7 @@
     //    [firVC.navigationItem setTitle:@"评价"];
     firVC.shop_id = self.info.shop_id;
     firVC.hotel_id = self.info.hotel_id;
-    firVC.delegate = self;
+    firVC.myDelegate = self;
     [self.navigationController pushViewController:firVC animated:YES];
 }
 /*

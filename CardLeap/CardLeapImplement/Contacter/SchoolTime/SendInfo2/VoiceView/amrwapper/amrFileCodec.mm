@@ -63,7 +63,7 @@ int ReadPCMFrame(short speech[], FILE* fpwave, int nChannels, int nBitsPerSample
 	
 	if (nBitsPerSample==8 && nChannels==1)
 	{
-		nRead = fread(pcmFrame_8b1, (nBitsPerSample/8), PCM_FRAME_SIZE*nChannels, fpwave);
+		nRead = (int)fread(pcmFrame_8b1, (nBitsPerSample/8), PCM_FRAME_SIZE*nChannels, fpwave);
 		for(x=0; x<PCM_FRAME_SIZE; x++)
 		{
 			speech[x] =(short)((short)pcmFrame_8b1[x] << 7);
@@ -72,7 +72,7 @@ int ReadPCMFrame(short speech[], FILE* fpwave, int nChannels, int nBitsPerSample
 	else
 		if (nBitsPerSample==8 && nChannels==2)
 		{
-			nRead = fread(pcmFrame_8b2, (nBitsPerSample/8), PCM_FRAME_SIZE*nChannels, fpwave);
+			nRead = (int)fread(pcmFrame_8b2, (nBitsPerSample/8), PCM_FRAME_SIZE*nChannels, fpwave);
 			for( x=0, y=0; y<PCM_FRAME_SIZE; y++,x+=2 )
 			{
 				// 1 - 取两个声道之左声道
@@ -89,7 +89,7 @@ int ReadPCMFrame(short speech[], FILE* fpwave, int nChannels, int nBitsPerSample
 		else
 			if (nBitsPerSample==16 && nChannels==1)
 			{
-				nRead = fread(pcmFrame_16b1, (nBitsPerSample/8), PCM_FRAME_SIZE*nChannels, fpwave);
+				nRead = (int)fread(pcmFrame_16b1, (nBitsPerSample/8), PCM_FRAME_SIZE*nChannels, fpwave);
 				for(x=0; x<PCM_FRAME_SIZE; x++)
 				{
 					speech[x] = (short)pcmFrame_16b1[x+0];
@@ -98,7 +98,7 @@ int ReadPCMFrame(short speech[], FILE* fpwave, int nChannels, int nBitsPerSample
 			else
 				if (nBitsPerSample==16 && nChannels==2)
 				{
-					nRead = fread(pcmFrame_16b2, (nBitsPerSample/8), PCM_FRAME_SIZE*nChannels, fpwave);
+					nRead = (int)fread(pcmFrame_16b2, (nBitsPerSample/8), PCM_FRAME_SIZE*nChannels, fpwave);
 					for( x=0, y=0; y<PCM_FRAME_SIZE; y++,x+=2 )
 					{
 						//speech[y] = (short)pcmFrame_16b2[x+0];
@@ -154,7 +154,7 @@ int EncodeWAVEFileToAMRFile(const char* pchWAVEFilename, const char* pchAMRFileN
 		return 0;
 	}
 	/* write magic number to indicate single channel AMR file storage format */
-	bytes = fwrite(AMR_MAGIC_NUMBER, sizeof(char), strlen(AMR_MAGIC_NUMBER), fpamr);
+	bytes = (int)fwrite(AMR_MAGIC_NUMBER, sizeof(char), strlen(AMR_MAGIC_NUMBER), fpamr);
 	
 	/* skip to pcm audio data*/
 	SkipToPCMAudioData(fpwave);

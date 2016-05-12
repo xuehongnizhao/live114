@@ -30,6 +30,5 @@
 @property (strong,nonatomic) NSString *group_url;//团购url
 @property (strong,nonatomic) NSString *single_price;//单价
 -(id)initWithDictionary:(NSDictionary*)dict;
-
--(id) initwithGroupDetailInfo:(groupDetailInfo *)info;
+//-(id) initwithGroupDetailInfo:(groupDetailInfo *)info;
 @end

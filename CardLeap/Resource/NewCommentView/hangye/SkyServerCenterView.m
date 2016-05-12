@@ -193,7 +193,7 @@ typedef NS_ENUM(NSUInteger, kButtonViewDirection) {
 
 -(void)displayButtonviewClick:(UIButton*) sender
 {
-    linServicemodel* module=[self.moduleArray objectAtIndex:sender.tag];
+    ccDisplayModel* module=[self.moduleArray objectAtIndex:sender.tag];
     [self.delegate disPlayCenterClickButtonToPushViewController:module];
 }
 

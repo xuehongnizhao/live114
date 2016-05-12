@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, ClickType) {
 @interface CalendarDayModel : NSObject
 
 @property (assign, nonatomic) CollectionViewCellDayType style;//显示的样式
-@property (assign, nonatomic) ClickType *type;//点击时候的样式
+@property (assign, nonatomic) ClickType type;//点击时候的样式
 @property (nonatomic, assign) NSUInteger day;//天
 @property (nonatomic, assign) NSUInteger month;//月
 @property (nonatomic, assign) NSUInteger year;//年

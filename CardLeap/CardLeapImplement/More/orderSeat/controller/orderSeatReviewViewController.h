@@ -13,7 +13,7 @@
 @end
 
 @interface orderSeatReviewViewController : BaseViewController
-@property (strong,nonatomic)id<refreshDelegate> delegate;
+@property (strong,nonatomic)id<refreshDelegate> myDelegate;
 @property (strong,nonatomic)NSString *shop_id;
 @property (strong,nonatomic)NSString *seat_id;
 @end

@@ -198,7 +198,7 @@
         如果没有则直接点击
      */
     if (tableView == _tableView) {
-        select_one = indexPath.row;
+        select_one = (int)indexPath.row;
         NSString *currentRow = [selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex];
         currentRow = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
         //重新加入数组
@@ -226,7 +226,6 @@
             
             NSArray *array = _array[_currentSelectedMenudIndex];
             cateInfo *info = array[indexPath.row];
-            NSString *selectText = info.cate_name;
             
 //            CATextLayer *title = [[CATextLayer alloc] init];
 //            title.string = selectText;
@@ -239,7 +238,7 @@
             //[self confiMenuWithSelectRow:indexPath.row isFirst:YES];
             [self.delegate PullDownMenu:self didSelectRowAtColumn:_currentSelectedMenudIndex row:indexPath.row selectText:info.cate_id];
         }
-        select_one = [[selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex] integerValue];
+        select_one = [[selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex] intValue];
         NSIndexPath *first = [NSIndexPath
                               indexPathForRow:select_one inSection:0];
         [_tableView selectRowAtIndexPath:first
@@ -420,7 +419,6 @@
     if (show) {
         //判断有没有二级的子菜单 有就宽度调整 没有就不做调整
         CGFloat tableViewWidth ;
-        CGFloat secondHeight = 5 * tableView.rowHeight;
         if ([self isPopSecondMenu]==YES) {
             tableViewWidth = self.frame.size.width/2;
             _secondTableview.frame = CGRectMake(tableViewWidth, self.frame.origin.y + self.frame.size.height, tableViewWidth, 0);
@@ -479,7 +477,7 @@
         [self animateTitle:title show:forward complete:^{
             [self animateBackGroundView:background show:forward complete:^{
                 [self animateTableView:tableView show:forward complete:^{
-                    select_one = [[selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex] integerValue];
+                    select_one = [[selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex] intValue];
                     NSIndexPath *first = [NSIndexPath
                                           indexPathForRow:select_one inSection:0];
                     [tableView selectRowAtIndexPath:first
