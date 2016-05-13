@@ -38,7 +38,7 @@
 
 - (NSString *)stringFromDate:(NSDate *)date;//NSDate转NSString
 
-+ (int)getDayNumbertoDay:(NSDate *)today beforDay:(NSDate *)beforday;
++ (NSInteger)getDayNumbertoDay:(NSDate *)today beforDay:(NSDate *)beforday;
 
 -(int)getWeekIntValueWithDate;
 

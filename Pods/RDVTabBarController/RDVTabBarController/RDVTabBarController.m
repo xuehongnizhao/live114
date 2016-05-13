@@ -55,7 +55,15 @@
     
     [self setSelectedIndex:[self selectedIndex]];
     
-    [self setTabBarHidden:NO animated:NO];
+    [self setTabBarHidden:self.isTabBarHidden animated:NO];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return self.selectedViewController.preferredStatusBarStyle;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    return self.selectedViewController.preferredStatusBarUpdateAnimation;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -110,9 +118,19 @@
     [[[self selectedViewController] view] setFrame:[[self contentView] bounds]];
     [[self contentView] addSubview:[[self selectedViewController] view]];
     [[self selectedViewController] didMoveToParentViewController:self];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)setViewControllers:(NSArray *)viewControllers {
+    if (_viewControllers && _viewControllers.count) {
+        for (UIViewController *viewController in _viewControllers) {
+            [viewController willMoveToParentViewController:nil];
+            [viewController.view removeFromSuperview];
+            [viewController removeFromParentViewController];
+        }
+    }
+
     if (viewControllers && [viewControllers isKindOfClass:[NSArray class]]) {
         _viewControllers = [viewControllers copy];
         
@@ -147,8 +165,11 @@
     if (!_tabBar) {
         _tabBar = [[RDVTabBar alloc] init];
         [_tabBar setBackgroundColor:[UIColor clearColor]];
-        [_tabBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth|
-         UIViewAutoresizingFlexibleTopMargin];
+        [_tabBar setAutoresizingMask:(UIViewAutoresizingFlexibleWidth|
+                                      UIViewAutoresizingFlexibleTopMargin|
+                                      UIViewAutoresizingFlexibleLeftMargin|
+                                      UIViewAutoresizingFlexibleRightMargin|
+                                      UIViewAutoresizingFlexibleBottomMargin)];
         [_tabBar setDelegate:self];
     }
     return _tabBar;
@@ -158,8 +179,8 @@
     if (!_contentView) {
         _contentView = [[UIView alloc] init];
         [_contentView setBackgroundColor:[UIColor whiteColor]];
-        [_contentView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|
-         UIViewAutoresizingFlexibleHeight];
+        [_contentView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth|
+                                           UIViewAutoresizingFlexibleHeight)];
     }
     return _contentView;
 }
@@ -170,19 +191,13 @@
     __weak RDVTabBarController *weakSelf = self;
     
     void (^block)() = ^{
-        CGSize viewSize = weakSelf.view.frame.size;
+        CGSize viewSize = weakSelf.view.bounds.size;
         CGFloat tabBarStartingY = viewSize.height;
         CGFloat contentViewHeight = viewSize.height;
         CGFloat tabBarHeight = CGRectGetHeight([[weakSelf tabBar] frame]);
         
         if (!tabBarHeight) {
             tabBarHeight = 49;
-        }
-        
-        if (![weakSelf parentViewController]) {
-            if (UIInterfaceOrientationIsLandscape([weakSelf interfaceOrientation])) {
-                viewSize = CGSizeMake(viewSize.height, viewSize.width);
-            }
         }
         
         if (!hidden) {

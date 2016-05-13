@@ -1,7 +1,7 @@
 //
 //  UIView+Hierarchy.h
 // https://github.com/hackiftekhar/IQKeyboardManager
-// Copyright (c) 2013-14 Iftekhar Qurashi.
+// Copyright (c) 2013-15 Iftekhar Qurashi.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,110 +22,110 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIView.h>
+#import "IQKeyboardManagerConstants.h"
 
-@class UICollectionView, UITableView, NSArray;
+@class UICollectionView, UIScrollView, UITableView, NSArray;
 
-/*!
-    @category UIView (IQ_UIView_Hierarchy)
- 
-	@abstract UIView hierarchy category.
+/**
+ UIView hierarchy category.
  */
 @interface UIView (IQ_UIView_Hierarchy)
 
-/*!
-    @method viewController:
- 
-    @return Returns the UIViewController object that manages the receiver.
+///------------------------------
+/// @name canBecomeFirstResponder
+///------------------------------
+
+/**
+ Returns YES if IQKeyboardManager asking for `canBecomeFirstResponder. Useful when doing custom work in `textFieldShouldBeginEditing:` delegate.
+ */
+@property (nonatomic, readonly) BOOL isAskingCanBecomeFirstResponder;
+
+///----------------------
+/// @name viewControllers
+///----------------------
+
+/**
+ Returns the UIViewController object that manages the receiver.
  */
 @property (nonatomic, readonly, strong) UIViewController *viewController;
 
-/*!
-    @method superScrollView:
- 
-    @return Returns the UIScrollView object if any found in view's upper hierarchy.
+/**
+ Returns the topMost UIViewController object in hierarchy.
  */
-@property (nonatomic, readonly, strong) UIScrollView *superScrollView;
+@property (nonatomic, readonly, strong) UIViewController *topMostController;
 
-/*!
-    @method superTableView:
- 
-    @return Returns the UITableView object if any found in view's upper hierarchy.
+///-----------------------------------
+/// @name Superviews/Subviews/Siglings
+///-----------------------------------
+
+/**
+ Returns the superView of provided class type.
  */
-@property (nonatomic, readonly, strong) UITableView *superTableView;
+-(UIView*)superviewOfClassType:(Class)classType;
 
-/*!
-    @method superCollectionView:
- 
-    @return Returns the UICollectionView object if any found in view's upper hierarchy.
- */
-@property (nonatomic, readonly, strong) UICollectionView *superCollectionView;
-
-/*!
-    @method responderSiblings:
- 
-    @return returns all siblings of the receiver which canBecomeFirstResponder.
+/**
+ Returns all siblings of the receiver which canBecomeFirstResponder.
  */
 @property (nonatomic, readonly, copy) NSArray *responderSiblings;
 
-/*!
-    @method deepResponderViews:
- 
-    @return returns all deep subViews of the receiver which canBecomeFirstResponder.
+/**
+ Returns all deep subViews of the receiver which canBecomeFirstResponder.
  */
 @property (nonatomic, readonly, copy) NSArray *deepResponderViews;
 
-/*!
-    @method isInsideSearchBar:
- 
-    @return returns YES if the receiver object is UISearchBarTextField, otherwise return NO.
+///-------------------------
+/// @name Special TextFields
+///-------------------------
+
+/**
+ Returns YES if the receiver object is UISearchBarTextField, otherwise return NO.
  */
 @property (nonatomic, getter=isSearchBarTextField, readonly) BOOL searchBarTextField;
 
-/*!
-    @method isAlertViewTextField:
- 
-    @return returns YES if the receiver object is UIAlertSheetTextField, otherwise return NO.
+/**
+ Returns YES if the receiver object is UIAlertSheetTextField, otherwise return NO.
  */
 @property (nonatomic, getter=isAlertViewTextField, readonly) BOOL alertViewTextField;
 
-/*!
-    @method convertTransformToView::
- 
-    @return returns current view transform with respect to the 'toView'.
+///----------------
+/// @name Transform
+///----------------
+
+/**
+ Returns current view transform with respect to the 'toView'.
  */
 -(CGAffineTransform)convertTransformToView:(UIView*)toView;
 
-/*!
-    @method subHierarchy:
- 
-    @return Returns a string that represent the information about it's subview's hierarchy. You can use this method to debug the subview's positions.
+///-----------------
+/// @name Hierarchy
+///-----------------
+
+/**
+ Returns a string that represent the information about it's subview's hierarchy. You can use this method to debug the subview's positions.
  */
 @property (nonatomic, readonly, copy) NSString *subHierarchy;
 
-/*!
-    @method superHierarchy:
- 
-    @return Returns an string that represent the information about it's upper hierarchy. You can use this method to debug the superview's positions.
+/**
+ Returns an string that represent the information about it's upper hierarchy. You can use this method to debug the superview's positions.
  */
 @property (nonatomic, readonly, copy) NSString *superHierarchy;
 
+/**
+ Returns an string that represent the information about it's frame positions. You can use this method to debug self positions.
+ */
+@property (nonatomic, readonly, copy) NSString *debugHierarchy;
 
 @end
 
 
-/*!
-    @category UIView (IQ_UIView_Frame)
- 
-	@abstract UIView frame category.
+/**
+ NSObject category to used for logging purposes
  */
-@interface UIView (IQ_UIView_Frame)
+@interface NSObject (IQ_Logging)
 
-@property (nonatomic, assign) CGPoint origin;
-@property (nonatomic, assign) CGSize size;
-@property (nonatomic, assign) CGFloat x, y, width, height;
-@property (nonatomic, assign) CGFloat left, right, top, bottom;
-@property (nonatomic, assign) CGFloat centerX;
-@property (nonatomic, assign) CGFloat centerY;
-@property (nonatomic, readonly) CGPoint boundsCenter;
+/**
+ Short description for logging purpose.
+ */
+@property (nonatomic, readonly, copy) NSString *_IQDescription;
 
 @end

@@ -147,7 +147,7 @@
 }
 
 
-+ (int)getDayNumbertoDay:(NSDate *)today beforDay:(NSDate *)beforday
++ (NSInteger)getDayNumbertoDay:(NSDate *)today beforDay:(NSDate *)beforday
 {
     
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];//日历控件对象
