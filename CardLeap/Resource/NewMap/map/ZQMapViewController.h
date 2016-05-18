@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ZQMapViewController : UIViewController
-@property NSString *addr;
-@property NSString *latitude;
-@property NSString *longitude;
-@property NSString *myLat;
-@property NSString *myLnt;
+@property (strong,nonatomic) NSString *addr;
+@property (strong,nonatomic) NSString *latitude;
+@property (strong,nonatomic) NSString *longitude;
+@property (strong,nonatomic) NSString *myLat;
+@property (strong,nonatomic) NSString *myLnt;
 @end

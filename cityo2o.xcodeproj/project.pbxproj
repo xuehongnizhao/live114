@@ -479,7 +479,6 @@
 		046DA0341B4D5FA300627708 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046DA02C1B4D5FA300627708 /* arrow@2x.png */; };
 		046DA0351B4D5FA300627708 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 046DA02D1B4D5FA300627708 /* ball.png */; };
 		046DA0361B4D5FA300627708 /* ball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046DA02E1B4D5FA300627708 /* ball@2x.png */; };
-		046DA0371B4D5FA300627708 /* ZQMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DA0301B4D5FA300627708 /* ZQMapViewController.m */; };
 		046DA0381B4D5FA300627708 /* ShopToAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DA0321B4D5FA300627708 /* ShopToAnnotation.m */; };
 		04701DC71A5120580036E481 /* shopTakeCateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701DC61A5120580036E481 /* shopTakeCateInfo.m */; };
 		04701DCA1A5123550036E481 /* takeoutDishInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701DC91A5123550036E481 /* takeoutDishInfo.m */; };
@@ -543,6 +542,7 @@
 		048A4FFE1ADF64DD000EE0F6 /* ExchangeRecordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048A4FFD1ADF64DD000EE0F6 /* ExchangeRecordDetailViewController.m */; };
 		0493AF201A8C371A00A973FC /* OrderSeatSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493AF1F1A8C371A00A973FC /* OrderSeatSearchViewController.m */; };
 		0493AF231A8C3B6900A973FC /* orderRoomSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493AF221A8C3B6900A973FC /* orderRoomSearchViewController.m */; };
+		049DB22E1CEC20CA00BEA628 /* ZQMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DB22D1CEC20CA00BEA628 /* ZQMapViewController.m */; };
 		04A0C4A51A76126300EF2939 /* GroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A0C4A41A76126300EF2939 /* GroupDetailViewController.m */; };
 		04A0C4A81A76158600EF2939 /* groupDetailInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A0C4A71A76158600EF2939 /* groupDetailInfo.m */; };
 		04A0C4AB1A7616F200EF2939 /* groupDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A0C4AA1A7616F200EF2939 /* groupDetailTableViewCell.m */; };
@@ -1539,8 +1539,6 @@
 		046DA02C1B4D5FA300627708 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		046DA02D1B4D5FA300627708 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		046DA02E1B4D5FA300627708 /* ball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball@2x.png"; sourceTree = "<group>"; };
-		046DA02F1B4D5FA300627708 /* ZQMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQMapViewController.h; sourceTree = "<group>"; };
-		046DA0301B4D5FA300627708 /* ZQMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQMapViewController.m; sourceTree = "<group>"; };
 		046DA0311B4D5FA300627708 /* shopToAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shopToAnnotation.h; sourceTree = "<group>"; };
 		046DA0321B4D5FA300627708 /* ShopToAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopToAnnotation.m; sourceTree = "<group>"; };
 		04701DC51A5120580036E481 /* shopTakeCateInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shopTakeCateInfo.h; sourceTree = "<group>"; };
@@ -1657,6 +1655,8 @@
 		0493AF1F1A8C371A00A973FC /* OrderSeatSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSeatSearchViewController.m; sourceTree = "<group>"; };
 		0493AF211A8C3B6900A973FC /* orderRoomSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = orderRoomSearchViewController.h; sourceTree = "<group>"; };
 		0493AF221A8C3B6900A973FC /* orderRoomSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = orderRoomSearchViewController.m; sourceTree = "<group>"; };
+		049DB22C1CEC20CA00BEA628 /* ZQMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQMapViewController.h; sourceTree = "<group>"; };
+		049DB22D1CEC20CA00BEA628 /* ZQMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQMapViewController.m; sourceTree = "<group>"; };
 		04A0C4A31A76126300EF2939 /* GroupDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailViewController.h; sourceTree = "<group>"; };
 		04A0C4A41A76126300EF2939 /* GroupDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailViewController.m; sourceTree = "<group>"; };
 		04A0C4A61A76158600EF2939 /* groupDetailInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = groupDetailInfo.h; sourceTree = "<group>"; };
@@ -3998,12 +3998,12 @@
 		046DA02A1B4D5FA300627708 /* map */ = {
 			isa = PBXGroup;
 			children = (
+				049DB22C1CEC20CA00BEA628 /* ZQMapViewController.h */,
+				049DB22D1CEC20CA00BEA628 /* ZQMapViewController.m */,
 				046DA02B1B4D5FA300627708 /* arrow.png */,
 				046DA02C1B4D5FA300627708 /* arrow@2x.png */,
 				046DA02D1B4D5FA300627708 /* ball.png */,
 				046DA02E1B4D5FA300627708 /* ball@2x.png */,
-				046DA02F1B4D5FA300627708 /* ZQMapViewController.h */,
-				046DA0301B4D5FA300627708 /* ZQMapViewController.m */,
 				046DA0311B4D5FA300627708 /* shopToAnnotation.h */,
 				046DA0321B4D5FA300627708 /* ShopToAnnotation.m */,
 			);
@@ -6734,6 +6734,7 @@
 				33DB1C2B1A1ECAF6002E463E /* UITableViewController+ViewLayout.m in Sources */,
 				047E0CC31A37E62500304FF1 /* SLCoverFlowView.m in Sources */,
 				042EC7E01AC93B720019F5B0 /* myGroupSpikeCodeViewController.m in Sources */,
+				049DB22E1CEC20CA00BEA628 /* ZQMapViewController.m in Sources */,
 				047E0D441A383B1300304FF1 /* littleCateModel.m in Sources */,
 				469AC1A71A709E9700DBD0C7 /* CityAddController.m in Sources */,
 				469AC1BD1A709E9700DBD0C7 /* CityTwoCate.m in Sources */,
@@ -6773,7 +6774,6 @@
 				04519A3E1BAD03B0004DF7F5 /* IndustryZoneView.m in Sources */,
 				040066551A88608E00F577AF /* ShopTakeOutMapViewController.m in Sources */,
 				0474CCDA1A44043F00230A5E /* messageInfo.m in Sources */,
-				046DA0371B4D5FA300627708 /* ZQMapViewController.m in Sources */,
 				33DB1C6F1A1F0828002E463E /* DSNavigationBar.m in Sources */,
 				33DB1C7E1A1F1957002E463E /* CardLeapDatabaseManager.m in Sources */,
 				0458F61D1A397D97006A30A3 /* shopInfo.m in Sources */,

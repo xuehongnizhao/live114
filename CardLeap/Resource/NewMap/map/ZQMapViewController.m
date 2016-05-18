@@ -16,13 +16,13 @@
 #import "shopToAnnotation.h"
 
 @interface ZQMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate,UIActionSheetDelegate>
-@property (nonatomic, strong)NSDictionary *shop;//内部组装
+@property (nonatomic, strong) NSDictionary *shop;//内部组装
 //@property (weak, nonatomic) IBOutlet MKMapView *shopMapView;
-@property (strong,nonatomic)MKMapView *shopMapView;;
-@property (nonatomic, strong)NSArray *shopAnnotations;
-@property (nonatomic, weak)IBOutlet UIButton *locationIndicatorButton;
-@property (nonatomic, weak)IBOutlet UIImageView *locationIndicatorArrow;
-@property (strong,nonatomic)UIButton *mapButton;
+@property (strong,nonatomic) MKMapView *shopMapView;;
+@property (nonatomic, strong) NSArray *shopAnnotations;
+@property (nonatomic, weak) IBOutlet UIButton *locationIndicatorButton;
+@property (nonatomic, weak) IBOutlet UIImageView *locationIndicatorArrow;
+@property (strong,nonatomic) UIButton *mapButton;
 @end
 
 @implementation ZQMapViewController
@@ -38,7 +38,7 @@
 @synthesize longitude = _longitude;
 
 //火星坐标系转换为百度坐标系
-const double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+const static double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
 
 - (IBAction)findShopInMap:(id)sender {
     MKCoordinateRegion region;
@@ -263,22 +263,22 @@ const double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
 ////将地图放大到annotation的区域
 //- (void)moveToRegion
 //{
-//    
+//
 //    double minLatitude  = 0;
 //    double maxLatitude  = 90;
 //    double minLongitude = -179;
 //    double maxLongitude = 180;
-//    
+//
 //    if (self.shopAnnotations.count > 0) {
-//        
+//
 //        // 以第一个为初始比较点
 //        ShopToAnnotation *annotation = [self.shopAnnotations lastObject];
-//        
+//
 //        minLatitude  = annotation.coordinate.latitude;
 //        maxLatitude  = annotation.coordinate.latitude;
 //        minLongitude = annotation.coordinate.longitude;
 //        maxLongitude = annotation.coordinate.longitude;
-//        
+//
 //        for (ShopToAnnotation *annotation in self.shopAnnotations) {
 //            if (annotation.coordinate.latitude  < minLatitude)  minLatitude  = annotation.coordinate.latitude;
 //            if (annotation.coordinate.latitude  > maxLatitude)  maxLatitude  = annotation.coordinate.latitude;
@@ -286,12 +286,12 @@ const double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
 //            if (annotation.coordinate.longitude > maxLongitude) maxLongitude = annotation.coordinate.longitude;
 //        }
 //    }
-//    
+//
 //    double latitudeDelta   = (maxLatitude       - minLatitude);
 //    double longitudeDelta  = (maxLongitude      - minLongitude);
 //    double centerLatitude  = latitudeDelta  / 2 + minLatitude;
 //    double centerLongitude = longitudeDelta / 2 + minLongitude;
-//    
+//
 //    CLLocationCoordinate2D coord = {.latitude = centerLatitude, .longitude = centerLongitude};
 //    MKCoordinateSpan        span = {.latitudeDelta = latitudeDelta + 0.012, .longitudeDelta = longitudeDelta + 0.012};
 //    MKCoordinateRegion    region = {coord, span};
@@ -499,15 +499,15 @@ const double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
     float latitude = [self.latitude doubleValue];
     float longitude = [self.longitude doubleValue];
     double x = longitude - 0.0065, y = latitude - 0.006;
-	double z = sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi);
-	double theta = atan2(y, x) - 0.000003 * cos(x * x_pi);
-	longitude = z * cos(theta);
-	latitude = z * sin(theta);
+    double z = sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi);
+    double theta = atan2(y, x) - 0.000003 * cos(x * x_pi);
+    longitude = z * cos(theta);
+    latitude = z * sin(theta);
     self.latitude = [NSString stringWithFormat:@"%f",latitude];
     self.longitude = [NSString stringWithFormat:@"%f",longitude];
     
     if([self isDataValidate]){
-    
+        
         self.shopMapView.delegate = self;
         self.shopMapView.showsUserLocation = NO;
         
