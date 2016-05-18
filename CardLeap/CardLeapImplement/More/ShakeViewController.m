@@ -7,7 +7,7 @@
 //
 
 #import "ShakeViewController.h"
-#import "MAMapKit.h"
+#import <MaMapKit/MAMapKit.h>
 #import "HMSegmentedControl.h"
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "UploadConditonViewController.h"

@@ -1,5 +1,5 @@
 //
-//  MapViewController.h
+//  ZQMapViewController.h
 //  map
 //
 //  Created by Gpsye on 12-11-24.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapViewController : UIViewController
+@interface ZQMapViewController : UIViewController
 @property NSString *addr;
 @property NSString *latitude;
 @property NSString *longitude;

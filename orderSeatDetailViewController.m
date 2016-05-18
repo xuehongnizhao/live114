@@ -14,7 +14,7 @@
 #import "orderSeatSubmitViewController.h"
 #import "LoginViewController.h"
 #import "UMSocial.h"
-#import "MapViewController.h"
+#import "ZQMapViewController.h"
 
 @interface orderSeatDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UMSocialUIDelegate,clickImageActionDelegate,orderSeatCellWebViewHeight>
 {
@@ -216,7 +216,7 @@
         }
         if (row == 1) {
             if (detailInfo != nil || self.info!= nil) {
-                MapViewController *firVC = [[MapViewController alloc] init];
+                ZQMapViewController *firVC = [[ZQMapViewController alloc] init];
                 if (self.info!= nil ) {
                     firVC.addr =self.info.shop_name;
                     firVC.latitude = self.info.shop_lat;

@@ -1,5 +1,5 @@
 //
-//  MapViewController.m
+//  ZQMapViewController.m
 //  map
 //
 //  Created by Gpsye on 12-11-24.
@@ -11,11 +11,11 @@
  */
 
 
-#import "MapViewController.h"
+#import "ZQMapViewController.h"
 #import <MapKit/MapKit.h>
 #import "shopToAnnotation.h"
 
-@interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate,UIActionSheetDelegate>
+@interface ZQMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate,UIActionSheetDelegate>
 @property (nonatomic, strong)NSDictionary *shop;//内部组装
 //@property (weak, nonatomic) IBOutlet MKMapView *shopMapView;
 @property (strong,nonatomic)MKMapView *shopMapView;;
@@ -25,7 +25,7 @@
 @property (strong,nonatomic)UIButton *mapButton;
 @end
 
-@implementation MapViewController
+@implementation ZQMapViewController
 @synthesize shopMapView = _shopMapView;
 @synthesize shop = _shop;
 @synthesize shopAnnotations = _shopAnnotations;

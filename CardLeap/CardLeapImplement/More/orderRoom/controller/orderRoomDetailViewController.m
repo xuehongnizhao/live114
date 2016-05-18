@@ -10,11 +10,11 @@
 #import "orderRoomDetailViewController.h"
 #import "orderRoomDetailInfo.h"
 #import "orderRoomDetailTableViewCell.h"
-#import "ReviewListViewController.h"
+#import "ReviewListViewController.h" 
 #import "orderRoomSubmitViewController.h"
 #import "roomInfo.h"
 #import "UMSocial.h"
-#import "MapViewController.h"
+#import "ZQMapViewController.h"
 
 @interface orderRoomDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UMSocialUIDelegate>
 {
@@ -136,7 +136,7 @@
         }
         if (row == 1) {
             if (detailInfo != nil || self.info!= nil) {
-                MapViewController *firVC = [[MapViewController alloc] init];
+                ZQMapViewController *firVC = [[ZQMapViewController alloc] init];
                 if (self.info!= nil ) {
                     firVC.addr =self.info.shop_name;
                     firVC.latitude = self.info.shop_lat;

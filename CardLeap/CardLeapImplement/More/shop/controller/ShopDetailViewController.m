@@ -21,7 +21,7 @@
 #import "ShopSpikeViewController.h"
 #import "ShopActivityViewController.h"
 #import "UMSocial.h"
-#import "MapViewController.h"
+#import "ZQMapViewController.h"
 #import "ShopDetailWebViewController.h" // 商家详情web
 #import "myOrderCenterInfo.h"
 #import "RviewDishListViewController.h"
@@ -406,7 +406,7 @@
             }else if(row == 1){
                 // 商家地址
                 if (detailInfo != nil || self.info!= nil) {
-                    MapViewController *firVC = [[MapViewController alloc] init];
+                    ZQMapViewController *firVC = [[ZQMapViewController alloc] init];
                     if (self.info!= nil ) {
                         firVC.addr =self.info.shop_name;
                         firVC.latitude = self.info.shop_lat;
