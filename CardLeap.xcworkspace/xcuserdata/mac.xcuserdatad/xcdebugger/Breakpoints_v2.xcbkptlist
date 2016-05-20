@@ -68,12 +68,12 @@
                   moduleName = "cityo2o"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/live114/CardLeap/CardLeapImplement/More/group/controller/GroupReviewViewController.m"
-                  timestampString = "485237205.004188"
+                  timestampString = "485426446.004716"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "127"
                   endingLineNumber = "127"
-                  offsetFromSymbolStart = "1242">
+                  offsetFromSymbolStart = "1184">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -83,12 +83,12 @@
                   moduleName = "cityo2o"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/live114/CardLeap/CardLeapImplement/More/group/controller/GroupReviewViewController.m"
-                  timestampString = "485237205.004302"
+                  timestampString = "485426446.004823"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "128"
                   endingLineNumber = "128"
-                  offsetFromSymbolStart = "51">
+                  offsetFromSymbolStart = "64">
                </Location>
             </Locations>
          </BreakpointContent>

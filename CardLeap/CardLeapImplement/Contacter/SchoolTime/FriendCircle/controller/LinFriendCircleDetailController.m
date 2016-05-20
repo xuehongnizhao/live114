@@ -1747,6 +1747,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setHiddenTabbar:YES];
 }
 #pragma mark----屏幕适配

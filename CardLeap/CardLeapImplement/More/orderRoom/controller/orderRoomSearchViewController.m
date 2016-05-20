@@ -53,6 +53,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     //初始化搜索条
     [self initSearchBar];
 }

@@ -25,6 +25,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
     //设置bar的风格，控制字体颜色
     //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -281,9 +282,14 @@
 }
 //---------------------------------
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+}
 #pragma mark -
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
     // Dispose of any resources that can be recreated.
 }
 

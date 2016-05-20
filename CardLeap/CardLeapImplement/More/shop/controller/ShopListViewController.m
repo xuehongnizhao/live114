@@ -67,11 +67,10 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    //    if (![self.is_hidden isEqualToString:@"0"]) {
-    //        [self setHiddenTabbar:YES];
-    //    }else{
+    [super viewWillAppear:animated];
+
     [self setHiddenTabbar:NO];
-    //    }
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -138,7 +137,8 @@
         if ([code isEqualToString:@"200"]) {
             //------------解析------------
             NSDictionary *dict = (NSDictionary*)param;
-            [self parseAreaDic:dict];
+            [self performSelectorOnMainThread:@selector(parseAreaDic:) withObject:dict waitUntilDone:YES];
+//            [self parseAreaDic:dict];
             [self getDataFromNet];
         }else{
             [SVProgressHUD showErrorWithStatus:[param objectForKey:@"message"]];

@@ -206,17 +206,9 @@
     
     [self.view addSubview:self.voiceUpdata];
     [_voiceUpdata autoSetDimensionsToSize:CGSizeMake(90, 90)];
-    [_voiceUpdata autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:30];
+    [_voiceUpdata autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_imageUpdata withOffset:10];
     [_voiceUpdata autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    /**
-     *  @author zq, 16-05-10 16:05:19
-     *
-     *  <#Description#>
-     *
-     *  @param UIButton <#UIButton description#>
-     *
-     *  @return <#return value description#>
-     */
+
 }
 
 - (void)dissmissButtonAction{

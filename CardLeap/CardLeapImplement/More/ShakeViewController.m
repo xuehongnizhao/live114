@@ -39,7 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setHiddenTabbar:YES];
-    self.navigationController.navigationBarHidden=YES;
     [self setUI];
 }
 - (UIButton *)highwayCondition{
@@ -219,10 +218,10 @@
     [self searchPOI:@"车" requestTypes:@""];
     
 }
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    self.navigationController.navigationBarHidden=NO;
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     _firstEntry.frame=CGRectZero;
     _shakeForService.frame=CGRectZero;
+    self.navigationController.navigationBarHidden=NO;
 }
 /**
  *  @author zq, 16-05-11 13:05:36
@@ -387,5 +386,11 @@
     _firstEntry.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=YES;
+}
+
 
 @end

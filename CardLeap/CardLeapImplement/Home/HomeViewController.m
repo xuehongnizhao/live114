@@ -221,6 +221,7 @@ linHangyeCommendViewDelegate>
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setHiddenTabbar:NO];
     [[HomeNavigationView shareInstance] setlogoButtonEnabel];
 }

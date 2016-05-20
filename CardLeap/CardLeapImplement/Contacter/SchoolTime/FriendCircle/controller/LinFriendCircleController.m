@@ -243,6 +243,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     newsListButton.userInteractionEnabled = YES;
     [self setHiddenTabbar:NO];
 }
