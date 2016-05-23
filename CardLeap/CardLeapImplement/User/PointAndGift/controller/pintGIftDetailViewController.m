@@ -92,6 +92,7 @@
 -(void)loadRequest
 {
     //加载网页
+    NSLog(@"%@",[NSURL URLWithString:self.detailInfo.message_url]);
     [_detailWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailInfo.message_url]]];
 }
 

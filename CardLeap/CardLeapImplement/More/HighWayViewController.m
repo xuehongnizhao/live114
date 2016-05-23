@@ -87,12 +87,10 @@
 }
 
 - (void)dissmissButtonAction{
+    self.navigationController.navigationBarHidden=NO;
     [self.navigationController popViewControllerAnimated:NO];
 }
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden=NO;
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"tableViewCell"];

@@ -4,7 +4,7 @@
 //
 //  Created by mac on 16/5/11.
 //  Copyright © 2016年 Sky. All rights reserved.
-//
+//上报路况
 
 #import "UploadConditonViewController.h"
 #import <AVFoundation/AVFoundation.h>
@@ -26,9 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden=YES;
     [self setAudioSession];
     [self setUI];
+
 }
 
 - (UIButton *)textUpdata{
@@ -147,8 +147,10 @@
     [audioSession setActive:YES error:nil];
 }
 - (void)imageUpdataAction{
-    
-//    self presentViewController:<#(nonnull UIViewController *)#> animated:<#(BOOL)#> completion:<#^(void)completion#>
+    ImageUploadViewController *firvc=[UIStoryboard storyboardWithName:@"ImageUploadViewController" bundle:nil].instantiateInitialViewController;
+    firvc.loaction=self.loaction;
+    firvc.nearbyRoad=self.nearbyRoad;
+    [self presentViewController:firvc animated:NO completion:nil];
 }
 - (void)voiceUpdataDownAction{
     if (![self.audioRecorder isRecording]) {
@@ -182,6 +184,11 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden=NO;
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=YES;
+
 }
 - (void)setUI{
     [self.view addSubview:self.dismissButton];

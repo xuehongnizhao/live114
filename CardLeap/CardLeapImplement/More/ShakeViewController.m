@@ -4,7 +4,7 @@
 //
 //  Created by mac on 16/5/11.
 //  Copyright © 2016年 Sky. All rights reserved.
-//
+//龙广摇一摇
 
 #import "ShakeViewController.h"
 #import <MaMapKit/MAMapKit.h>
@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSMutableArray *searchDataList;
 @property (strong, nonatomic) UIButton *highwayCondition;
 @property (strong, nonatomic) UIButton *uploadCondition;
+@property (strong, nonatomic) NSMutableArray *nearbyRoad;
 
 @end
 
@@ -38,8 +39,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES];
     [self setHiddenTabbar:YES];
     [self setUI];
+
 }
 - (UIButton *)highwayCondition{
     if (!_highwayCondition) {
@@ -137,6 +140,12 @@
     }
     return _shakeForService;
 }
+- (NSMutableArray *)nearbyRoad{
+    if (!_nearbyRoad) {
+        _nearbyRoad=[NSMutableArray array];
+    }
+    return _nearbyRoad;
+}
 - (AMapSearchAPI *)search{
     if (!_search) {
         //配置用户Key
@@ -184,15 +193,21 @@
     }
     return _firstEntry;
 }
+
+- (void)getNearbyRoad{
+    [self searchPOI:@"道路" requestTypes:@"地名地址信息"];
+}
 - (void)uploadConditionAction{
     UploadConditonViewController *uploadVC=[[UploadConditonViewController alloc]init];
+    
+    uploadVC.nearbyRoad=self.nearbyRoad;
     [self.navigationController pushViewController:uploadVC animated:NO];
 }
 - (void)highwayConditionAction{
 
     HighWayViewController *highwayVC=[[HighWayViewController alloc]init];
     [self.navigationController pushViewController:highwayVC animated:NO];
-}
+} 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self searchPOI:textField.text requestTypes:@""];
     [textField resignFirstResponder];
@@ -223,6 +238,7 @@
     _shakeForService.frame=CGRectZero;
     self.navigationController.navigationBarHidden=NO;
 }
+
 /**
  *  @author zq, 16-05-11 13:05:36
  *
@@ -240,7 +256,16 @@
     
     [_mapView addAnnotation:pointAnnotation];
 }
-
+/**
+ *  @author zq, 16-05-23 09:05:52
+ *
+ *    // types属性表示限定搜索POI的类别，默认为：餐饮服务|商务住宅|生活服务
+ // POI的类型共分为20种大类别，分别为：
+ // 汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|
+ // 医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|
+ // 交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施
+ *
+ */
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
@@ -299,11 +324,6 @@
     AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];
     request.location = [AMapGeoPoint locationWithLatitude:self.mapView.userLocation.location.coordinate.latitude longitude:self.mapView.userLocation.location.coordinate.longitude];
     request.keywords = keyword;
-    // types属性表示限定搜索POI的类别，默认为：餐饮服务|商务住宅|生活服务
-    // POI的类型共分为20种大类别，分别为：
-    // 汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|
-    // 医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|
-    // 交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施
     request.types = types;
     request.sortrule = 0;
     request.requireExtension = YES;
@@ -325,8 +345,15 @@
         [self.searchDataList addObject:poi];
         [self addAnnotation:CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude) with:poi.name and:poi.address];
         [self.searchTableVeiw reloadData];
-    }
 
+    }
+    if ([request.types isEqualToString:@"地名地址信息"]) {
+        for (AMapPOI *poi in response.pois) {
+            [self.nearbyRoad addObject:poi.name];
+            
+        }
+
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -386,10 +413,11 @@
     _firstEntry.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
 }
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden=YES;
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    //这里的传值要注意  当搜索引擎没有初始化出来之前 搜索是搜索不到的
+    [self getNearbyRoad];
 }
 
 
