@@ -9,6 +9,5 @@
 #import "BaseViewController.h"
 
 @interface UploadConditonViewController : BaseViewController
-@property (strong, nonatomic) NSString *loaction;
 @property (strong, nonatomic) NSArray *nearbyRoad;
 @end

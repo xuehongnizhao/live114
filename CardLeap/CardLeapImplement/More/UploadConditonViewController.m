@@ -31,6 +31,9 @@
 
 }
 
+- (void)setNearbyRoad:(NSArray *)nearbyRoad{
+    _nearbyRoad=nearbyRoad;
+}
 - (UIButton *)textUpdata{
     if (!_textUpdata) {
         _textUpdata=[[UIButton alloc]initForAutoLayout];
@@ -148,7 +151,6 @@
 }
 - (void)imageUpdataAction{
     ImageUploadViewController *firvc=[UIStoryboard storyboardWithName:@"ImageUploadViewController" bundle:nil].instantiateInitialViewController;
-    firvc.loaction=self.loaction;
     firvc.nearbyRoad=self.nearbyRoad;
     [self presentViewController:firvc animated:NO completion:nil];
 }

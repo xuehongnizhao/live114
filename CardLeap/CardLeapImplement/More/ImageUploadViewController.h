@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageUploadViewController : UIViewController
-@property (strong, nonatomic) NSString *loaction;
 @property (strong, nonatomic) NSArray *nearbyRoad;
 @end

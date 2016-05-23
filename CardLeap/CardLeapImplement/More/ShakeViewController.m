@@ -164,7 +164,7 @@
         _segmentB=[[HMSegmentedControl alloc]initWithSectionImages:imageList sectionSelectedImages:nil];
         [_segmentB setSelectedSegmentIndex:3 animated:NO];
         _segmentB.selectionIndicatorLocation=HMSegmentedControlSelectionIndicatorLocationNone;
-        _segmentB.backgroundColor=[UIColor blueColor];
+        _segmentB.backgroundColor=[UIColor colorWithRed:0.0 green:0.502 blue:1.0 alpha:1.0];
         [_segmentB addTarget:self action:@selector(segmetBAction:) forControlEvents:UIControlEventValueChanged];
     }
     return _segmentB;
@@ -201,7 +201,7 @@
     UploadConditonViewController *uploadVC=[[UploadConditonViewController alloc]init];
     
     uploadVC.nearbyRoad=self.nearbyRoad;
-    [self.navigationController pushViewController:uploadVC animated:NO];
+        [self.navigationController pushViewController:uploadVC animated:NO];
 }
 - (void)highwayConditionAction{
 
