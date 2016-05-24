@@ -4,7 +4,7 @@
 //
 //  Created by mac on 15/1/19.
 //  Copyright (c) 2015年 Sky. All rights reserved.
-//
+//修改个人信息
 
 #import "EditUserInfoViewController.h"
 
@@ -338,7 +338,7 @@
     }
     return 5.0f;
 }
-
+//上传图片
 #pragma mark--------button action
 -(void)confirmEditAction:(UIButton*)sender
 {

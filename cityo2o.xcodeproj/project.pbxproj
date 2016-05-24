@@ -548,6 +548,7 @@
 		04A0C4AB1A7616F200EF2939 /* groupDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A0C4AA1A7616F200EF2939 /* groupDetailTableViewCell.m */; };
 		04A3B6DE1C06E8F700398325 /* AppUpdatesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A3B6DD1C06E8F700398325 /* AppUpdatesController.m */; };
 		04AB8F8F1CF29D2200A7586A /* ImageUploadViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04AB8F8E1CF29D2200A7586A /* ImageUploadViewController.storyboard */; };
+		04AB8FA91CF3EE4200A7586A /* TextUpload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04AB8FA81CF3EE4200A7586A /* TextUpload.storyboard */; };
 		04AC9A8A1CD19FE0007940FA /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC9A7D1CD19FE0007940FA /* TAAbstractDotView.m */; };
 		04AC9A8B1CD19FE0007940FA /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC9A7F1CD19FE0007940FA /* TAAnimatedDotView.m */; };
 		04AC9A8C1CD19FE0007940FA /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC9A811CD19FE0007940FA /* TADotView.m */; };
@@ -1655,6 +1656,7 @@
 		04A3B6DC1C06E8F700398325 /* AppUpdatesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUpdatesController.h; sourceTree = "<group>"; };
 		04A3B6DD1C06E8F700398325 /* AppUpdatesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUpdatesController.m; sourceTree = "<group>"; };
 		04AB8F8E1CF29D2200A7586A /* ImageUploadViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ImageUploadViewController.storyboard; path = CardLeap/CardLeapImplement/User/ImageUploadViewController.storyboard; sourceTree = SOURCE_ROOT; };
+		04AB8FA81CF3EE4200A7586A /* TextUpload.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TextUpload.storyboard; sourceTree = "<group>"; };
 		04AC9A7C1CD19FE0007940FA /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
 		04AC9A7D1CD19FE0007940FA /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
 		04AC9A7E1CD19FE0007940FA /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
@@ -4938,6 +4940,7 @@
 				04AB8F8E1CF29D2200A7586A /* ImageUploadViewController.storyboard */,
 				04FDF4291CE4517000506511 /* TextUploadViewController.h */,
 				04FDF42A1CE4517000506511 /* TextUploadViewController.m */,
+				04AB8FA81CF3EE4200A7586A /* TextUpload.storyboard */,
 			);
 			name = shake;
 			sourceTree = "<group>";
@@ -6111,6 +6114,7 @@
 				047E0CAB1A37DEA000304FF1 /* MBProgressHUD.bundle in Resources */,
 				042894481A3E6EBD00CC2407 /* Expression_25@2x.png in Resources */,
 				04C87E8C1BD9CC8800E6B75E /* UMSocialSDKResourcesNew.bundle in Resources */,
+				04AB8FA91CF3EE4200A7586A /* TextUpload.storyboard in Resources */,
 				0432A3B11B6116CA007405E4 /* SkyServerCenterView.xib in Resources */,
 				042894FA1A3E6EBD00CC2407 /* issue_microBtn_sel@2x.png in Resources */,
 				042894A51A3E6EBD00CC2407 /* issue_face_sel@2x.png in Resources */,

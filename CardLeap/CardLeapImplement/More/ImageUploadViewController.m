@@ -148,6 +148,7 @@
     self.descriptionForCondition.delegate=self;
     UITapGestureRecognizer *tapG=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loacationCellAction)];
     [self.locationCell addGestureRecognizer:tapG];
+    NSLog(@"%@111111111111",self.nearbyRoad);
     self.currentLocation.text=self.nearbyRoad[0];
     
 }

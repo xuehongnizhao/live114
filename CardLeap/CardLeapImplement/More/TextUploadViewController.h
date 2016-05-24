@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TextUploadViewController : UIViewController
+@property (strong, nonatomic) NSArray *nearbyRoad;
 
 @end

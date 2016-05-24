@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "voiceUpdata.png",
+      "filename" : "语音.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "语音-1.png",
       "scale" : "2x"
     },
     {

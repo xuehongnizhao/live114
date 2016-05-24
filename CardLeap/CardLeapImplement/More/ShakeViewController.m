@@ -57,6 +57,7 @@
         _uploadCondition=[[UIButton alloc]initForAutoLayout];
         [_uploadCondition setImage:[UIImage imageNamed:@"update_road_condition"] forState:UIControlStateNormal];
         [_uploadCondition addTarget:self action:@selector(uploadConditionAction) forControlEvents:UIControlEventTouchUpInside];
+
     }
     return _uploadCondition;
 }
@@ -77,8 +78,7 @@
         [_textField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
         UIButton *dissMissSearchView=[[UIButton alloc]initForAutoLayout];
         [dissMissSearchView addTarget:self action:@selector(dissMissSearchViewAction2) forControlEvents:UIControlEventTouchUpInside];
-        dissMissSearchView .backgroundColor=[UIColor blackColor];
-        [dissMissSearchView setImage:[UIImage imageNamed:@"UMS_nav_button_back"] forState:UIControlStateNormal];
+        [dissMissSearchView setImage:[UIImage imageNamed:@"back_shake"] forState:UIControlStateNormal];
         _tableHeadView=[[UIView alloc]initForAutoLayout];
         [_tableHeadView addSubview:dissMissSearchView];
         [dissMissSearchView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:5];
@@ -181,8 +181,9 @@
         _mapView.showsUserLocation=YES;
         _mapView.centerCoordinate = _mapView.userLocation.location.coordinate;
         _mapView.userTrackingMode = MAUserTrackingModeFollow;
-        _mapView.logoCenter=CGPointMake(_mapView.frame.size.width-50, _mapView.frame.size.height-50);
+        _mapView.logoCenter=CGPointMake(100, 10);
         [self goToMyLocation];
+        [self getNearbyRoad];
         
     }
     return _mapView;
@@ -298,18 +299,18 @@
     switch (sender.selectedSegmentIndex) {
         case 0:
             [self searchPOI:@"停车场" requestTypes:@"汽车服务"];
-            _annotationImageName=@"park";
+            _annotationImageName=@"park_red";
             break;
         case 1:
 
             [self searchPOI:@"加油站" requestTypes:@"汽车服务"];
-            _annotationImageName=@"gas_station";
+            _annotationImageName=@"gas_station_red";
             break;
             
         case 2:
 
             [self searchPOI:@"维修站" requestTypes:@"汽车服务|汽车维修"];
-            _annotationImageName=@"vehicle_servicing";
+            _annotationImageName=@"vehicle_servicing_red";
             break;
         case 3:
             _annotationImageName=@"special_offers";
@@ -369,12 +370,12 @@
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.searchDataList.count;;
+    return self.searchDataList.count;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.mapView removeAnnotations:self.mapView.annotations];
     AMapPOI *poi=self.searchDataList[indexPath.row];
-    _annotationImageName=@"park";
+    _annotationImageName=@"searchLocation";
     [self addAnnotation:CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude) with:poi.name and:poi.address];
     [self dissMissSearchViewAction];
 }
@@ -412,12 +413,6 @@
     [self.view addSubview:self.firstEntry];
     _firstEntry.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
-}
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    //这里的传值要注意  当搜索引擎没有初始化出来之前 搜索是搜索不到的
-    [self getNearbyRoad];
 }
 
 

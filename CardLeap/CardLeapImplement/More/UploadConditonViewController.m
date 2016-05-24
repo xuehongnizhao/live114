@@ -78,7 +78,7 @@
 - (UIButton *)dismissButton{
     if (!_dismissButton) {
         _dismissButton=[[UIButton alloc]initForAutoLayout];
-        [_dismissButton setImage:[UIImage imageNamed:@"park"] forState:UIControlStateNormal];
+        [_dismissButton setImage:[UIImage imageNamed:@"dismiss_uploadVC"] forState:UIControlStateNormal];
         [_dismissButton addTarget:self action:@selector(dissmissButtonAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _dismissButton;
@@ -149,11 +149,7 @@
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     [audioSession setActive:YES error:nil];
 }
-- (void)imageUpdataAction{
-    ImageUploadViewController *firvc=[UIStoryboard storyboardWithName:@"ImageUploadViewController" bundle:nil].instantiateInitialViewController;
-    firvc.nearbyRoad=self.nearbyRoad;
-    [self presentViewController:firvc animated:NO completion:nil];
-}
+
 - (void)voiceUpdataDownAction{
     if (![self.audioRecorder isRecording]) {
         [self.audioRecorder record];//首次使用应用时如果调用record方法会询问用户是否允许使用麦克风
@@ -181,7 +177,9 @@
 }
 
 - (void)textUpdataAction{
-    
+    TextUploadViewController *firvc=[UIStoryboard storyboardWithName:@"TextUpload" bundle:nil].instantiateInitialViewController;
+    firvc.nearbyRoad=self.nearbyRoad;
+    [self presentViewController:firvc animated:NO completion:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -191,6 +189,11 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=YES;
 
+}
+- (void)imageUpdataAction{
+    ImageUploadViewController *firvc=[UIStoryboard storyboardWithName:@"ImageUploadViewController" bundle:nil].instantiateInitialViewController;
+    firvc.nearbyRoad=self.nearbyRoad;
+    [self presentViewController:firvc animated:NO completion:nil];
 }
 - (void)setUI{
     [self.view addSubview:self.dismissButton];
