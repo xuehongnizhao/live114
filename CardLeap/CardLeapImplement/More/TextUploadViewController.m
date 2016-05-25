@@ -9,7 +9,7 @@
 #import "TextUploadViewController.h"
 
 @interface TextUploadViewController ()<UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *currentLocation;
 @property (weak, nonatomic) IBOutlet UIButton *EtoW;
 @property (weak, nonatomic) IBOutlet UIButton *WtoE;
@@ -38,21 +38,15 @@
     _nearbyRoad=nearbyRoad;
 }
 
-- (IBAction)EtoW:(UIButton *)sender {
-    self.EtoW.selected=!self.EtoW.selected;
+- (IBAction)direction:(UIButton *)sender {
+    sender.selected=!sender.selected;
 }
-- (IBAction)WtoE:(UIButton *)sender {
-    self.WtoE.selected=!self.WtoE.selected;
+
+- (IBAction)roadConditon:(UIButton *)sender {
+        sender.selected=!sender.selected;
 }
-- (IBAction)StoN:(UIButton *)sender {
-    self.StoN.selected=!self.StoN.selected;
-}
-- (IBAction)NtoS:(UIButton *)sender {
-    self.NtoS.selected=!self.NtoS.selected;
-}
-- (IBAction)sendCondition:(UIButton *)sender {
-    
-}
+
+
 
 - (void)setUI{
     self.EtoW.layer.borderColor=[UIColor colorWithRed:0.0 green:0.502 blue:1.0 alpha:1.0].CGColor;
@@ -77,7 +71,6 @@
     UITapGestureRecognizer *tapG=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loacationCellAction)];
     [self.locationCell addGestureRecognizer:tapG];
     self.currentLocation.text=self.nearbyRoad[0];
-    
     
 }
 

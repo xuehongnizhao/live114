@@ -183,7 +183,6 @@
         _mapView.userTrackingMode = MAUserTrackingModeFollow;
         _mapView.logoCenter=CGPointMake(100, 10);
         [self goToMyLocation];
-        [self getNearbyRoad];
         
     }
     return _mapView;
@@ -239,7 +238,6 @@
     _shakeForService.frame=CGRectZero;
     self.navigationController.navigationBarHidden=NO;
 }
-
 /**
  *  @author zq, 16-05-11 13:05:36
  *
@@ -260,7 +258,7 @@
 /**
  *  @author zq, 16-05-23 09:05:52
  *
- *    // types属性表示限定搜索POI的类别，默认为：餐饮服务|商务住宅|生活服务
+ // types属性表示限定搜索POI的类别，默认为：餐饮服务|商务住宅|生活服务
  // POI的类型共分为20种大类别，分别为：
  // 汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|
  // 医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|
@@ -302,13 +300,10 @@
             _annotationImageName=@"park_red";
             break;
         case 1:
-
             [self searchPOI:@"加油站" requestTypes:@"汽车服务"];
             _annotationImageName=@"gas_station_red";
             break;
-            
         case 2:
-
             [self searchPOI:@"维修站" requestTypes:@"汽车服务|汽车维修"];
             _annotationImageName=@"vehicle_servicing_red";
             break;
@@ -327,12 +322,17 @@
     request.keywords = keyword;
     request.types = types;
     request.sortrule = 0;
-    request.requireExtension = YES;
-    
+    request.requireExtension = YES;    
     //发起周边搜索
     [self.search AMapPOIAroundSearch: request];
 }
-
+- (void)addAnnotationWithArray:(NSArray *)annotations{
+    if (annotations.count==0) return;
+        for (AMapPOI *poi in annotations) {
+            [self addAnnotation:CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude) with:poi.name and:poi.address];
+        }
+    
+}
 //实现POI搜索对应的回调函数
 - (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response
 {
@@ -344,16 +344,12 @@
 
     for (AMapPOI *poi in response.pois) {
         [self.searchDataList addObject:poi];
-        [self addAnnotation:CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude) with:poi.name and:poi.address];
         [self.searchTableVeiw reloadData];
-
     }
     if ([request.types isEqualToString:@"地名地址信息"]) {
         for (AMapPOI *poi in response.pois) {
             [self.nearbyRoad addObject:poi.name];
-            
         }
-
     }
 }
 
@@ -414,6 +410,11 @@
     _firstEntry.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    //这里的传值要注意  当搜索引擎没有初始化出来之前 搜索是搜索不到的
+    [self getNearbyRoad];
+}
 
 @end
