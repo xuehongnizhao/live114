@@ -84,12 +84,15 @@
             break;
         case 3:{
             
-            [self loadURL];
+            if ([self isPostRequest]) {
+                [self loadURLPost];
+            }else{
+                [self loadURLGet];
+            }
         }
             break;
         case 4:{
             
-            NSLog(@"%@)()()()()()()()())()(",self.url);
             
             [UMSocialSnsService presentSnsIconSheetView:self
                                                  appKey:nil
@@ -118,7 +121,7 @@
     }
 }
 #pragma --- mark 2016.4 在request中添加三个参数
--(void)loadURL
+-(void)loadURLPost
 {
     NSString *user_tel=[UserModel shareInstance].user_tel;
     NSString *u_id=[UserModel shareInstance].u_id;
@@ -128,6 +131,20 @@
     request.HTTPBody = [[NSString stringWithFormat:@"tel=%@&u_id=%@&session_key=%@",user_tel,u_id,session_key] dataUsingEncoding:NSUTF8StringEncoding];
     [_detailWeb loadRequest:request];
     NSLog(@"%@",request);
+}
+- (void)loadURLGet{
+    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
+    [_detailWeb loadRequest:request];
+}
+- (BOOL)isPostRequest{
+    NSArray *urlFilters=[[NSUserDefaults standardUserDefaults]objectForKey:URLFilter];
+    for (NSDictionary *dic in urlFilters) {
+        NSString *string=dic[@"url"];
+        if ([self.url rangeOfString:string].location!=NSNotFound) {
+            return YES;
+        }
+    }
+    return NO;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     NSLog(@"web页加载已结束");
@@ -139,7 +156,11 @@
     if (!_detailWeb) {
         _detailWeb = [[UIWebView alloc] initForAutoLayout];
         _detailWeb.delegate = self;
-        [self loadURL];
+        if ([self isPostRequest]) {
+            [self loadURLPost];
+        }else{
+            [self loadURLGet];
+        }
     }
     return _detailWeb;
 }

@@ -437,12 +437,37 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
         if ([code isEqualToString:@"200"]) {
             if ([JSONOfNetWork createPlist:param]){
                 NSLog(@"写入完成了，该干什么就干什么吧");
+                [self performSelectorOnMainThread:@selector(getURLFilter) withObject:nil waitUntilDone:YES];
                 [self setIndex];//暂时不做
                 //                [self checkVersion];
             }
         }
     } andErrorBlock:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"网络不给力"];
+    }];
+
+}
+/**
+ *  @author zq, 16-05-25 17:05:21
+ *
+ *  url过滤
+ */
+- (void)getURLFilter{
+    NSString *url1 = connect_url(@"as_url_filter");
+    NSDictionary *dic1 = @{
+                           @"app_key":url1
+                           };
+    [Base64Tool postSomethingToServe:url1 andParams:dic1 isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
+        NSString *code = [NSString stringWithFormat:@"%@",[param objectForKey:@"code"]];
+        if ([code isEqualToString:@"200"]) {
+            [SVProgressHUD dismiss];
+            NSLog(@"%@",param);
+            [[NSUserDefaults standardUserDefaults]setObject:param[@"obj"] forKey:URLFilter];
+        }else{
+            [SVProgressHUD showErrorWithStatus:[param objectForKey:@"message"]];
+        }
+    } andErrorBlock:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"网络异常"];
     }];
 }
 #pragma mark------自动登录

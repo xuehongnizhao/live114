@@ -44,6 +44,7 @@
  */
 #define isShowCityChose  @"isShowCityChose"
 
+#define URLFilter       @"URLFilter"
 // 写入NSUserDefault中的数据
 #define SetUserDefault(value, key) [[NSUserDefaults standardUserDefaults] setObject:value forKey:key]
 // 获取NSUserDefault中的数据

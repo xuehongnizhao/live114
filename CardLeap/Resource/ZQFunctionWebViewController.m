@@ -83,8 +83,12 @@
         }
             break;
         case 3:{
-            
-            [self loadURL];
+            if ([self isPostRequest]) {
+                [self loadURLPost];
+            }else{
+                [self loadURLGet];
+            }
+          
         }
             break;
         case 4:{
@@ -116,9 +120,20 @@
             break;
     }
 }
+- (BOOL)isPostRequest{
+    NSArray *urlFilters=[[NSUserDefaults standardUserDefaults]objectForKey:URLFilter];
+    for (NSDictionary *dic in urlFilters) {
+        NSString *string=dic[@"url"];
+        if ([self.url rangeOfString:string].location!=NSNotFound) {
+            return YES;
+        }
+    }
+    return NO;
+}
 #pragma --- mark 2016.4 在request中添加三个参数
--(void)loadURL
+-(void)loadURLPost
 {
+    
     NSString *user_tel=[UserModel shareInstance].user_tel;
     NSString *u_id=[UserModel shareInstance].u_id;
     NSString *session_key=[UserModel shareInstance].session_key;
@@ -127,6 +142,11 @@
     request.HTTPBody = [[NSString stringWithFormat:@"tel=%@&u_id=%@&session_key=%@&shop_id=%@",user_tel,u_id,session_key,self.shop_id] dataUsingEncoding:NSUTF8StringEncoding];
     [_detailWeb loadRequest:request];
     NSLog(@"%@",request);
+}
+
+- (void)loadURLGet{
+    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
+    [_detailWeb loadRequest:request];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     NSLog(@"web页加载已结束");
@@ -138,7 +158,11 @@
     if (!_detailWeb) {
         _detailWeb = [[UIWebView alloc] initForAutoLayout];
         _detailWeb.delegate = self;
-        [self loadURL];
+        if ([self isPostRequest]) {
+            [self loadURLPost];
+        }else{
+            [self loadURLGet];
+        }
     }
     return _detailWeb;
 }
