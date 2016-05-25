@@ -585,6 +585,10 @@
 		04AEF3911A4BAABF0020B7E2 /* MapStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04AEF37F1A4BAABF0020B7E2 /* MapStoryboard.storyboard */; };
 		04AEF3921A4BAABF0020B7E2 /* store_classify_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AEF3801A4BAABF0020B7E2 /* store_classify_no@2x.png */; };
 		04AEF3931A4BAABF0020B7E2 /* store_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AEF3811A4BAABF0020B7E2 /* store_location@2x.png */; };
+		04AF8FDB1CF56ECE00F70243 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF8FD41CF56ECE00F70243 /* WebViewJavascriptBridge.m */; };
+		04AF8FDC1CF56ECE00F70243 /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF8FD61CF56ECE00F70243 /* WebViewJavascriptBridge_JS.m */; };
+		04AF8FDD1CF56ECE00F70243 /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF8FD81CF56ECE00F70243 /* WebViewJavascriptBridgeBase.m */; };
+		04AF8FDE1CF56ECE00F70243 /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF8FDA1CF56ECE00F70243 /* WKWebViewJavascriptBridge.m */; };
 		04B621541A9F0F6700490ED3 /* CouPonSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B621531A9F0F6700490ED3 /* CouPonSearchViewController.m */; };
 		04B92D631A4160B00076E54E /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B92D621A4160B00076E54E /* ReplyViewController.m */; };
 		04B92D681A41642F0076E54E /* ReplyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B92D671A41642F0076E54E /* ReplyInfo.m */; };
@@ -1714,6 +1718,14 @@
 		04AEF37F1A4BAABF0020B7E2 /* MapStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapStoryboard.storyboard; sourceTree = "<group>"; };
 		04AEF3801A4BAABF0020B7E2 /* store_classify_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store_classify_no@2x.png"; sourceTree = "<group>"; };
 		04AEF3811A4BAABF0020B7E2 /* store_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store_location@2x.png"; sourceTree = "<group>"; };
+		04AF8FD31CF56ECE00F70243 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		04AF8FD41CF56ECE00F70243 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		04AF8FD51CF56ECE00F70243 /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
+		04AF8FD61CF56ECE00F70243 /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
+		04AF8FD71CF56ECE00F70243 /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
+		04AF8FD81CF56ECE00F70243 /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
+		04AF8FD91CF56ECE00F70243 /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		04AF8FDA1CF56ECE00F70243 /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		04B621521A9F0F6700490ED3 /* CouPonSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouPonSearchViewController.h; sourceTree = "<group>"; };
 		04B621531A9F0F6700490ED3 /* CouPonSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouPonSearchViewController.m; sourceTree = "<group>"; };
 		04B92D611A4160B00076E54E /* ReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
@@ -4288,6 +4300,21 @@
 			path = image;
 			sourceTree = "<group>";
 		};
+		04AF8FD21CF56ECD00F70243 /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				04AF8FD31CF56ECE00F70243 /* WebViewJavascriptBridge.h */,
+				04AF8FD41CF56ECE00F70243 /* WebViewJavascriptBridge.m */,
+				04AF8FD51CF56ECE00F70243 /* WebViewJavascriptBridge_JS.h */,
+				04AF8FD61CF56ECE00F70243 /* WebViewJavascriptBridge_JS.m */,
+				04AF8FD71CF56ECE00F70243 /* WebViewJavascriptBridgeBase.h */,
+				04AF8FD81CF56ECE00F70243 /* WebViewJavascriptBridgeBase.m */,
+				04AF8FD91CF56ECE00F70243 /* WKWebViewJavascriptBridge.h */,
+				04AF8FDA1CF56ECE00F70243 /* WKWebViewJavascriptBridge.m */,
+			);
+			path = WebViewJavascriptBridge;
+			sourceTree = "<group>";
+		};
 		04B92D641A41640F0076E54E /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -5101,6 +5128,7 @@
 		333BDA541A1DCA1D009BAB8E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				04AF8FD21CF56ECD00F70243 /* WebViewJavascriptBridge */,
 				04F9297E1CE2DBE6002093E5 /* HMSegmentedControl.h */,
 				04F9297F1CE2DBE6002093E5 /* HMSegmentedControl.m */,
 				04AC9A941CD19FFE007940FA /* ZQFunctionWebViewController.h */,
@@ -6375,6 +6403,7 @@
 				0460FF841A47E74400A35EBA /* ShopListInfo.m in Sources */,
 				469AC1B81A709E9700DBD0C7 /* CityAddLableMessage.m in Sources */,
 				46AA97AD1A78717B0023F0ED /* EvenMoreFeedbackInfoViewController.m in Sources */,
+				04AF8FDE1CF56ECE00F70243 /* WKWebViewJavascriptBridge.m in Sources */,
 				0428954F1A3E711B00CC2407 /* TableViewWithBlock.m in Sources */,
 				04E88F151A8AE574007E623D /* GroupSearchViewController.m in Sources */,
 				04E599161A89FD76000746FC /* orderSeatSuccessTableViewCell.m in Sources */,
@@ -6394,6 +6423,7 @@
 				042895821A3E716A00CC2407 /* SSCheckBoxView.m in Sources */,
 				0460FF7F1A47B53700A35EBA /* MXPullDownMenu.m in Sources */,
 				042892601A3E6D3D00CC2407 /* SwitchViewController.m in Sources */,
+				04AF8FDB1CF56ECE00F70243 /* WebViewJavascriptBridge.m in Sources */,
 				042894C11A3E6EBD00CC2407 /* MarkupParser.m in Sources */,
 				047E39311A36D2980001DD16 /* MJRefreshConst.m in Sources */,
 				33DB1C231A1ECAF6002E463E /* Base64.m in Sources */,
@@ -6453,6 +6483,7 @@
 				0428953C1A3E6EBD00CC2407 /* VoiceConverter.mm in Sources */,
 				04A0C4AB1A7616F200EF2939 /* groupDetailTableViewCell.m in Sources */,
 				047E0CC41A37E62500304FF1 /* SLCoverView.m in Sources */,
+				04AF8FDC1CF56ECE00F70243 /* WebViewJavascriptBridge_JS.m in Sources */,
 				042895A01A3E735B00CC2407 /* ListViewController.m in Sources */,
 				33DB1C261A1ECAF6002E463E /* JSONOfNetWork.m in Sources */,
 				0428941D1A3E6EBD00CC2407 /* LinFriendCircleController.m in Sources */,
@@ -6616,6 +6647,7 @@
 				469AC1CC1A709E9700DBD0C7 /* CityUserViewCell.m in Sources */,
 				041641E91A66117C006C19B7 /* orderRoomDetailViewController.m in Sources */,
 				042894D11A3E6EBD00CC2407 /* CellViewMgrController.m in Sources */,
+				04AF8FDD1CF56ECE00F70243 /* WebViewJavascriptBridgeBase.m in Sources */,
 				0428951D1A3E6EBD00CC2407 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				047E0CAD1A37DEA000304FF1 /* MJPhoto.m in Sources */,
 				469AC1C01A709E9700DBD0C7 /* CityUser.m in Sources */,

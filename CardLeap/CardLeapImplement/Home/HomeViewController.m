@@ -415,7 +415,7 @@ linHangyeCommendViewDelegate>
     return serverView;
 }
 
-
+//生活服务跳转网页
 -(void)serverCenterClickButtonToPushViewController:(linServicemodel *)module
 {
     if ([module.index_type integerValue]==0)
@@ -572,6 +572,7 @@ linHangyeCommendViewDelegate>
     {
         NSDictionary* dict=[[NSUserDefaults standardUserDefaults] objectForKey:@"CenterInfo"];
         NSArray* moduleArray=[linServicemodel objectArrayWithKeyValuesArray:dict[@"obj"]];
+        NSLog(@"%@",moduleArray);
         self.serverView=[self createServerViewWithModuleArray:moduleArray];
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"IndustryInfo"])
         {

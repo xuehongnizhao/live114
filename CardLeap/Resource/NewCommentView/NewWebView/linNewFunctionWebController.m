@@ -9,10 +9,11 @@
 #import "linNewFunctionWebController.h"
 #import "UserModel.h"
 #import "UMSocial.h"
+#import "WebViewJavascriptBridge.h"
 #define NaviItemTag 2016
 @interface linNewFunctionWebController()<UIWebViewDelegate,UMSocialUIDelegate>
-@property (strong,nonatomic)UIWebView *detailWeb;
-
+@property (strong,nonatomic) UIWebView *detailWeb;
+@property (strong, nonatomic) WebViewJavascriptBridge *bridge;
 @end
 
 @implementation linNewFunctionWebController
@@ -25,6 +26,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setUI];
+    [self.bridge registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"ObjC Echo called with: %@", data);
+        responseCallback(@"张强");
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -89,7 +94,6 @@
             break;
         case 4:{
             
-            NSLog(@"%@)()()()()()()()())()(",self.url);
             
             [UMSocialSnsService presentSnsIconSheetView:self
                                                  appKey:nil
@@ -144,4 +148,11 @@
     return _detailWeb;
 }
 
+- (WebViewJavascriptBridge *)bridge{
+    if (!_bridge) {
+        _bridge=[WebViewJavascriptBridge bridgeForWebView:self.detailWeb];
+        [_bridge setWebViewDelegate:self];
+    }
+    return _bridge;
+}
 @end

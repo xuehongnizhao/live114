@@ -68,12 +68,12 @@
                   moduleName = "cityo2o"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/live114/CardLeap/CardLeapImplement/More/group/controller/GroupReviewViewController.m"
-                  timestampString = "485830690.614805"
+                  timestampString = "485849334.459598"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "127"
                   endingLineNumber = "127"
-                  offsetFromSymbolStart = "1184">
+                  offsetFromSymbolStart = "1342">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -83,12 +83,12 @@
                   moduleName = "cityo2o"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mac/live114/CardLeap/CardLeapImplement/More/group/controller/GroupReviewViewController.m"
-                  timestampString = "485830690.614927"
+                  timestampString = "485849334.459714"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "128"
                   endingLineNumber = "128"
-                  offsetFromSymbolStart = "64">
+                  offsetFromSymbolStart = "58">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -138,6 +138,22 @@
             startingLineNumber = "105"
             endingLineNumber = "105"
             landmarkName = "-audioRecorder"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CardLeap/CardLeapImplement/Home/HomeViewController.m"
+            timestampString = "485846345.60591"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "660"
+            endingLineNumber = "660"
+            landmarkName = "-linHangyeclikButtonToPushViewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
