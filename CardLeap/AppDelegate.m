@@ -89,8 +89,7 @@
     [application setApplicationIconBadgeNumber:0];
     
     //修改HUD背景颜色和字体颜色
-    [[SVProgressHUD appearance] setHudBackgroundColor:[UIColor colorWithWhite:0.5 alpha:0.8]];
-    [[SVProgressHUD appearance] setHudForegroundColor:[UIColor whiteColor]];
+//    SVProgressHUD setDefaultStyle:<#(SVProgressHUDStyle)#>
     //加载字体
     [[FontManager sharedManager] loadFont:@"Aller_Lt"];
     [[FontManager sharedManager] loadFont:@"OpenSans-Light"];

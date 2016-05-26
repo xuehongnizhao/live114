@@ -19,7 +19,7 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
-  - SVProgressHUD (1.0)
+  - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
   - HZWebViewController (~> 0.0.2)
@@ -28,7 +28,7 @@ DEPENDENCIES:
   - MKNetworkKit (~> 0.87)
   - RDVTabBarController (~> 1.1.6)
   - SDWebImage (~> 3.7.1)
-  - SVProgressHUD (~> 1.0)
+  - SVProgressHUD (~> 2.0.3)
 
 SPEC CHECKSUMS:
   BlurView: 04ec9fd1216fad0c9f9a495ea51b4aaadae26139
@@ -41,8 +41,8 @@ SPEC CHECKSUMS:
   RDVTabBarController: af40344df4d70c62693edb0d4975fe43855b90d7
   Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
   SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
-  SVProgressHUD: 46088807596a795cbcb4affd92cf3f13b6ab3dda
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: f8722f3261bd34029711d70aaa98e6257303d222
+PODFILE CHECKSUM: fa10c6683b9b0d692159cc6a75f3cf84b25dfc25
 
 COCOAPODS: 1.0.0
