@@ -4,40 +4,45 @@ PODS:
     - BlurView (~> 1.1)
     - NJKWebViewProgress (~> 0.2.2)
   - IQKeyboardManager (3.2.0.2)
-  - Kiwi (2.3.1)
+  - LCImagePickerController (0.1.7):
+    - Masonry (~> 0.6.0)
+  - Masonry (0.6.4)
   - MKNetworkKit (0.87):
     - Reachability (~> 3.1.0)
   - NJKWebViewProgress (0.2.3):
-    - NJKWebViewProgress/Core
-    - NJKWebViewProgress/ProgressView
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - RDVTabBarController (1.1.6)
   - Reachability (3.1.1)
   - SDWebImage (3.7.1):
-    - SDWebImage/Core
+    - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SVProgressHUD (1.0)
 
 DEPENDENCIES:
   - HZWebViewController (~> 0.0.2)
   - IQKeyboardManager (~> 3.2.0)
-  - Kiwi
+  - LCImagePickerController (~> 0.1.7)
   - MKNetworkKit (~> 0.87)
   - RDVTabBarController (~> 1.1.6)
   - SDWebImage (~> 3.7.1)
   - SVProgressHUD (~> 1.0)
 
 SPEC CHECKSUMS:
-  BlurView: 41623dbef66a9be05ace69c10856ad23ab25d0eb
-  HZWebViewController: 6915c384e71d5dd9915c76c6e3cad6cea0f1ef0d
-  IQKeyboardManager: f30f3e98fa36ca1599042c9d0cea2fb4f4ac3df9
-  Kiwi: 73e1400209055ee9c8ba78c6012b6b642d0fb9f7
-  MKNetworkKit: 83e6296a8d42e98a71880424a889773654846d74
-  NJKWebViewProgress: 721b57080c840c76f70ff6c2dda4f836ee1b27c1
-  RDVTabBarController: 252dafb16725f9a07026618ff51acf06a12b206b
-  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
+  BlurView: 04ec9fd1216fad0c9f9a495ea51b4aaadae26139
+  HZWebViewController: ea00951f67f891ae5f8b34d40beacd38358f38bf
+  IQKeyboardManager: 437647780f4de0947e798df33e3e8ae208d718a5
+  LCImagePickerController: c585d8300e5da73c2009a88a03a5275f8e642322
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  MKNetworkKit: 60ad3c83b62183e40ba75ce772c9427c25b520de
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
+  RDVTabBarController: af40344df4d70c62693edb0d4975fe43855b90d7
+  Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
+  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  SVProgressHUD: 46088807596a795cbcb4affd92cf3f13b6ab3dda
 
-COCOAPODS: 0.34.2
+PODFILE CHECKSUM: f8722f3261bd34029711d70aaa98e6257303d222
+
+COCOAPODS: 1.0.0

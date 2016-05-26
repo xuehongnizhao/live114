@@ -1,0 +1,1 @@
+../../../LCImagePickerController/LCImagePickerController/LCImageCollectionSelectedView.h

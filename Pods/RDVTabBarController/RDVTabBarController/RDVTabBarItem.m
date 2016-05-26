@@ -69,13 +69,13 @@
     
     if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
         _unselectedTitleAttributes = @{
-                                       NSFontAttributeName: [UIFont systemFontOfSize:11],
+                                       NSFontAttributeName: [UIFont systemFontOfSize:12],
                                        NSForegroundColorAttributeName: [UIColor blackColor],
                                        };
     } else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
         _unselectedTitleAttributes = @{
-                                       UITextAttributeFont: [UIFont systemFontOfSize:11],
+                                       UITextAttributeFont: [UIFont systemFontOfSize:12],
                                        UITextAttributeTextColor: [UIColor blackColor],
                                        };
 #endif
@@ -115,7 +115,7 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
-
+    
     [backgroundImage drawInRect:self.bounds];
     
     // Draw image and title
@@ -127,11 +127,12 @@
                                      _imagePositionAdjustment.vertical,
                                      imageSize.width, imageSize.height)];
     } else {
+        
         if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
             titleSize = [_title boundingRectWithSize:CGSizeMake(frameSize.width, 20)
-                                             options:NSStringDrawingUsesLineFragmentOrigin
-                                          attributes:@{NSFontAttributeName: titleAttributes[NSFontAttributeName]}
-                                             context:nil].size;
+                                                    options:NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{NSFontAttributeName: titleAttributes[NSFontAttributeName]}
+                                                    context:nil].size;
             
             imageStartingY = roundf((frameSize.height - imageSize.height - titleSize.height) / 2);
             
@@ -150,7 +151,7 @@
         } else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
             titleSize = [_title sizeWithFont:titleAttributes[UITextAttributeFont]
-                           constrainedToSize:CGSizeMake(frameSize.width, 20)];
+                                  constrainedToSize:CGSizeMake(frameSize.width, 20)];
             UIOffset titleShadowOffset = [titleAttributes[UITextAttributeTextShadowOffset] UIOffsetValue];
             imageStartingY = roundf((frameSize.height - imageSize.height - titleSize.height) / 2);
             
@@ -230,7 +231,7 @@
             [[self badgeValue] drawInRect:CGRectMake(CGRectGetMinX(badgeBackgroundFrame) + textOffset,
                                                      CGRectGetMinY(badgeBackgroundFrame) + textOffset,
                                                      badgeSize.width, badgeSize.height)
-                           withAttributes:badgeTextAttributes];
+                withAttributes:badgeTextAttributes];
         } else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
             [[self badgeValue] drawInRect:CGRectMake(CGRectGetMinX(badgeBackgroundFrame) + textOffset,
@@ -282,32 +283,6 @@
     return [self unselectedBackgroundImage];
 }
 
--(void)setTextSelectedColor:(UIColor *)selectedColor withUnSelectedColor:(UIColor *)unSelectedColor{
-    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
-        _unselectedTitleAttributes = @{
-                                       NSFontAttributeName: [UIFont systemFontOfSize:11],
-                                       NSForegroundColorAttributeName: unSelectedColor,
-                                       };
-        _selectedTitleAttributes = @{
-                                     NSFontAttributeName: [UIFont systemFontOfSize:11],
-                                     NSForegroundColorAttributeName: selectedColor,
-                                     };
-    } else {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-        _unselectedTitleAttributes = @{
-                                       NSFontAttributeName: [UIFont systemFontOfSize:11],
-                                       NSForegroundColorAttributeName: unSelectedColor,
-                                       };
-        _selectedTitleAttributes = @{
-                                     NSFontAttributeName: [UIFont systemFontOfSize:11],
-                                     NSForegroundColorAttributeName: selectedColor,
-                                     };
-#endif
-    }
-    
-}
-
-
 - (void)setBackgroundSelectedImage:(UIImage *)selectedImage withUnselectedImage:(UIImage *)unselectedImage {
     if (selectedImage && (selectedImage != [self selectedBackgroundImage])) {
         [self setSelectedBackgroundImage:selectedImage];
@@ -319,4 +294,3 @@
 }
 
 @end
-

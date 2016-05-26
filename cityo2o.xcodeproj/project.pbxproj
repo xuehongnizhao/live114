@@ -642,7 +642,6 @@
 		04E0F9591BCCF4A30063C7E5 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E0F9581BCCF4A30063C7E5 /* libstdc++.tbd */; };
 		04E0F95B1BCCF4AB0063C7E5 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E0F95A1BCCF4AB0063C7E5 /* libz.1.2.5.tbd */; };
 		04E0F95D1BCCF4B40063C7E5 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E0F95C1BCCF4B40063C7E5 /* libicucore.tbd */; };
-		04E0F95F1BCCF4C10063C7E5 /* libPods-CardLeapTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E0F95E1BCCF4C10063C7E5 /* libPods-CardLeapTests.a */; };
 		04E284B61C0451E800381D28 /* orderSeatDetailViewControllerByCC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E284B51C0451E800381D28 /* orderSeatDetailViewControllerByCC.m */; };
 		04E284BC1C04541300381D28 /* orderSeatDetailTableViewCellByCC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E284BB1C04541300381D28 /* orderSeatDetailTableViewCellByCC.m */; };
 		04E3AD0D1AA6B5D100DE9271 /* UUProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E3AD0C1AA6B5D100DE9271 /* UUProgressHUD.m */; };
@@ -833,8 +832,7 @@
 		46D1D92C1A7F0861003570AE /* PublicAndPrivateMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D1D9261A7F0861003570AE /* PublicAndPrivateMessageFrame.m */; };
 		46D1D92D1A7F0861003570AE /* PublicAndPrivateMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D1D9291A7F0861003570AE /* PublicAndPrivateMessageTableViewCell.m */; };
 		46D1D9331A7F0C31003570AE /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D1D9321A7F0C31003570AE /* MessageViewController.m */; };
-		B4093F54E0D6735DFCC4BE6C /* libPods-CardLeapTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FB2DDFBC1A70E7121A000A /* libPods-CardLeapTests.a */; };
-		E28A296B798F7749DF65DF1F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA81C4B269CEF2757907039 /* libPods.a */; };
+		DB2A1915EEA3F49FAD8009CD /* libPods-cityo2o.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3FBE089BEDD48B32E7B6BF /* libPods-cityo2o.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2037,9 +2035,7 @@
 		04F3CD351A6F8BD400D0B63E /* myCollectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myCollectionInfo.m; sourceTree = "<group>"; };
 		04F3CD371A6F8BE800D0B63E /* myCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myCollectionTableViewCell.h; sourceTree = "<group>"; };
 		04F3CD381A6F8BE800D0B63E /* myCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myCollectionTableViewCell.m; sourceTree = "<group>"; };
-		1AC03C008314475E4452F93E /* Pods-CardLeapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardLeapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardLeapTests/Pods-CardLeapTests.release.xcconfig"; sourceTree = "<group>"; };
-		2521CC349136E3A340759539 /* Pods-CardLeapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardLeapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardLeapTests/Pods-CardLeapTests.debug.xcconfig"; sourceTree = "<group>"; };
-		27FB2DDFBC1A70E7121A000A /* libPods-CardLeapTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardLeapTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21BE66711596615377878A60 /* Pods-cityo2o.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityo2o.release.xcconfig"; path = "Pods/Target Support Files/Pods-cityo2o/Pods-cityo2o.release.xcconfig"; sourceTree = "<group>"; };
 		333BDA1B1A1D7EFF009BAB8E /* cityo2o.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cityo2o.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333BDA1F1A1D7EFF009BAB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		333BDA201A1D7EFF009BAB8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2154,6 +2150,7 @@
 		33DB1C7D1A1F1957002E463E /* CardLeapDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardLeapDatabaseManager.m; path = Entity/CardLeapDatabaseManager.m; sourceTree = "<group>"; };
 		33DB1C7F1A1F1981002E463E /* CardLeapDatabaseConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardLeapDatabaseConstants.h; sourceTree = "<group>"; };
 		33DB1C801A1F2F33002E463E /* Abberancy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Abberancy.ttf; sourceTree = "<group>"; };
+		454FAE6F94508CDEA3CC1397 /* Pods-cityo2o.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityo2o.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cityo2o/Pods-cityo2o.debug.xcconfig"; sourceTree = "<group>"; };
 		469AC1431A709E9700DBD0C7 /* CityAddController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityAddController.h; sourceTree = "<group>"; };
 		469AC1441A709E9700DBD0C7 /* CityAddController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityAddController.m; sourceTree = "<group>"; };
 		469AC1451A709E9700DBD0C7 /* CityAddDescController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityAddDescController.h; sourceTree = "<group>"; };
@@ -2256,9 +2253,7 @@
 		46D1D9291A7F0861003570AE /* PublicAndPrivateMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicAndPrivateMessageTableViewCell.m; sourceTree = "<group>"; };
 		46D1D9311A7F0C31003570AE /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		46D1D9321A7F0C31003570AE /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
-		59A92D668F6860F340E3E0CF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		6CA81C4B269CEF2757907039 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F2792B07CF8CFFD31A596AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CF3FBE089BEDD48B32E7B6BF /* libPods-cityo2o.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cityo2o.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2266,7 +2261,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E0F95F1BCCF4C10063C7E5 /* libPods-CardLeapTests.a in Frameworks */,
 				04E0F95D1BCCF4B40063C7E5 /* libicucore.tbd in Frameworks */,
 				04E0F95B1BCCF4AB0063C7E5 /* libz.1.2.5.tbd in Frameworks */,
 				04E0F9591BCCF4A30063C7E5 /* libstdc++.tbd in Frameworks */,
@@ -2310,7 +2304,7 @@
 				333BDAB71A1DCB4E009BAB8E /* SystemConfiguration.framework in Frameworks */,
 				042895271A3E6EBD00CC2407 /* libopencore-amrnb.a in Frameworks */,
 				042895281A3E6EBD00CC2407 /* libopencore-amrwb.a in Frameworks */,
-				E28A296B798F7749DF65DF1F /* libPods.a in Frameworks */,
+				DB2A1915EEA3F49FAD8009CD /* libPods-cityo2o.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2318,7 +2312,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4093F54E0D6735DFCC4BE6C /* libPods-CardLeapTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4933,8 +4926,8 @@
 				333BDA1D1A1D7EFF009BAB8E /* CardLeap */,
 				333BDA3A1A1D7EFF009BAB8E /* CardLeapTests */,
 				333BDA1C1A1D7EFF009BAB8E /* Products */,
-				61F22A7B0F04E9B7C3B17473 /* Pods */,
 				990E4560AAD115C78D820A91 /* Frameworks */,
+				34B170F56A33800DDA071314 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -5276,6 +5269,15 @@
 				33DB1C731A1F158B002E463E /* Group.m */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		34B170F56A33800DDA071314 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				454FAE6F94508CDEA3CC1397 /* Pods-cityo2o.debug.xcconfig */,
+				21BE66711596615377878A60 /* Pods-cityo2o.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		469AC1401A709E9700DBD0C7 /* Extra */ = {
@@ -5735,17 +5737,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		61F22A7B0F04E9B7C3B17473 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				59A92D668F6860F340E3E0CF /* Pods.debug.xcconfig */,
-				9F2792B07CF8CFFD31A596AD /* Pods.release.xcconfig */,
-				2521CC349136E3A340759539 /* Pods-CardLeapTests.debug.xcconfig */,
-				1AC03C008314475E4452F93E /* Pods-CardLeapTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		990E4560AAD115C78D820A91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -5775,8 +5766,7 @@
 				333BDABA1A1DCB5B009BAB8E /* CoreTelephony.framework */,
 				333BDAB81A1DCB54009BAB8E /* QuartzCore.framework */,
 				333BDAB61A1DCB4E009BAB8E /* SystemConfiguration.framework */,
-				6CA81C4B269CEF2757907039 /* libPods.a */,
-				27FB2DDFBC1A70E7121A000A /* libPods-CardLeapTests.a */,
+				CF3FBE089BEDD48B32E7B6BF /* libPods-cityo2o.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -5788,11 +5778,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 333BDA411A1D7EFF009BAB8E /* Build configuration list for PBXNativeTarget "cityo2o" */;
 			buildPhases = (
-				3EB0B13E2D2855D115556F36 /* Check Pods Manifest.lock */,
+				2CA5A5B3443C93FB3340D2AD /* 📦 Check Pods Manifest.lock */,
 				333BDA171A1D7EFF009BAB8E /* Sources */,
 				333BDA181A1D7EFF009BAB8E /* Frameworks */,
 				333BDA191A1D7EFF009BAB8E /* Resources */,
-				48DE6AEDEC11FD0AD3E7B5DA /* Copy Pods Resources */,
+				3F5B3C3C39F14E8B6C90A631 /* 📦 Embed Pods Frameworks */,
+				0A14ABBA80630B3692B81645 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5807,11 +5798,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 333BDA441A1D7EFF009BAB8E /* Build configuration list for PBXNativeTarget "cityo2oTests" */;
 			buildPhases = (
-				021D0B3DCCF6DF45FCF393DD /* Check Pods Manifest.lock */,
 				333BDA331A1D7EFF009BAB8E /* Sources */,
 				333BDA341A1D7EFF009BAB8E /* Frameworks */,
 				333BDA351A1D7EFF009BAB8E /* Resources */,
-				6FBA61C2B4A96C8CA0C9866B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -6208,14 +6197,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		021D0B3DCCF6DF45FCF393DD /* Check Pods Manifest.lock */ = {
+		0A14ABBA80630B3692B81645 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cityo2o/Pods-cityo2o-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CA5A5B3443C93FB3340D2AD /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6223,49 +6227,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		3EB0B13E2D2855D115556F36 /* Check Pods Manifest.lock */ = {
+		3F5B3C3C39F14E8B6C90A631 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		48DE6AEDEC11FD0AD3E7B5DA /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6FBA61C2B4A96C8CA0C9866B /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardLeapTests/Pods-CardLeapTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cityo2o/Pods-cityo2o-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -6845,7 +6819,7 @@
 		};
 		333BDA421A1D7EFF009BAB8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59A92D668F6860F340E3E0CF /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 454FAE6F94508CDEA3CC1397 /* Pods-cityo2o.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -6930,7 +6904,7 @@
 		};
 		333BDA431A1D7EFF009BAB8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F2792B07CF8CFFD31A596AD /* Pods.release.xcconfig */;
+			baseConfigurationReference = 21BE66711596615377878A60 /* Pods-cityo2o.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -7015,7 +6989,6 @@
 		};
 		333BDA451A1D7EFF009BAB8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2521CC349136E3A340759539 /* Pods-CardLeapTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: lei yu (K82F6M9A8A)";
@@ -7038,7 +7011,6 @@
 		};
 		333BDA461A1D7EFF009BAB8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AC03C008314475E4452F93E /* Pods-CardLeapTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: lei yu (K82F6M9A8A)";
