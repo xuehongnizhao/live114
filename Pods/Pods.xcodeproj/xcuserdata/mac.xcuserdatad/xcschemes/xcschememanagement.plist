@@ -4,47 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BlurView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>HZWebViewController-HZWebViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>HZWebViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>LCImagePickerController-LCImagePickerController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>LCImagePickerController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MKNetworkKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Masonry.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>NJKWebViewProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -74,10 +39,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>WebViewJavascriptBridge.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>XMNPhotoPickerFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>0FAD17C02CA38BC8BCABDA2D76C38EC6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>13B719E5D8DFB969495535280293362E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>20C777CB643441D1B8560563642430E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,57 +72,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>414648ECB5C5E33F15F0835B46130A52</key>
+		<key>38F1EC964B03297061B38D0412C48F6C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4340C228928F573D862658252564AD56</key>
+		<key>6F7734A251F9B00870D6F5EA70C503A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49B4CEE215A627008779CBB2F3233F03</key>
+		<key>8556BDFD0D1BED3FAB0A91D3D9BD0965</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4D3B5DB028D3019FDEE21989BCD9FA39</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>878BA5C61E3438628298432FA7F74FD7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>99BF3A23D967BECC59BCBA400F367AE5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B0207C471B98CEC1C44162170A31F131</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C508D444679AD84584A0586647ECAA46</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CA0858DB16BFD3B406172D9AF70C7A4B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CB3A67F1ACCCC31E90AFADC093428EEA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D0E1689316C5BC3CCF15FFE1CFCA4304</key>
+		<key>C22D8CF53F268545F0B1B6C9EAB66FE0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

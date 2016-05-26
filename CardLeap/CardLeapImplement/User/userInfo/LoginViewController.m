@@ -262,7 +262,7 @@
                               @"th_id":@"0",
                               @"baidu_id":baidu_id
                               };
-        [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showWithStatus:@"正在登录" ];
         [Base64Tool postSomethingToServe:USER_LOGIN andParams:dic isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
             NSString *code = [NSString stringWithFormat:@"%@",[param objectForKey:@"code"]];
             if ([code isEqualToString:@"200"]) {

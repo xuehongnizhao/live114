@@ -1,0 +1,1 @@
+../../../XMNPhotoPickerFramework/XMNPhotoPickerFramework/Categories/UIViewController+XMNPhotoHUD.h

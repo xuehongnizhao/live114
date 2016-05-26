@@ -1,1 +1,0 @@
-../../../LCImagePickerController/LCImagePickerController/Categories/ALAsset+assetType.h

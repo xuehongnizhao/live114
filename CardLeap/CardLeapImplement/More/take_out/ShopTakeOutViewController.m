@@ -70,7 +70,7 @@
                            @"app_key":url,
                            @"shop_id":self.shop_id
                            };
-    [SVProgressHUD showWithStatus:@"正在加载" maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithStatus:@"正在加载"];
     [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         NSString *code = [NSString stringWithFormat:@"%@",[param objectForKey:@"code"]];
         if ([code isEqualToString:@"200"]) {
@@ -107,7 +107,7 @@
                            @"shop_id":self.shop_id,
                            @"cat_id":cate_id
                            };
-    [SVProgressHUD showWithStatus:@"正在加载" maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithStatus:@"正在加载"];
     [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         NSString *code = [NSString stringWithFormat:@"%@",[param objectForKey:@"code"]];
         if ([code isEqualToString:@"200"]) {

@@ -1,0 +1,1 @@
+../../../XMNPhotoPickerFramework/XMNPhotoPickerFramework/Views/XMNAssetCell.h

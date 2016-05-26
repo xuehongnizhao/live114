@@ -9,10 +9,12 @@
 #import "ZQFunctionWebViewController.h"
 #import "UserModel.h"
 #import "UMSocial.h"
+#import "WebViewJavascriptBridge.h"
+#import "XMNPhotoPickerFramework.h"
 #define NaviItemTag 2016
 @interface ZQFunctionWebViewController()<UIWebViewDelegate,UMSocialUIDelegate>
-@property (strong,nonatomic)UIWebView *detailWeb;
-
+@property (strong,nonatomic) UIWebView *detailWeb;
+@property (strong, nonatomic) WebViewJavascriptBridge *bridge;
 @end
 
 @implementation ZQFunctionWebViewController
@@ -25,8 +27,46 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setUI];
+    
+     [self setWebBridge];
 }
-
+- (void)setWebBridge{
+    [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
+        //    1. 推荐使用XMNPhotoPicker 的单例
+        //    2. 设置选择完照片的block回调
+        [XMNPhotoPicker sharePhotoPicker].frame=CGRectMake(0, -64, SCREEN_WIDTH, SCREEN_HEIGHT);
+        [XMNPhotoPicker sharePhotoPicker].maxCount=3;
+        [XMNPhotoPicker sharePhotoPicker].pickingVideoEnable=NO;
+        [[XMNPhotoPicker sharePhotoPicker] setDidFinishPickingPhotosBlock:^(NSArray<UIImage *> *images, NSArray<XMNAssetModel *> *assets) {
+            
+            for (UIImage *image in images) {
+                //上传 头像
+                NSString *bigArrayUrl = connect_url(as_comm);
+                NSString *upImageURL=[bigArrayUrl stringByAppendingPathComponent:hd_upload_img];
+                NSData* imageData=UIImageJPEGRepresentation(image, 0.1);
+                NSDictionary *dict = @{
+                                       @"app_key":upImageURL,
+                                       @"uuid":data[@"uuid"]
+                                       };
+                [Base64Tool postFileTo:upImageURL andParams:dict andFile:imageData andFileName:@"pic" isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
+                    if ([param[@"code"] integerValue]==200) {
+                        responseCallback(data[@"uuid"]);
+                    }else{
+                        [SVProgressHUD showErrorWithStatus:param[@"message"]];
+                    }
+                } andErrorBlock:^(NSError *error) {
+                    [SVProgressHUD showErrorWithStatus:@"网络异常"];
+                }];
+                
+            }
+            
+        }];
+        
+        //4. 显示XMNPhotoPicker
+        [[XMNPhotoPicker sharePhotoPicker] showPhotoPickerwithController:self animated:YES];
+        
+    }];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -165,5 +205,12 @@
         }
     }
     return _detailWeb;
+}
+
+- (WebViewJavascriptBridge *)bridge{
+    if (!_bridge) {
+        _bridge=[WebViewJavascriptBridge bridgeForWebView:self.detailWeb];
+    }
+    return _bridge;
 }
 @end

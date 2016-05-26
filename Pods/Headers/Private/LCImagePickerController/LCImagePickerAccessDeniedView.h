@@ -1,1 +1,0 @@
-../../../LCImagePickerController/LCImagePickerController/LCImagePickerAccessDeniedView.h

@@ -1,48 +1,35 @@
 PODS:
-  - BlurView (1.1)
-  - HZWebViewController (0.0.4):
-    - BlurView (~> 1.1)
-    - NJKWebViewProgress (~> 0.2.2)
   - IQKeyboardManager (3.2.0.2)
-  - LCImagePickerController (0.1.7):
-    - Masonry (~> 0.6.0)
-  - Masonry (0.6.4)
   - MKNetworkKit (0.87):
     - Reachability (~> 3.1.0)
-  - NJKWebViewProgress (0.2.3):
-    - NJKWebViewProgress/Core (= 0.2.3)
-    - NJKWebViewProgress/ProgressView (= 0.2.3)
-  - NJKWebViewProgress/Core (0.2.3)
-  - NJKWebViewProgress/ProgressView (0.2.3)
   - RDVTabBarController (1.1.6)
   - Reachability (3.1.1)
-  - SDWebImage (3.7.1):
-    - SDWebImage/Core (= 3.7.1)
-  - SDWebImage/Core (3.7.1)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
   - SVProgressHUD (2.0.3)
+  - WebViewJavascriptBridge (5.0.5)
+  - XMNPhotoPickerFramework (1.0.3)
 
 DEPENDENCIES:
-  - HZWebViewController (~> 0.0.2)
   - IQKeyboardManager (~> 3.2.0)
-  - LCImagePickerController (~> 0.1.7)
   - MKNetworkKit (~> 0.87)
   - RDVTabBarController (~> 1.1.6)
-  - SDWebImage (~> 3.7.1)
+  - SDWebImage (~> 3.7.6)
   - SVProgressHUD (~> 2.0.3)
+  - WebViewJavascriptBridge (~> 5.0.5)
+  - XMNPhotoPickerFramework (~> 1.0.3)
 
 SPEC CHECKSUMS:
-  BlurView: 04ec9fd1216fad0c9f9a495ea51b4aaadae26139
-  HZWebViewController: ea00951f67f891ae5f8b34d40beacd38358f38bf
   IQKeyboardManager: 437647780f4de0947e798df33e3e8ae208d718a5
-  LCImagePickerController: c585d8300e5da73c2009a88a03a5275f8e642322
-  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MKNetworkKit: 60ad3c83b62183e40ba75ce772c9427c25b520de
-  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   RDVTabBarController: af40344df4d70c62693edb0d4975fe43855b90d7
   Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
-  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
+  XMNPhotoPickerFramework: 8ba9bf84e34df25939cf57adbe7f1b1547714622
 
-PODFILE CHECKSUM: fa10c6683b9b0d692159cc6a75f3cf84b25dfc25
+PODFILE CHECKSUM: d92f6d7a646e20e8680be623bec74196c3a341e6
 
 COCOAPODS: 1.0.0

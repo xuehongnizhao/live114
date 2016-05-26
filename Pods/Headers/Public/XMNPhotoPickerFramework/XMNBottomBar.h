@@ -1,0 +1,1 @@
+../../../XMNPhotoPickerFramework/XMNPhotoPickerFramework/Views/XMNBottomBar.h

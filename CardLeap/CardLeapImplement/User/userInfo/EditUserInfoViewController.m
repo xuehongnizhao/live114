@@ -340,6 +340,7 @@
 }
 
 #pragma mark--------button action
+//上传头像
 -(void)confirmEditAction:(UIButton*)sender
 {
     NSLog(@"确认修改信息");
@@ -376,7 +377,7 @@
     NSString *user_tel = self.user_phone_T.text;
     NSString *user_address = self.user_address_T.text;
     if (user_name.length != 0 && user_sex.length!=0 && user_tel.length!=0 && user_address.length!=0) {
-        [SVProgressHUD showWithStatus:@"正在提交信息" maskType:SVProgressHUDMaskTypeNone];
+        [SVProgressHUD showWithStatus:@"正在提交信息"];
         NSString *user_url = connect_url(@"yz_edit_info");
         NSString *sex;
         if ([user_sex isEqualToString:@"男"]) {

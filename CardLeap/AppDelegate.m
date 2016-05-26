@@ -90,6 +90,7 @@
     
     //修改HUD背景颜色和字体颜色
 //    SVProgressHUD setDefaultStyle:<#(SVProgressHUDStyle)#>
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     //加载字体
     [[FontManager sharedManager] loadFont:@"Aller_Lt"];
     [[FontManager sharedManager] loadFont:@"OpenSans-Light"];

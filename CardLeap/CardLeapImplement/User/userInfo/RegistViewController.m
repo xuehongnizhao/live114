@@ -254,7 +254,7 @@
                               @"th_id":@"0",
                               @"reg_type":@"0"
                               };
-        [SVProgressHUD showWithStatus:@"正在注册" maskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showWithStatus:@"正在注册"];
         [Base64Tool postSomethingToServe:REGIST_USER andParams:dic isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
             NSString *code = [NSString stringWithFormat:@"%@",[param objectForKey:@"code"]];
             if ([code isEqualToString:@"200"]) {

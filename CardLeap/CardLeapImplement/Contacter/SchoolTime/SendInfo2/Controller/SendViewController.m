@@ -371,7 +371,7 @@
             NSLog(@"after dict=%@",dict);
             if ([[dict allKeys] containsObject:@"com_text"]||files.count>0)
             {
-                [SVProgressHUD showWithStatus:@"正在发送" maskType:SVProgressHUDMaskTypeClear];
+                [SVProgressHUD showWithStatus:@"正在发送"];
                 [Base64Tool postFileTo:post_url andParams:dict andFiles:files andFileNames:fileNames isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
                     if ([[param objectForKey:@"code"] isEqualToString:@"200"])
                     {

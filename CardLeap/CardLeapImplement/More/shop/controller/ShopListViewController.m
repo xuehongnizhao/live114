@@ -55,7 +55,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [SVProgressHUD showWithStatus:@"正在加载，请稍等" maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithStatus:@"正在加载，请稍等"];
     [self setUI];
     [self initData];
 }

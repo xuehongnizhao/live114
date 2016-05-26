@@ -176,7 +176,7 @@
                               @"session_key":[UserModel shareInstance].session_key,
                               @"spike_id":self.info.spike_id
                               };
-        [SVProgressHUD showWithStatus:@"正在努力为您抢购" maskType:SVProgressHUDMaskTypeNone];
+        [SVProgressHUD showWithStatus:@"正在努力为您抢购"];
         [Base64Tool postSomethingToServe:url andParams:dic isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
             if ([param[@"code"] integerValue]==200) {
                 NSInteger type = [[param[@"obj"] objectForKey:@"type"] integerValue];

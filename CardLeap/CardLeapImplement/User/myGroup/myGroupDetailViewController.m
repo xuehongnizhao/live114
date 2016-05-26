@@ -392,7 +392,7 @@
                                @"app_key":url,
                                @"order_id":self.info.order_id
                                };
-        [SVProgressHUD showWithStatus:@"正在提交申请" maskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showWithStatus:@"正在提交申请" ];
         [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
             if ([param[@"code"] integerValue]==200) {
                 //退款成功  修改状态  然后跳转页面

@@ -69,7 +69,7 @@
                            @"app_key":url,
                            @"u_id":[UserModel shareInstance].u_id
                            };
-    [SVProgressHUD showWithStatus:@"请稍候" maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"请稍候"];
     [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         NSString *code = [NSString stringWithFormat:@"%@",[param objectForKey:@"code"]];
         if ([code isEqualToString:@"200"]) {
@@ -440,7 +440,7 @@
                            @"total_price":self.totalPrice,
                            @"cash":@"1"
                            };
-    [SVProgressHUD showWithStatus:@"正在提交订单" maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"正在提交订单"];
     [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         if ([param[@"code"] integerValue]==200) {
             [SVProgressHUD dismiss];
@@ -484,7 +484,7 @@
                            @"total_price":self.totalPrice,
                            @"cash":@"0"
                            };
-    [SVProgressHUD showWithStatus:@"正在下订单" maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"正在下订单"];
     [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         if ([param[@"code"] integerValue]==200) {
             [SVProgressHUD dismiss];

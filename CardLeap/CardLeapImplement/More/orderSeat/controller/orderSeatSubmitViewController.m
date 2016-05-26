@@ -499,7 +499,7 @@
                                @"seat_tel":connect_tel,
                                @"seat_note":submit_desc
                                };
-        [SVProgressHUD showWithStatus:@"正在向商家提交" maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:@"正在向商家提交"];
         [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
             if([param[@"code"] integerValue]==200){
                 [SVProgressHUD dismiss];

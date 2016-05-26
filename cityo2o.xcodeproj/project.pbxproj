@@ -6854,6 +6854,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CardLeap/cityo2o.pch";
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/BlurView\"",
 					"\"${PODS_ROOT}/Headers/Public/HZWebViewController\"",
@@ -6939,6 +6940,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CardLeap/cityo2o.pch";
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/BlurView\"",
 					"\"${PODS_ROOT}/Headers/Public/HZWebViewController\"",

@@ -55,7 +55,7 @@
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    [SVProgressHUD showWithStatus:@"正在加载支付宝订单" maskType:SVProgressHUDMaskTypeNone];
+    [SVProgressHUD showWithStatus:@"正在加载支付宝订单"];
     self.completeButton.userInteractionEnabled = NO;
     return YES;
 }

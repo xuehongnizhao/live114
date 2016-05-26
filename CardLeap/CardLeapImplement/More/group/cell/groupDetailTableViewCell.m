@@ -496,7 +496,7 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 #pragma mark --- 2015.12.29 加载web时显示“数据加载...”字样
-    [SVProgressHUD showWithStatus:@"数据加载..." maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"数据加载..."];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {

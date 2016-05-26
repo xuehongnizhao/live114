@@ -52,7 +52,7 @@
                            @"order_id":self.order_id,
                            @"app_key":url
                            };
-    [SVProgressHUD showWithStatus:@"正在加载订单" maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithStatus:@"正在加载订单" ];
     [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         if ([param[@"code"] integerValue]==200) {
             [SVProgressHUD dismiss];

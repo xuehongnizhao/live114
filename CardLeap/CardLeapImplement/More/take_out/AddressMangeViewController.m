@@ -216,7 +216,7 @@
                            @"as_id":info.as_id,
                            @"u_id":[UserModel shareInstance].u_id
                            };
-    [SVProgressHUD showWithStatus:@"正在设置，请稍候" maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithStatus:@"正在设置，请稍候"];
     [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         if ([param[@"code"] integerValue] == 200) {
             [SVProgressHUD dismiss];

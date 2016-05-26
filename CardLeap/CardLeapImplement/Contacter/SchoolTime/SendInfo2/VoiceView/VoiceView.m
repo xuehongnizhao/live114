@@ -4,7 +4,7 @@
 //
 //  Created by Sky on 14-8-15.
 //  Copyright (c) 2014年 com.youdro. All rights reserved.
-//
+//录音功能
 
 #import "VoiceView.h"
 #import "VoiceRecorderBase.h"

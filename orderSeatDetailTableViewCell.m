@@ -163,7 +163,7 @@
             [_messageWebView autoPinEdgeToSuperviewEdge:ALEdgeLeft];
             [_messageWebView autoPinEdgeToSuperviewEdge:ALEdgeRight];
             [_messageWebView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-            [SVProgressHUD showWithStatus:@"数据加载..." maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:@"数据加载..."];
             NSURL *url            = [NSURL URLWithString:info.message_url];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             [_messageWebView loadRequest:request];
@@ -294,7 +294,7 @@
             [_messageWebView autoPinEdgeToSuperviewEdge:ALEdgeLeft];
             [_messageWebView autoPinEdgeToSuperviewEdge:ALEdgeRight];
             [_messageWebView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-            [SVProgressHUD showWithStatus:@"数据加载..." maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:@"数据加载..." ];
             NSURL *url            = [NSURL URLWithString:info.message_url];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             [_messageWebView loadRequest:request];
@@ -308,7 +308,7 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 #warning 2015.12.29 加载web时显示“数据加载...”字样
-    [SVProgressHUD showWithStatus:@"数据加载..." maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"数据加载..."];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {

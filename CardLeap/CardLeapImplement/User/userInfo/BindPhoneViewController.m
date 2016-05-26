@@ -197,7 +197,7 @@
                               @"th_id":self.usid,
                               @"reg_type":self.type
                               };
-        [SVProgressHUD showWithStatus:@"正在注册" maskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showWithStatus:@"正在注册"];
         [Base64Tool postSomethingToServe:REGIST_USER andParams:dic isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
             NSString *code = [NSString stringWithFormat:@"%@",[param objectForKey:@"code"]];
             if ([code isEqualToString:@"200"]) {
@@ -225,7 +225,7 @@
                           @"th_id":self.usid,
                           @"baidu_id":baidu_id
                           };
-    [SVProgressHUD showWithStatus:@"授权成功，正在登录" maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithStatus:@"授权成功，正在登录" ];
     [Base64Tool postSomethingToServe:USER_LOGIN andParams:dic isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         NSString *code = [NSString stringWithFormat:@"%@",[param objectForKey:@"code"]];
         if ([code isEqualToString:@"200"]) {

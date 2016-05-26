@@ -308,7 +308,7 @@
             if (city_id == nil) {
                 city_id = @"0";
             }
-            [SVProgressHUD showWithStatus:@"搜索中..." maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:@"搜索中..."];
             NSString *url = SEARCH_SEAT_POST;
             NSDictionary* dict=@{
                                  @"app_key":url,

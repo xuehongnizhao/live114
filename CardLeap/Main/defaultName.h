@@ -42,9 +42,16 @@
  *
  *  @brief  是否进入选择城市
  */
-#define isShowCityChose  @"isShowCityChose"
+#define isShowCityChose     @"isShowCityChose"
 
-#define URLFilter       @"URLFilter"
+//url分类
+#define URLFilter           @"URLFilter"
+
+//大集合
+#define as_comm             @"as_comm"
+
+//龙广路况图片上传
+#define hd_upload_img       @"hd_upload_img"
 // 写入NSUserDefault中的数据
 #define SetUserDefault(value, key) [[NSUserDefaults standardUserDefaults] setObject:value forKey:key]
 // 获取NSUserDefault中的数据
