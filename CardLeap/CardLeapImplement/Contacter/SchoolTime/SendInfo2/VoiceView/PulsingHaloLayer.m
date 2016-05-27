@@ -26,7 +26,7 @@
         self.opacity = 0;
         
         // default
-        self.radius = 60;
+        self.radius = 10;
         self.animationDuration = 3;
         self.pulseInterval = 0;
         self.backgroundColor = [[UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1] CGColor];

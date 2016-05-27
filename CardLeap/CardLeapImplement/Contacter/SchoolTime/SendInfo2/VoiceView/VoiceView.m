@@ -11,7 +11,6 @@
 #import "PulsingHaloLayer.h"
 #import <AVFoundation/AVFoundation.h>
 #import "MLAudioMeterObserver.h"
-
 //录音类
 #import "MLAudioRecorder.h"
 #import "AmrRecordWriter.h"
@@ -45,8 +44,7 @@
 
 @property (nonatomic,strong) UIButton* deleteButton;
 
-//是否录音完成 默认未完成
-@property (nonatomic) BOOL  isComplete;
+@property (strong, nonatomic) UIButton *completeButton;
 
 @end
 
@@ -63,9 +61,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        self.isShow=NO;
-        self.isComplete=NO;
-        self.backgroundColor=UIColorFromRGB(0xf4f4f4);
+
         [self initRecorderButton];
         [self initRecorderAndPlayer];
         [self initDeleteButton];
@@ -74,7 +70,10 @@
         secondLabel.textColor=[UIColor whiteColor];
         secondLabel.font=[UIFont systemFontOfSize:12];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shutDown) name:@"STOPPLAY" object:nil];
-        
+        [self addSubview:self.completeButton];
+        [_completeButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:20];
+        [_completeButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:20];
+        [_completeButton autoSetDimensionsToSize:CGSizeMake(80, 80)];
     }
     return self;
 }
@@ -83,14 +82,41 @@
 {
     [_player stopPlaying];
 }
+- (UIButton *)completeButton{
+    if (!_completeButton) {
+        _completeButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        [_completeButton setTitle:@"完成" forState:UIControlStateNormal];
+        [_completeButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_completeButton addTarget:self action:@selector(completeButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _completeButton;
+}
 
+- (void)completeButtonAction{
+    
+    if ((int)[AmrPlayerReader durationOfAmrFilePath:self.amrWriter.filePath]>2)
+    {
+    [self.delegate sendDataWithFilePath:self.amrWriter.filePath];
+        self.hidden=YES;
+        [self removeFromSuperview];
+    }else{
+        [SVProgressHUD setMinimumDismissTimeInterval:1];
+        [SVProgressHUD showErrorWithStatus:@"没有录音"];
+    }
+
+}
 #pragma mark--------初始化删除按钮
 -(void)initDeleteButton
 {
     self.deleteButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    self.deleteButton.frame=CGRectMake(260*LinPercent, 160*LinHeightPercent, 33, 33);
-    [self.deleteButton setImage:[UIImage imageNamed:@"user"] forState:UIControlStateNormal];
-    [self.deleteButton addTarget:self action:@selector(deleteVoice) forControlEvents:UIControlEventTouchUpInside];
+    self.deleteButton.frame=CGRectMake(self.frame.size.width-100, self.frame.size.height-100, 80, 80);
+    [self.deleteButton setTitle:@"取消" forState:UIControlStateNormal];
+    [self.deleteButton setTitle:@"删除" forState:UIControlStateSelected];
+    [self.deleteButton setTitleColor:[UIColor colorWithRed:1.0 green:0.4 blue:0.4 alpha:1.0] forState:UIControlStateNormal];
+    [self.deleteButton setTitleColor:[UIColor colorWithRed:0.502 green:0.0 blue:0.0 alpha:1.0] forState:UIControlStateSelected];
+//    [self.deleteButton setImage:[UIImage imageNamed:@"issue_back_sel"] forState:UIControlStateNormal];
+//    [self.deleteButton setImage:[UIImage imageNamed:@"issue_delete_sel"] forState:UIControlStateSelected];
+    [self.deleteButton addTarget:self action:@selector(deleteVoice:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.deleteButton];
 }
 #pragma mark--------初始化录音控件
@@ -99,8 +125,8 @@
     AmrRecordWriter *amrWriter = [[AmrRecordWriter alloc]init];
     amrWriter.filePath = [VoiceRecorderBase getPathByFileName:@"record.amr"];
     NSLog(@"filePaht:%@",amrWriter.filePath);
-    amrWriter.maxSecondCount = 60;
-    amrWriter.maxFileSize = 1024*256;
+    amrWriter.maxSecondCount = 12.0;
+    amrWriter.maxFileSize = 1024*100;
     self.amrWriter = amrWriter;
     
     MLAudioMeterObserver *meterObserver = [[MLAudioMeterObserver alloc]init];
@@ -117,10 +143,9 @@
     recorder.receiveStoppedBlock = ^{
         if ((int)[AmrPlayerReader durationOfAmrFilePath:self.amrWriter.filePath]<3)
         {
-            //[SVProgressHUD showErrorWithStatus:@"录音太短"];
             [UUProgressHUD dismissWithError:@"录音太短"];
             [playTimer invalidate];
-            [self deleteVoice];
+            [self deleteVoice:self.deleteButton];
         }
         else
         {
@@ -133,11 +158,8 @@
             secondLabel.text=[NSString stringWithFormat:@"%d''",(int)[AmrPlayerReader durationOfAmrFilePath:self.amrWriter.filePath]];
             [secondLabel setHidden:NO];
             [self.recordButton addSubview:secondLabel];
-            
-            //改变删除按钮图片
-            [self.deleteButton setImage:[UIImage imageNamed:@"issue_delete_sel"] forState:UIControlStateNormal];
-            //发送文件
-            [self.delegate sendDataWithFilePath:self.amrWriter.filePath];
+            self.deleteButton.selected=YES;
+//            [self.delegate sendDataWithFilePath:self.amrWriter.filePath];
         }
         
         NSLog(@"停止录音代码块");
@@ -170,6 +192,7 @@
         [self.deleteButton setEnabled:YES];
         NSLog(@"停止播放");
         [weakSelf.recordButton setImage:[UIImage imageNamed:@"issue_play_no"] forState:UIControlStateNormal];
+        
         //[weakSelf.playButton setTitle:@"Play" forState:UIControlStateNormal];
     };
     self.player = player;
@@ -181,7 +204,6 @@
     self.recordButton=[UIButton buttonWithType:UIButtonTypeCustom];
     self.recordButton.frame=CGRectMake(100*LinPercent, 50*LinHeightPercent, 112, 112);
     [self.recordButton setImage:[UIImage imageNamed:@"issue_microBtn_sel"] forState:UIControlStateNormal];
-    
     //button event test
     [self.recordButton addTarget:self action:@selector(dragEnter) forControlEvents:UIControlEventTouchDragEnter];
     [self.recordButton addTarget:self action:@selector(dragExit) forControlEvents:UIControlEventTouchDragExit];
@@ -191,11 +213,8 @@
     [self.recordButton addTarget:self action:@selector(down) forControlEvents:UIControlEventTouchDown];
     //停止录音
     [self.recordButton addTarget:self action:@selector(upInside) forControlEvents:UIControlEventTouchUpInside];
-    [self.recordButton addTarget:self action:@selector(recorder:) forControlEvents:UIControlEventTouchUpInside];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionDidChangeInterruptionType:)
                                                  name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
-    
-    
     halo=[PulsingHaloLayer layer];
     halo.position=self.recordButton.center;
     [self addSubview:self.recordButton];
@@ -236,30 +255,31 @@
 - (void)dragEnter
 {
     DLOG(@"T普通提示录音状态");
-    [UUProgressHUD changeSubTitle:@"Release to cancel"];
+    [UUProgressHUD changeSubTitle:@"松开可取消"];
   //  [playTimer invalidate];
 }
 
 - (void)dragExit
 {
-    DLOG(@"T提示松开可取消");
+    DLOG(@"提示松开可取消");
     //[UUProgressHUD dismissWithSuccess:@"slip to cancel"];
-    [UUProgressHUD changeSubTitle:@"Release to cancel"];
+    [UUProgressHUD changeSubTitle:@"松开可取消"];
 }
 
 - (void)upOutSide
 {
     DLOG(@"T取消录音");
-    [UUProgressHUD dismissWithSuccess:@"cancel"];
+    [UUProgressHUD dismissWithSuccess:@"取消"];
     [playTimer invalidate];
     [self.recorder stopRecording];
-    [self deleteVoice];
+    self.deleteButton.selected=YES;
+    [self deleteVoice:self.deleteButton];
 }
 
 - (void)cancel
 {
-    DLOG(@"T取消录音");
-    [UUProgressHUD dismissWithSuccess:@"T取消录音"];
+    DLOG(@"取消录音");
+    [UUProgressHUD dismissWithSuccess:@"取消录音"];
     [playTimer invalidate];
 }
 
@@ -267,7 +287,7 @@
 - (void)countVoiceTime
 {
     playTime ++;
-    if (playTime>=60) {
+    if (playTime>=11) {
         [self upInside];
     }
 }
@@ -276,18 +296,17 @@
 {
     DLOG(@"T开始录音");
     
-    //[SVProgressHUD showWithStatus:@"正在录音..." maskType:SVProgressHUDMaskTypeClear];
+    self.deleteButton.selected=YES;
     playTime = 0;
     playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countVoiceTime) userInfo:nil repeats:YES];
     [UUProgressHUD show];
     
-    //[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
     [self dragEnter];
     if (self.recorder.isRecording) {
         //取消录音
         [self.recorder stopRecording];
     }else{
-        [self.recordButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.recordButton setTitle:@"停止" forState:UIControlStateNormal];
         //开始录音
         [self.recorder startRecording];
         self.meterObserver.audioQueue = self.recorder->_audioQueue;
@@ -298,7 +317,7 @@
 {
     DLOG(@"T结束录音");
     [playTimer invalidate];
-    [UUProgressHUD dismissWithSuccess:@"Success"];
+    [UUProgressHUD dismissWithSuccess:@"成功"];
     if (self.recorder.isRecording)
     {
         //取消录音
@@ -306,31 +325,29 @@
     }
 }
 #pragma mark-------删除录音
--(void)deleteVoice
+-(void)deleteVoice:(UIButton *)sender
 {
-    //此处改变按钮背景图片 并且移除播放方法，改为录音方法
-    [self.recordButton setImage:[UIImage imageNamed:@"issue_microBtn_no"] forState:UIControlStateNormal];
-    [self.recordButton removeTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
+    if (sender.selected==NO) {
+        self.hidden=YES;
+        [self removeFromSuperview];
+    }else{
+        //此处改变按钮背景图片 并且移除播放方法，改为录音方法
+        [self.recordButton setImage:[UIImage imageNamed:@"issue_microBtn_no"] forState:UIControlStateNormal];
+        [self.recordButton removeTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.recordButton addTarget:self action:@selector(down) forControlEvents:UIControlEventTouchDown];
-    [self.recordButton addTarget:self  action:@selector(upInside) forControlEvents:UIControlEventTouchUpInside];
+        [self.recordButton addTarget:self action:@selector(down) forControlEvents:UIControlEventTouchDown];
+        [self.recordButton addTarget:self  action:@selector(upInside) forControlEvents:UIControlEventTouchUpInside];
     
-    secondLabel.text=[NSString stringWithFormat:@"%d''",(int)[AmrPlayerReader durationOfAmrFilePath:self.amrWriter.filePath]];
-    [self.recordButton addSubview:secondLabel];
-    [secondLabel setHidden:YES];
-    //改变删除按钮图片
-    [self.deleteButton setImage:[UIImage imageNamed:@"user"] forState:UIControlStateNormal];
-    [self.delegate deleteBadgeFromButton];
+        secondLabel.text=[NSString stringWithFormat:@"%d''",(int)[AmrPlayerReader durationOfAmrFilePath:self.amrWriter.filePath]];
+        [self.recordButton addSubview:secondLabel];
+        [secondLabel setHidden:YES];
+        //改变删除按钮图片
+        sender.selected=NO;
+        NSFileManager* fileManager=[NSFileManager defaultManager];
+        [fileManager removeItemAtPath:self.amrWriter.filePath error:nil];
+    }
 }
 
 
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
 
 @end

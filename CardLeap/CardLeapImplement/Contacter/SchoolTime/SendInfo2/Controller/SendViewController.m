@@ -4,7 +4,7 @@
 //
 //  Created by Sky on 14-8-15.
 //  Copyright (c) 2014年 com.youdro. All rights reserved.
-//
+//上传录音
 
 #import "SendViewController.h"
 #import "JSBadgeView.h"
@@ -458,7 +458,7 @@
                 
                 //修改其他
                 photoView.isShow=NO;
-                voiceView.isShow=NO;
+//                voiceView.isShow=NO;
                 [photoView setHidden:YES];
                 [voiceView setHidden:YES];
             }
@@ -487,7 +487,7 @@
                 photoView.isShow=YES;
                 
                 faceBoard.isShow=NO;
-                voiceView.isShow=NO;
+//                voiceView.isShow=NO;
                 [faceBoard setHidden:YES];
                 [voiceView setHidden:YES];
             }
@@ -500,23 +500,23 @@
             }
             break;
         case 4:
-            if (voiceView.isShow==NO)
-            {
-                [voiceView setHidden:NO];
-                voiceView.isShow=YES;
-                
-                faceBoard.isShow=NO;
-                photoView.isShow=NO;
-                [faceBoard setHidden:YES];
-                [photoView setHidden:YES];
-            }
-            else
-            {
-                [voiceView setHidden:YES];
-                [self.view insertSubview:voiceView atIndex:1];
-                voiceView.isShow=NO;
-                [mTextView becomeFirstResponder];
-            }
+//            if (voiceView.isShow==NO)
+//            {
+//                [voiceView setHidden:NO];
+//                voiceView.isShow=YES;
+//                
+//                faceBoard.isShow=NO;
+//                photoView.isShow=NO;
+//                [faceBoard setHidden:YES];
+//                [photoView setHidden:YES];
+//            }
+//            else
+//            {
+//                [voiceView setHidden:YES];
+//                [self.view insertSubview:voiceView atIndex:1];
+//                voiceView.isShow=NO;
+//                [mTextView becomeFirstResponder];
+//            }
             
             break;
             

@@ -11,6 +11,8 @@
 #import "UMSocial.h"
 #import "WebViewJavascriptBridge.h"
 #import "XMNPhotoPickerFramework.h"
+#import "VoiceView.h"
+#import "LoginViewController.h"
 #define NaviItemTag 2016
 @interface linNewFunctionWebController()<UIWebViewDelegate,UMSocialUIDelegate>
 @property (strong,nonatomic)UIWebView *detailWeb;
@@ -25,12 +27,24 @@
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self setUI];
-    [self setWebBridge];
+    [self setUpLoadImageWebBridge];
+//    [self setUpLoadVoiceWebBridge];
+//    [self setLogInWebBridge];
 }
+#pragma mark --- 2016.5 添加webBridge
 
-- (void)setWebBridge{
+//- (void)setUpLoadVoiceWebBridge{
+//    [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
+//        responseCallback(data[@"uuid"]);
+//    }];
+//}
+//- (void)setLogInWebBridge{
+//    [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
+//        responseCallback(data[@"uuid"]);
+//    }];
+//}
+- (void)setUpLoadImageWebBridge{
     [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
         //    1. 推荐使用XMNPhotoPicker 的单例
         //    2. 设置选择完照片的block回调
@@ -61,7 +75,6 @@
             }
             
         }];
-        
         //4. 显示XMNPhotoPicker
         [[XMNPhotoPicker sharePhotoPicker] showPhotoPickerwithController:self animated:YES];
         
@@ -71,11 +84,6 @@
 {
     [super viewWillAppear:animated];
     [self.rdv_tabBarController setTabBarHidden:YES animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)setUI

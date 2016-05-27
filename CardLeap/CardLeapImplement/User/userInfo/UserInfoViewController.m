@@ -433,6 +433,7 @@
     //return [_iconArray count]+1;
 }
 #pragma mark-------action
+#pragma mark --- 注销在这里
 -(void)logoutAction :(UIButton*)sender
 {
     if(ApplicationDelegate.islogin == YES){
@@ -445,7 +446,12 @@
         firVC.identifier = @"0";
         [self.navigationController pushViewController:firVC animated:YES];
     }
+
+
+    
+    
 }
+
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
