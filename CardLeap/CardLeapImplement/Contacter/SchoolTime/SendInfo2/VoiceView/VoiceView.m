@@ -71,7 +71,7 @@
         secondLabel.font=[UIFont systemFontOfSize:12];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shutDown) name:@"STOPPLAY" object:nil];
         [self addSubview:self.completeButton];
-        [_completeButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:20];
+        [_completeButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:20];
         [_completeButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:20];
         [_completeButton autoSetDimensionsToSize:CGSizeMake(80, 80)];
     }
@@ -109,7 +109,6 @@
 -(void)initDeleteButton
 {
     self.deleteButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    self.deleteButton.frame=CGRectMake(self.frame.size.width-100, self.frame.size.height-100, 80, 80);
     [self.deleteButton setTitle:@"取消" forState:UIControlStateNormal];
     [self.deleteButton setTitle:@"删除" forState:UIControlStateSelected];
     [self.deleteButton setTitleColor:[UIColor colorWithRed:1.0 green:0.4 blue:0.4 alpha:1.0] forState:UIControlStateNormal];
@@ -118,6 +117,9 @@
 //    [self.deleteButton setImage:[UIImage imageNamed:@"issue_delete_sel"] forState:UIControlStateSelected];
     [self.deleteButton addTarget:self action:@selector(deleteVoice:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.deleteButton];
+    [_deleteButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:20];
+    [_deleteButton autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:20];
+    [_deleteButton autoSetDimensionsToSize:CGSizeMake(80, 80)];
 }
 #pragma mark--------初始化录音控件
 -(void)initRecorderAndPlayer
@@ -202,7 +204,6 @@
 -(void)initRecorderButton
 {
     self.recordButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    self.recordButton.frame=CGRectMake(100*LinPercent, 50*LinHeightPercent, 112, 112);
     [self.recordButton setImage:[UIImage imageNamed:@"issue_microBtn_sel"] forState:UIControlStateNormal];
     //button event test
     [self.recordButton addTarget:self action:@selector(dragEnter) forControlEvents:UIControlEventTouchDragEnter];
@@ -218,6 +219,9 @@
     halo=[PulsingHaloLayer layer];
     halo.position=self.recordButton.center;
     [self addSubview:self.recordButton];
+    [_recordButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:SCREEN_HEIGHT/7];
+    [_recordButton autoSetDimensionsToSize:CGSizeMake(112, 112)];
+    [_recordButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
 }
 
 - (void)audioSessionDidChangeInterruptionType:(NSNotification *)notification

@@ -15,7 +15,7 @@ DEPENDENCIES:
   - IQKeyboardManager (~> 3.2.0)
   - MKNetworkKit (~> 0.87)
   - RDVTabBarController (~> 1.1.6)
-  - SDWebImage (~> 3.7.6)
+  - SDWebImage (~> 3.7.1)
   - SVProgressHUD (~> 2.0.3)
   - WebViewJavascriptBridge (~> 5.0.5)
   - XMNPhotoPickerFramework (~> 1.0.3)
@@ -30,6 +30,6 @@ SPEC CHECKSUMS:
   WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
   XMNPhotoPickerFramework: 8ba9bf84e34df25939cf57adbe7f1b1547714622
 
-PODFILE CHECKSUM: d92f6d7a646e20e8680be623bec74196c3a341e6
+PODFILE CHECKSUM: be11e18a3805d2acaa38d95527bbcdd4de51efab
 
 COCOAPODS: 1.0.0

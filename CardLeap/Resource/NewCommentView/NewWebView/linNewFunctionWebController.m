@@ -14,7 +14,10 @@
 #import "VoiceView.h"
 #import "LoginViewController.h"
 #define NaviItemTag 2016
-@interface linNewFunctionWebController()<UIWebViewDelegate,UMSocialUIDelegate>
+@interface linNewFunctionWebController()<UIWebViewDelegate,UMSocialUIDelegate,VoiceViewDelegate>
+{
+    NSString *_uuid;
+}
 @property (strong,nonatomic)UIWebView *detailWeb;
 @property (strong, nonatomic) WebViewJavascriptBridge *bridge;
 @end
@@ -29,16 +32,42 @@
     [super viewDidLoad];
     [self setUI];
     [self setUpLoadImageWebBridge];
-//    [self setUpLoadVoiceWebBridge];
+    [self setUpLoadVoiceWebBridge];
 //    [self setLogInWebBridge];
 }
 #pragma mark --- 2016.5 添加webBridge
 
-//- (void)setUpLoadVoiceWebBridge{
-//    [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
-//        responseCallback(data[@"uuid"]);
-//    }];
-//}
+- (void)setUpLoadVoiceWebBridge{
+    [self.bridge registerHandler:@"hd_uploadvoice" handler:^(id data, WVJBResponseCallback responseCallback) {
+        _uuid=data[@"uuid"];
+        VoiceView *vv=[[VoiceView alloc]initForAutoLayout];
+        vv.backgroundColor=[UIColor colorWithRed:0.9793 green:0.9793 blue:0.9793 alpha:1.0];
+        vv.delegate=self;
+        [self.view addSubview:vv];
+        [vv autoPinEdgeToSuperviewEdge:ALEdgeBottom];
+        [vv autoPinEdgeToSuperviewEdge:ALEdgeLeft];
+        [vv autoPinEdgeToSuperviewEdge:ALEdgeRight];
+        [vv autoSetDimension:ALDimensionHeight toSize:SCREEN_HEIGHT*3/7];
+    }];
+}
+-(void)sendDataWithFilePath:(NSString*) filePath{
+    
+    NSString *bigArrayUrl = connect_url(as_comm);
+    NSString *upVoiceURL=[bigArrayUrl stringByAppendingPathComponent:hd_upload_voice];
+    NSData *voiceData=[NSData dataWithContentsOfFile:filePath];
+    NSDictionary *dict = @{
+                            @"app_key":upVoiceURL,
+                            @"uuid":_uuid
+                            };
+    [Base64Tool postFileTo:upVoiceURL andParams:dict andFile:voiceData andFileName:@"pic" isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
+        if ([param[@"code"] integerValue]==200) {
+        }else{
+            [SVProgressHUD showErrorWithStatus:param[@"message"]];
+        }
+    } andErrorBlock:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"网络异常"];
+    }];
+}
 //- (void)setLogInWebBridge{
 //    [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
 //        responseCallback(data[@"uuid"]);
@@ -54,7 +83,6 @@
         [[XMNPhotoPicker sharePhotoPicker] setDidFinishPickingPhotosBlock:^(NSArray<UIImage *> *images, NSArray<XMNAssetModel *> *assets) {
             
             for (UIImage *image in images) {
-                //上传 头像
                 NSString *bigArrayUrl = connect_url(as_comm);
                 NSString *upImageURL=[bigArrayUrl stringByAppendingPathComponent:hd_upload_img];
                 NSData* imageData=UIImageJPEGRepresentation(image, 0.3);

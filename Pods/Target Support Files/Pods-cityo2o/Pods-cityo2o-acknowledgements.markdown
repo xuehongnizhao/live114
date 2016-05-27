@@ -8,7 +8,7 @@ IQKeyboardManager license
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Iftekhar Qurashi
+Copyright (c) 2013-14 Iftekhar Qurashi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -52,7 +52,7 @@ THE SOFTWARE.
 
 ## RDVTabBarController
 
-Copyright (c) 2013 Robert Dimitrov
+Copyright (c) 2013-2014 Robert Dimitrov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
 associated documentation files (the "Software"), to deal in the Software without restriction, 

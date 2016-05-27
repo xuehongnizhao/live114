@@ -1,7 +1,7 @@
 //
 //  IQBarButtonItem.m
 // https://github.com/hackiftekhar/IQKeyboardManager
-// Copyright (c) 2013-14 Iftekhar Qurashi.
+// Copyright (c) 2013-15 Iftekhar Qurashi.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,15 +26,17 @@
 
 @implementation IQBarButtonItem
 
-- (instancetype)init
++(void)initialize
 {
-    self = [super init];
-    if (self)
-    {
-        //Removing tint
-        [self setTintColor:nil];
-    }
-    return self;
+    [super initialize];
+    
+    [[self appearance] setTintColor:nil];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateNormal];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateHighlighted];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateDisabled];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateSelected];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateApplication];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateReserved];
 }
 
 @end

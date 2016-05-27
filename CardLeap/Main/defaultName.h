@@ -52,6 +52,9 @@
 
 //龙广路况图片上传
 #define hd_upload_img       @"hd_upload_img"
+
+//龙光路况语音上传
+#define hd_upload_voice     @"hd_upload_voice"
 // 写入NSUserDefault中的数据
 #define SetUserDefault(value, key) [[NSUserDefaults standardUserDefaults] setObject:value forKey:key]
 // 获取NSUserDefault中的数据
