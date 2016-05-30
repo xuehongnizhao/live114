@@ -90,9 +90,14 @@
         [XMNPhotoPicker sharePhotoPicker].maxCount=3;
         [XMNPhotoPicker sharePhotoPicker].pickingVideoEnable=NO;
         [[XMNPhotoPicker sharePhotoPicker] setDidFinishPickingPhotosBlock:^(NSArray<UIImage *> *images, NSArray<XMNAssetModel *> *assets) {
-      
-            for (XMNAssetModel *model in assets) {
-                UIImage *image=model.originImage;
+            NSMutableArray *myImages=[NSMutableArray arrayWithArray:images];
+            if (myImages.count<=0) {
+                for (XMNAssetModel *model in assets) {
+                    UIImage *image=model.originImage;
+                    [myImages addObject:image];
+                }
+            }
+            for (UIImage *image in myImages) {
                 NSString *bigArrayUrl = connect_url(as_comm);
                 NSString *upImageURL=[bigArrayUrl stringByAppendingPathComponent:hd_upload_img];
                 NSData* imageData=UIImageJPEGRepresentation(image, 0.3);

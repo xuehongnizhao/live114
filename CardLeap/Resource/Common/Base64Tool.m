@@ -4,7 +4,7 @@
 //
 //  Created by Sky on 14-8-25.
 //  Copyright (c) 2014年 com.youdro. All rights reserved.
-//
+//  加密方法
 
 #import "Base64Tool.h"
 #import "Base64.h"
