@@ -85,7 +85,8 @@
     
     if([CLLocationManager locationServicesEnabled])
     {
-        [SVProgressHUD showWithStatus:@"定位城市" ];
+        [SVProgressHUD showWithStatus:@"定位城市"];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
         locationManager.distanceFilter=0.5;

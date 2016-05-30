@@ -13,10 +13,12 @@
 #import "XMNPhotoPickerFramework.h"
 #import "VoiceView.h"
 #import "LoginViewController.h"
+#import "UserModel.h"
 #define NaviItemTag 2016
 @interface linNewFunctionWebController()<UIWebViewDelegate,UMSocialUIDelegate,VoiceViewDelegate>
 {
     NSString *_uuid;
+    WVJBResponseCallback _responseCallBack;
 }
 @property (strong,nonatomic)UIWebView *detailWeb;
 @property (strong, nonatomic) WebViewJavascriptBridge *bridge;
@@ -44,10 +46,11 @@
         vv.backgroundColor=[UIColor colorWithRed:0.9793 green:0.9793 blue:0.9793 alpha:1.0];
         vv.delegate=self;
         [self.view addSubview:vv];
-        [vv autoPinEdgeToSuperviewEdge:ALEdgeBottom];
         [vv autoPinEdgeToSuperviewEdge:ALEdgeLeft];
         [vv autoPinEdgeToSuperviewEdge:ALEdgeRight];
         [vv autoSetDimension:ALDimensionHeight toSize:SCREEN_HEIGHT*3/7];
+        [vv autoPinEdgeToSuperviewEdge:ALEdgeBottom];
+        _responseCallBack=responseCallback;
     }];
 }
 -(void)sendDataWithFilePath:(NSString*) filePath{
@@ -61,6 +64,7 @@
                             };
     [Base64Tool postFileTo:upVoiceURL andParams:dict andFile:voiceData andFileName:@"pic" isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         if ([param[@"code"] integerValue]==200) {
+            _responseCallBack(@"true");
         }else{
             [SVProgressHUD showErrorWithStatus:param[@"message"]];
         }
@@ -75,8 +79,7 @@
         firVC.navigationItem.title = @"登录";
         [firVC setHiddenTabbar:YES];
         [self.navigationController pushViewController:firVC animated:YES];
-        
-        responseCallback(data[@"uuid"]);
+        _responseCallBack=responseCallback;
     }];
 }
 - (void)setUpLoadImageWebBridge{
@@ -87,8 +90,9 @@
         [XMNPhotoPicker sharePhotoPicker].maxCount=3;
         [XMNPhotoPicker sharePhotoPicker].pickingVideoEnable=NO;
         [[XMNPhotoPicker sharePhotoPicker] setDidFinishPickingPhotosBlock:^(NSArray<UIImage *> *images, NSArray<XMNAssetModel *> *assets) {
-            
-            for (UIImage *image in images) {
+      
+            for (XMNAssetModel *model in assets) {
+                UIImage *image=model.originImage;
                 NSString *bigArrayUrl = connect_url(as_comm);
                 NSString *upImageURL=[bigArrayUrl stringByAppendingPathComponent:hd_upload_img];
                 NSData* imageData=UIImageJPEGRepresentation(image, 0.3);
@@ -98,7 +102,7 @@
                                        };
                 [Base64Tool postFileTo:upImageURL andParams:dict andFile:imageData andFileName:@"pic" isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
                     if ([param[@"code"] integerValue]==200) {
-                        responseCallback(data[@"uuid"]);
+                        responseCallback(data[@"true"]);
                     }else{
                         [SVProgressHUD showErrorWithStatus:param[@"message"]];
                     }
@@ -117,6 +121,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    NSDictionary *userDic=@{@"tel":[UserModel shareInstance].user_tel,
+                            @"u_id":[UserModel shareInstance].u_id,
+                            @"session_key": [UserModel shareInstance].session_key};
+    if (_responseCallBack) {
+        _responseCallBack(userDic);
+    }
     [self.rdv_tabBarController setTabBarHidden:YES animated:YES];
 }
 

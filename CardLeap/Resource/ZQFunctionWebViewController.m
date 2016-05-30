@@ -11,8 +11,15 @@
 #import "UMSocial.h"
 #import "WebViewJavascriptBridge.h"
 #import "XMNPhotoPickerFramework.h"
+#import "VoiceView.h"
+#import "LoginViewController.h"
+#import "UserModel.h"
 #define NaviItemTag 2016
-@interface ZQFunctionWebViewController()<UIWebViewDelegate,UMSocialUIDelegate>
+@interface ZQFunctionWebViewController()<UIWebViewDelegate,UMSocialUIDelegate,VoiceViewDelegate>
+{
+    NSString *_uuid;
+    WVJBResponseCallback _responseCallBack;
+}
 @property (strong,nonatomic) UIWebView *detailWeb;
 @property (strong, nonatomic) WebViewJavascriptBridge *bridge;
 @end
@@ -25,12 +32,79 @@
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self setUI];
-    
-     [self setWebBridge];
+    [self setUpLoadImageWebBridge];
+    [self setUpLoadVoiceWebBridge];
+    [self setLogInWebBridge];
 }
-- (void)setWebBridge{
+#pragma mark --- 2016.5 添加webBridge
+/**
+ *  @author zq, 16-05-30 13:05:33
+ *
+ *  添加上传语音的链接
+ */
+- (void)setUpLoadVoiceWebBridge{
+    [self.bridge registerHandler:@"hd_uploadvoice" handler:^(id data, WVJBResponseCallback responseCallback) {
+        _uuid=data[@"uuid"];
+        VoiceView *vv=[[VoiceView alloc]initForAutoLayout];
+        vv.backgroundColor=[UIColor colorWithRed:0.9793 green:0.9793 blue:0.9793 alpha:1.0];
+        vv.delegate=self;
+        [self.view addSubview:vv];
+        [vv autoPinEdgeToSuperviewEdge:ALEdgeLeft];
+        [vv autoPinEdgeToSuperviewEdge:ALEdgeRight];
+        [vv autoSetDimension:ALDimensionHeight toSize:SCREEN_HEIGHT*3/7];
+        [vv autoPinEdgeToSuperviewEdge:ALEdgeBottom];
+        _responseCallBack=responseCallback;
+    }];
+}
+
+/**
+ *  @author zq, 16-05-30 13:05:58
+ *
+ *  voiceView代理方法
+ *
+ *  @param filePath 返回语音存放地址以用来上传语音
+ */
+-(void)sendDataWithFilePath:(NSString*) filePath{
+    
+    NSString *bigArrayUrl = connect_url(as_comm);
+    NSString *upVoiceURL=[bigArrayUrl stringByAppendingPathComponent:hd_upload_voice];
+    NSData *voiceData=[NSData dataWithContentsOfFile:filePath];
+    NSDictionary *dict = @{
+                           @"app_key":upVoiceURL,
+                           @"uuid":_uuid
+                           };
+    [Base64Tool postFileTo:upVoiceURL andParams:dict andFile:voiceData andFileName:@"pic" isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
+        if ([param[@"code"] integerValue]==200) {
+            _responseCallBack(@"true");
+        }else{
+            [SVProgressHUD showErrorWithStatus:param[@"message"]];
+        }
+    } andErrorBlock:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"网络异常"];
+    }];
+}
+/**
+ *  @author zq, 16-05-30 13:05:54
+ *
+ *  添加登录的链接
+ */
+- (void)setLogInWebBridge{
+    [self.bridge registerHandler:@"hd_login" handler:^(id data, WVJBResponseCallback responseCallback) {
+        LoginViewController *firVC = [[LoginViewController alloc] init];
+        firVC.identifier = @"0";
+        firVC.navigationItem.title = @"登录";
+        [firVC setHiddenTabbar:YES];
+        [self.navigationController pushViewController:firVC animated:YES];
+        _responseCallBack=responseCallback;
+    }];
+}
+/**
+ *  @author zq, 16-05-30 13:05:14
+ *
+ *  添加上传图片的链接
+ */
+- (void)setUpLoadImageWebBridge{
     [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
         //    1. 推荐使用XMNPhotoPicker 的单例
         //    2. 设置选择完照片的block回调
@@ -39,18 +113,18 @@
         [XMNPhotoPicker sharePhotoPicker].pickingVideoEnable=NO;
         [[XMNPhotoPicker sharePhotoPicker] setDidFinishPickingPhotosBlock:^(NSArray<UIImage *> *images, NSArray<XMNAssetModel *> *assets) {
             
-            for (UIImage *image in images) {
-                //上传 头像
+            for (XMNAssetModel *model in assets) {
+                UIImage *image=model.originImage;
                 NSString *bigArrayUrl = connect_url(as_comm);
                 NSString *upImageURL=[bigArrayUrl stringByAppendingPathComponent:hd_upload_img];
-                NSData* imageData=UIImageJPEGRepresentation(image, 0.1);
+                NSData* imageData=UIImageJPEGRepresentation(image, 0.3);
                 NSDictionary *dict = @{
                                        @"app_key":upImageURL,
                                        @"uuid":data[@"uuid"]
                                        };
                 [Base64Tool postFileTo:upImageURL andParams:dict andFile:imageData andFileName:@"pic" isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
                     if ([param[@"code"] integerValue]==200) {
-                        responseCallback(data[@"uuid"]);
+                        responseCallback(data[@"true"]);
                     }else{
                         [SVProgressHUD showErrorWithStatus:param[@"message"]];
                     }
@@ -61,22 +135,29 @@
             }
             
         }];
-        
         //4. 显示XMNPhotoPicker
         [[XMNPhotoPicker sharePhotoPicker] showPhotoPickerwithController:self animated:YES];
         
     }];
 }
+
+/**
+ *  @author zq, 16-05-30 13:05:28
+ *
+ *  block回调放到这里执行
+ *
+ */
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    NSDictionary *userDic=@{@"tel":[UserModel shareInstance].user_tel,
+                            @"u_id":[UserModel shareInstance].u_id,
+                            @"session_key": [UserModel shareInstance].session_key};
+    if (_responseCallBack) {
+        _responseCallBack(userDic);
+    }
     [self.rdv_tabBarController setTabBarHidden:YES animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)setUI
