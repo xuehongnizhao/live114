@@ -90,6 +90,7 @@
 
 -(void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     self.navigationItem.hidesBackButton = NO;
     [self.delegate completeAction];
 }

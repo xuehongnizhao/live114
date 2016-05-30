@@ -473,7 +473,7 @@ static NSString *pageCount = @"10";
 -(void)getShopList:(float)lat lng:(float)lng
 {
     NSString *tmp_url  = connect_url(@"shop_map");
-#warning 11.20日修改（外卖地图）
+#pragma mark --- 11.20日修改（外卖地图）
     if (self.category == nil) {
         self.category = @"0";
     }

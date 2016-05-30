@@ -218,7 +218,7 @@
 //    [UMSocialData defaultData].extConfig.sinaData.shareText = @"城市o2o";
 //    [UMSocialData defaultData].extConfig.sinaData.urlResource.url = @"www.baidu.com";
 }
-#warning 11.28 点击分享按钮就加积分
+#pragma mark --- 11.28 点击分享按钮就加积分
 - (void) UserSharePoint {
     if (ApplicationDelegate.islogin == YES) {
         NSString *url = connect_url(@"share_point");

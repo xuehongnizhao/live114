@@ -530,8 +530,6 @@
 {
     //--------------------------------
     hintLable.text = info.location_name;
-    //--------------------------------
-    NSString *currentPos = info.location_name;
     NSString *lng = info.location_lng;
     NSString *lat = info.location_lat;
     //--------------刷新列表------------

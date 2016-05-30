@@ -729,14 +729,11 @@ static NSString *pageCount = @"10";
     return _mapView;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    //    self.mapView.showsUserLocation = YES;
-    //    self.mapView.userTrackingMode = MKUserTrackingModeNone;
-}
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     self.mapView = nil;
     [SVProgressHUD dismiss];
     self.mapView.showsUserLocation = NO;

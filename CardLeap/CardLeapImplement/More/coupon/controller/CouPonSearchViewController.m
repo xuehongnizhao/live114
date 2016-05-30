@@ -57,6 +57,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     //初始化搜索条
     [self initSearchBar];
 }
@@ -75,14 +76,6 @@
         _couponCollectionview.scrollEnabled = YES;
         _couponCollectionview.delegate = self;
         _couponCollectionview.dataSource = self;
-//        [_couponCollectionview addHeaderWithTarget:self action:@selector(headerBeginRefreshing)];
-//        [_couponCollectionview addFooterWithTarget:self action:@selector(footerBeginRefreshing)];
-//        _couponCollectionview.footerPullToRefreshText = @"上拉可以加载更多数据了";
-//        _couponCollectionview.footerReleaseToRefreshText = @"松开马上加载更多数据了";
-//        _couponCollectionview.footerRefreshingText = @"正在加载，请稍等";
-//        _couponCollectionview.headerPullToRefreshText = @"下拉可以刷新了";
-//        _couponCollectionview.headerReleaseToRefreshText = @"松开马上刷新了";
-//        _couponCollectionview.headerRefreshingText = @"正在刷新，请稍等";
     }
     return _couponCollectionview;
 }
@@ -155,6 +148,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [_searchBar removeFromSuperview];
     [SVProgressHUD dismiss];
 }

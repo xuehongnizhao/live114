@@ -85,7 +85,7 @@
 - (UIButton *)completeButton{
     if (!_completeButton) {
         _completeButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        [_completeButton setTitle:@"完成" forState:UIControlStateNormal];
+        [_completeButton setImage:[UIImage imageNamed:@"done_voiceView"] forState:UIControlStateNormal];
         [_completeButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [_completeButton addTarget:self action:@selector(completeButtonAction) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -109,8 +109,8 @@
 -(void)initDeleteButton
 {
     self.deleteButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    [self.deleteButton setTitle:@"取消" forState:UIControlStateNormal];
-    [self.deleteButton setTitle:@"删除" forState:UIControlStateSelected];
+    [self.deleteButton setImage:[UIImage imageNamed:@"cancell_voiceView"] forState:UIControlStateNormal];
+    [self.deleteButton setImage:[UIImage imageNamed:@"delete_voiceView"] forState:UIControlStateSelected];
     [self.deleteButton setTitleColor:[UIColor colorWithRed:1.0 green:0.4 blue:0.4 alpha:1.0] forState:UIControlStateNormal];
     [self.deleteButton setTitleColor:[UIColor colorWithRed:0.502 green:0.0 blue:0.0 alpha:1.0] forState:UIControlStateSelected];
 //    [self.deleteButton setImage:[UIImage imageNamed:@"issue_back_sel"] forState:UIControlStateNormal];

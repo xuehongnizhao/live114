@@ -33,7 +33,7 @@
     [self setUI];
     [self setUpLoadImageWebBridge];
     [self setUpLoadVoiceWebBridge];
-//    [self setLogInWebBridge];
+    [self setLogInWebBridge];
 }
 #pragma mark --- 2016.5 添加webBridge
 
@@ -68,11 +68,17 @@
         [SVProgressHUD showErrorWithStatus:@"网络异常"];
     }];
 }
-//- (void)setLogInWebBridge{
-//    [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
-//        responseCallback(data[@"uuid"]);
-//    }];
-//}
+- (void)setLogInWebBridge{
+    [self.bridge registerHandler:@"hd_login" handler:^(id data, WVJBResponseCallback responseCallback) {
+        LoginViewController *firVC = [[LoginViewController alloc] init];
+        firVC.identifier = @"0";
+        firVC.navigationItem.title = @"登录";
+        [firVC setHiddenTabbar:YES];
+        [self.navigationController pushViewController:firVC animated:YES];
+        
+        responseCallback(data[@"uuid"]);
+    }];
+}
 - (void)setUpLoadImageWebBridge{
     [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
         //    1. 推荐使用XMNPhotoPicker 的单例
@@ -125,13 +131,12 @@
     closeItem.tag=NaviItemTag +2;
     UIBarButtonItem *mainItem=[[UIBarButtonItem alloc]initWithTitle:@"主页" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
     mainItem.tag=NaviItemTag+3;
-    //    UIBarButtonItem *shareItem=[[UIBarButtonItem alloc]initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
+    
     UIButton *shareButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     UIBarButtonItem *shareItem=[[UIBarButtonItem alloc]initWithCustomView:shareButton];
     [shareButton setImage:[UIImage imageNamed:@"coupon_share_no"] forState:UIControlStateNormal];
     [shareButton setImage:[UIImage imageNamed:@"coupon_share_sel"] forState:UIControlStateHighlighted];
     [shareButton addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
-    //    UIBarButtonItem *shareItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"coupon_share_no"] style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
     shareButton.tag=NaviItemTag+4;
     
     self.navigationItem.leftBarButtonItems=@[closeItem,backItem];

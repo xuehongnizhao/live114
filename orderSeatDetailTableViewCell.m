@@ -151,7 +151,7 @@
 //            [_shop_desc_lable autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:5.0f];
 //            [_shop_desc_lable autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_shop_name_lable withOffset:5.0f];
 //            _shop_desc_lable.text = info.shop_desc;
-#warning 11.24 订座商家详情简介修改
+#pragma mark --- 11.24 订座商家详情简介修改
 //            [self.contentView addSubview:self.shop_desc_lable];
 //            [_shop_desc_lable autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
 //            [_shop_desc_lable autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10.0f];
@@ -282,7 +282,7 @@
 //            [_shop_desc_lable autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:5.0f];
 //            [_shop_desc_lable autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_shop_name_lable withOffset:5.0f];
 //            _shop_desc_lable.text = info.shop_desc;
-#warning 11.24 订座商家详情简介修改
+#pragma mark --- 11.24 订座商家详情简介修改
 //            [self.contentView addSubview:self.shop_desc_lable];
 //            [_shop_desc_lable autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
 //            [_shop_desc_lable autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10.0f];
@@ -307,7 +307,7 @@
 #pragma mark ----- UIWebView代理
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-#warning 2015.12.29 加载web时显示“数据加载...”字样
+#pragma mark --- 2015.12.29 加载web时显示“数据加载...”字样
     [SVProgressHUD showWithStatus:@"数据加载..."];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView

@@ -199,8 +199,8 @@
      */
     if (tableView == _tableView) {
         select_one = indexPath.row;
-        NSString *currentRow = [selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex];
-        currentRow = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+
+      NSString *currentRow = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
         //重新加入数组
         NSMutableArray *tempArr = [[NSMutableArray alloc] init];
         for(int i=0;i<[selectRowAtTableview count];i++)
@@ -224,12 +224,6 @@
         }else{
             [self confiMenuWithSelectRow:indexPath.row isFirst:YES];
             
-            NSArray *array = _array[_currentSelectedMenudIndex];
-            cateInfo *info = array[indexPath.row];
-            NSString *selectText = info.cate_name;
-            
-//            CATextLayer *title = [[CATextLayer alloc] init];
-//            title.string = selectText;
             //菜单消失
             [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_tableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
                 _show = NO;
@@ -420,7 +414,6 @@
     if (show) {
         //判断有没有二级的子菜单 有就宽度调整 没有就不做调整
         CGFloat tableViewWidth ;
-        CGFloat secondHeight = 5 * tableView.rowHeight;
         if ([self isPopSecondMenu]==YES) {
             tableViewWidth = self.frame.size.width/2;
             _secondTableview.frame = CGRectMake(tableViewWidth, self.frame.origin.y + self.frame.size.height, tableViewWidth, 0);
@@ -506,8 +499,6 @@
     [path addLineToPoint:CGPointMake(4, 5)];
     [path addLineToPoint:CGPointMake(8, 0)];
    
-//    [path addCurveToPoint:CGPointMake(0, 0) controlPoint1:CGPointMake(8, 0) controlPoint2:CGPointMake(4, 5)];
-    //[path closePath];
     
     layer.path = path.CGPath;
     layer.lineWidth = 0.5;

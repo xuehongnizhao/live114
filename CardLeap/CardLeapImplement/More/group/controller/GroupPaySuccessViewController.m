@@ -27,19 +27,6 @@
     [self setUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-//    [self.iconImage removeFromSuperview];
-//    [self.successLalbe removeFromSuperview];
-//    [self.backShopButton removeFromSuperview];
-//    [self.checkOrderButton removeFromSuperview];
-}
-
 #pragma mark---------set UI
 -(void)setUI
 {

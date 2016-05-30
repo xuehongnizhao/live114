@@ -485,17 +485,4 @@ static const NSInteger TagOffset = 1000;
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-//    {
-//        if (![self.isPush isEqualToString:@"0"]) {
-//            for (int i=0 ; i<[_viewControllers count]; i++) {
-//                UIViewController *VC = [_viewControllers objectAtIndex:i];
-//                // [VC addObserver:self forKeyPath:@"selectedText" options: NSKeyValueObservingOptionNew |NSKeyValueObservingOptionOld context:(__bridge void *)([NSString stringWithFormat:@"viewlist%d",i+1])];
-//                [VC removeObserver:self forKeyPath:@"selectedText"];
-//            }
-//        }
-//    }
-}
 @end

@@ -33,6 +33,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     [_remark_T becomeFirstResponder];
 }
 
@@ -171,7 +172,7 @@
         int count = _remark_T.text.length;
         if (count>200) {
             _hintLable.text = [NSString stringWithFormat:@"%d/200",count];
-#warning 2015.12.30 提示文字不能用alertView展示，否则进行POP时会出现屏幕位移现象。如果一定要用alerView，需要首先移除键盘的第一响应者，再加一个0.5秒的延迟，之后在POP，机器卡可能需要更长时间的延迟。
+#pragma mark --- 2015.12.30 提示文字不能用alertView展示，否则进行POP时会出现屏幕位移现象。如果一定要用alerView，需要首先移除键盘的第一响应者，再加一个0.5秒的延迟，之后在POP，机器卡可能需要更长时间的延迟。
             [_remark_T resignFirstResponder];
             [SVProgressHUD showErrorWithStatus:@"最多输入200个字符"];
         }else{

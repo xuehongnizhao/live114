@@ -31,7 +31,7 @@
 {
     if (!self) {
         self = [[shopTakeCateInfo alloc] init];
-    }
+
     _review_num = [NSString stringWithFormat:@"%@",dict[@"review_num"]];
     _shop_address = [NSString stringWithFormat:@"%@",dict[@"shop_address"]];
     _shop_take_desc = [NSString stringWithFormat:@"%@",dict[@"shop_take_desc"]];
@@ -53,6 +53,7 @@
         dishCateInfo *info = [[dishCateInfo alloc] initWithDictionary:dic];
         [_cate addObject:info];
     }
+}
     return self;
 }
 

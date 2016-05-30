@@ -15,7 +15,7 @@
 -(void)callPhone;
 @end
 
-#warning 11.30 修改web页计算高度的方法
+#pragma mark --- 11.30 修改web页计算高度的方法
 @protocol orderGroupCellWebViewHeight <NSObject>
 // 下载成功，返回web高度
 -(void) webViewDidLoad:(CGFloat )height;

@@ -85,10 +85,7 @@
     // Do any additional setup after loading the view.
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    //[mTextView becomeFirstResponder];
-}
+
 
 -(void)initData
 {
@@ -341,14 +338,6 @@
             NSString *session_key = [UserModel shareInstance].session_key;
             NSString *post_url = connect_url(@"com_add");
             //NSString *cat_str = cateText.text;
-            NSString *lat = userDefault(@"u_lat");
-            NSString *lng = userDefault(@"u_lng");
-            if (lat == nil) {
-                lat = @"0";
-            }
-            if (lng == nil) {
-                lng = @"0";
-            }
             NSMutableDictionary* dict=[NSMutableDictionary dictionaryWithDictionary:@{
                                                                                       @"u_id":u_id,
                                                                                       @"app_key":post_url,
@@ -429,14 +418,7 @@
     [UIView animateWithDuration:0.25 animations:^{
         selectBar.frame=CGRectMake(0, height, 320*LinPercent, 50);
     }];
-    //还原分类view
-    height = 188;
-    if (IS_HEIGHT_GTE_568==0) {
-        height = 100;
-    }
-    //    CGRect rect = _tb.frame;
-    //    rect.origin.y = cateView.frame.origin.y + 8;
-    //    _tb.frame = rect;
+
 }
 //CGRectMake(10, cateView.frame.origin.y+8, 170, 0)
 #pragma mark---------selectBarDelegate
@@ -930,12 +912,14 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"STOPPLAY" object:nil];
     [UUProgressHUD dismissWithError:@""];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setHiddenTabbar:YES];
 }
 /*

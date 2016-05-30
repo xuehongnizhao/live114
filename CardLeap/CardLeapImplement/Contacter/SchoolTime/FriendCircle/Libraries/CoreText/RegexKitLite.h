@@ -79,7 +79,7 @@ extern "C" {
 #endif // defined(RKL_BLOCKS) && (RKL_BLOCKS == 1)
 
 #if       defined(_RKL_BLOCKS_ENABLED) && !defined(__BLOCKS__)
-#warning RegexKitLite support for Blocks is enabled, but __BLOCKS__ is not defined.  This compiler may not support Blocks, in which case the behavior is undefined.  This will probably cause numerous compiler errors.
+#pragma mark --- RegexKitLite support for Blocks is enabled, but __BLOCKS__ is not defined.  This compiler may not support Blocks, in which case the behavior is undefined.  This will probably cause numerous compiler errors.
 #endif // defined(_RKL_BLOCKS_ENABLED) && !defined(__BLOCKS__)
 
 // For Mac OS X < 10.5.

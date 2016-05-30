@@ -76,8 +76,8 @@
 // You will need to build your own version of the ICU library and link to that in order for RegexKitLite to work successfully on < 10.3.  This is not simple.
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 1030
-#warning The ICU dynamic shared library, /usr/lib/libicucore.dylib, is only available on Mac OS X 10.3 and later.
-#warning You will need to supply a version of the ICU library to use RegexKitLite on Mac OS X 10.2 and earlier.
+#pragma mark --- The ICU dynamic shared library, /usr/lib/libicucore.dylib, is only available on Mac OS X 10.3 and later.
+#pragma mark --- You will need to supply a version of the ICU library to use RegexKitLite on Mac OS X 10.2 and earlier.
 #endif
 
 ////////////

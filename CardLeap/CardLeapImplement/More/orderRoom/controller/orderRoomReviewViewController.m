@@ -112,7 +112,7 @@
     //评价 之后跳转会评价列表页面
     NSString *url = connect_url(@"hotel_review");
     NSString *text = self.userInput_T.text;
-#warning 12.16 取消字数限制,评论后跳转列表页
+#pragma mark --- 12.16 取消字数限制,评论后跳转列表页
     if (text == nil || [text isEqualToString:@""] == YES) {
         text = @" ";
     }

@@ -66,6 +66,7 @@ static NSInteger lastCount=0;
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     if (_nResultType == DO_PICKER_RESULT_UIIMAGE)
         [ASSETHELPER clearData];
     

@@ -381,7 +381,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
         int length_str = (int)textView.text.length ;
         if (length_str > 0) {
             BOOL needReload = NO;
-            if ( ![textView.text isEqualToString:@""] ) {
+            if ( !textView.text.length ) {
                 
                 needReload = YES;
                 
@@ -1747,6 +1747,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setHiddenTabbar:YES];
 }
 #pragma mark----屏幕适配
@@ -1766,20 +1767,6 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
     [self changeSize];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    //[_LinFriendCircleTableview reloadData];
-}
-//
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+
 
 @end

@@ -6821,6 +6821,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 454FAE6F94508CDEA3CC1397 /* Pods-cityo2o.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -6909,6 +6910,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21BE66711596615377878A60 /* Pods-cityo2o.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

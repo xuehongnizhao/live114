@@ -20,7 +20,7 @@
 //#define baseUrl @"192.168.1.60/youzhi"
 //#define baseUrl @"121.42.194.206:8083/life114"
 
-#warning 2016.1.5 修改服务器地址为本地
+#pragma mark --- 2016.1.5 修改服务器地址为本地
 //#define baseUrl @"manager.114lives.com"
 #define baseUrl @"192.168.1.141/life114"
 

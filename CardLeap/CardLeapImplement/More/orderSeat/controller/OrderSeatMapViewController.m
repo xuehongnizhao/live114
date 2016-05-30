@@ -207,7 +207,7 @@ static NSString *pageCount = @"10";
         [self.myLevel addSubview:imageview];
     }
 }
-#warning  星星处理 mark
+#pragma mark ---  星星处理 mark
 //设置用户操作view中的数据值
 - (void)settingOperationView
 {
@@ -472,10 +472,7 @@ static NSString *pageCount = @"10";
 -(void)getShopList:(float)lat lng:(float)lng
 {
     NSString *tmp_url  = connect_url(@"seat_map");
-    NSString *city_id = [[NSUserDefaults standardUserDefaults]objectForKey:KCityID];
-    if (city_id == nil) {
-        city_id = @"0";
-    }
+
     
 #pragma mark --- 11.20日修改（订座位地图）
     if (self.category == nil) {

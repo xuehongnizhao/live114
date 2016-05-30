@@ -51,12 +51,14 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     //[self autoJumpLogin];
     [self setHiddenTabbar:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     if (ApplicationDelegate.islogin == NO) {
         
     }else{

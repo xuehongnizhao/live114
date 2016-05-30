@@ -384,13 +384,9 @@
     [self.navigationController pushViewController:firVC animated:YES];
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    //    [timer invalidate];
-}
-
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     //    [self initTimer];
     [self updateOrderState];
 }

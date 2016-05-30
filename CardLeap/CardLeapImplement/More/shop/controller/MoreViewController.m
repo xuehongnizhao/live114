@@ -29,6 +29,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     ShopListViewController *firVC = [[ShopListViewController alloc] init];
     [firVC setNavBarTitle:@"商家" withFont:14.0f];
     firVC.is_hidden = @"0";

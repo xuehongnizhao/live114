@@ -41,31 +41,11 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setHiddenTabbar:YES];
 }
 
-#pragma mark-------get web height
-//-(void)getHeightForWeb:(NSString*)urlString
-//{
-//    UIWebView *tmpWeb = [[UIWebView alloc] initWithFrame:CGRectMake(0, 600, 320, 10)];
-//    tmpWeb.backgroundColor = [UIColor clearColor];
-//    [self.view addSubview:tmpWeb];
-//    tmpWeb.delegate = self;
-//    [tmpWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
-//}
-//
-//-(void)webViewDidFinishLoad:(UIWebView *)webView
-//{
-//    NSLog(@"加载完成，获取高度");
-//    //document.getElementById(\"foo\").offsetHeight   offsetHeight
-//    //@"document.body.scrollHeight"
-//    NSString *height_str= [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"];
-//    webHeight = [height_str floatValue];
-//    is_finish = YES;
-//    [self.groupDetailTableview reloadData];
-//    [webView removeFromSuperview];
-//    webView = nil;
-//}
+
 
 #pragma mark-------init data
 -(void)initData
@@ -240,7 +220,7 @@
                 
             }else{
                 height = 20.0f;
-#warning 12.10 优化计算cell高度 by CC
+#pragma mark --- 12.10 优化计算cell高度 by CC
                 if (detailInfo == nil) {
                     NSString *shop_name = self.info.shop_name;
                     if (shop_name != nil && [shop_name isEqualToString:@""] == NO) {
@@ -342,7 +322,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int count;
+    NSInteger count;
     switch (section) {
         case 0:
             count = 2;
@@ -413,7 +393,7 @@
     [UMSocialData defaultData].extConfig.sinaData.shareText = sinaText;
 //    [UMSocialData defaultData].extConfig.sinaData.urlResource.url = detailInfo.share_url;
 }
-#warning 11.28 点击分享按钮就加积分
+#pragma mark --- 11.28 点击分享按钮就加积分
 - (void) UserSharePoint {
     if (ApplicationDelegate.islogin == YES) {
         NSString *url = connect_url(@"share_point");

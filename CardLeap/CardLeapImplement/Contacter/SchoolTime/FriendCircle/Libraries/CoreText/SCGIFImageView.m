@@ -170,6 +170,7 @@
 				CGContextScaleCTM(ctx, 1.0, -1.0);
 				CGContextTranslateCTM(ctx, 0.0, -size.height);
 				// Clear Context
+                
 				CGContextClearRect(ctx, clipRect);
 				// Restore Context
 				CGContextRestoreGState(ctx);

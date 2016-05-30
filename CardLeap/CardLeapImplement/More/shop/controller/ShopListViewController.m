@@ -67,6 +67,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     //    if (![self.is_hidden isEqualToString:@"0"]) {
     //        [self setHiddenTabbar:YES];
     //    }else{
@@ -74,9 +75,7 @@
     //    }
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    
-}
+
 
 #pragma mark------get data from net
 -(void)getCateFromNet

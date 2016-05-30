@@ -107,7 +107,7 @@
 //    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
 //    
 //    UIBarButtonItem *mybuttonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-//#warning 内存溢出
+//#pragma mark --- 内存溢出
 //    buttonItem = mybuttonItem;
 //}
 

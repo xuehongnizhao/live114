@@ -43,7 +43,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
     NSLog(@"%@",self);
     if (!self) {
         self = [[CellViewMgrController alloc] init];
-    }
+    
     FriendCircleList = [[NSArray alloc] initWithArray:array];
     _heightsOfCells = [[NSMutableArray alloc] init];
     _textHeights = [[NSMutableArray alloc] init];
@@ -151,7 +151,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
                 {
                     g_nsdicemojiDict = [NSMutableDictionary dictionary];
                     
-                    g_nsdicemojiDict = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"expression" ofType:@"plist"]];
+                    g_nsdicemojiDict = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"expression" ofType:@"plist"]];
                     
                     [[NSUserDefaults standardUserDefaults] setObject:g_nsdicemojiDict forKey:@"FaceMap"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -219,6 +219,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
         [_reviewListHeights addObject:[NSNumber numberWithInt:reviewHeight]];
         //装入数组
         [_heightsOfCells addObject:[NSNumber numberWithFloat:height]];
+    }
     }
     NSLog(@"cell的高度都是多少 %@",_heightsOfCells);
     return self;
@@ -458,7 +459,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
             [attString setFont:[UIFont systemFontOfSize:13]];
             [textLabelEx setBackgroundColor:[UIColor clearColor]];
             [textLabelEx setAttString:attString withImages:wk_markupParser.images];
-            int review_text_y = user_name_label.frame.origin.y + user_name_label.frame.size.height;
+            
             textLabelEx.frame = CGRectMake(7,review_y, 230,100);
             CGRect labelRect = textLabelEx.frame;
             labelRect.size.width = [textLabelEx sizeThatFits:CGSizeMake(230, CGFLOAT_MAX)].width;

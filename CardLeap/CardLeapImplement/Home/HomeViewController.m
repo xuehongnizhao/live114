@@ -163,6 +163,7 @@ linHangyeCommendViewDelegate>
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     //设置进入城市选择
     if (![[NSUserDefaults standardUserDefaults] boolForKey:isShowCityChose]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:isShowCityChose];
@@ -221,6 +222,7 @@ linHangyeCommendViewDelegate>
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setHiddenTabbar:NO];
     [[HomeNavigationView shareInstance] setlogoButtonEnabel];
 }

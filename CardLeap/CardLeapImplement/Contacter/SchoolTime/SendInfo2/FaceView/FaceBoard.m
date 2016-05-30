@@ -24,11 +24,6 @@
 
 @implementation FaceBoard
 
-@synthesize delegate;
-
-@synthesize inputTextField = _inputTextField;
-@synthesize inputTextView = _inputTextView;
-@synthesize send ;
 - (id)init {
      CGFloat my_height = SCREEN_HEIGHT-64-216*LinHeightPercent;
     self = [super initWithFrame:CGRectMake(0, my_height, 320*LinPercent, 216*LinHeightPercent)];
@@ -130,8 +125,7 @@
         faceString =[_faceMap objectForKey:[NSString stringWithFormat:@"%03d",i]];
         NSLog(@"faceString:%@",faceString);
                 self.inputTextField.text = faceString;
-        [faceString release];
-        [delegate textFieldDidChange:self.inputTextField];
+        [_delegate textFieldDidChange:self.inputTextField];
     }
 
     if (self.inputTextView)
@@ -154,9 +148,9 @@
 
         if ([self.send isEqualToString:@"1"])
         {
-            faceString = [NSString stringWithFormat:@"%@%@",self.inputTextView.text,faceString];
+            faceString = [NSMutableString stringWithFormat:@"%@%@",self.inputTextView.text,faceString];
             self.inputTextView.text = faceString;
-            [delegate faceBoardTextViewDidChange:self.inputTextView andDelete:NO];
+            [_delegate faceBoardTextViewDidChange:self.inputTextView andDelete:NO];
         }
         else
         {
@@ -164,7 +158,7 @@
             //faceString =[_faceMap objectForKey:[NSString stringWithFormat:@"%03d",i]];
             NSLog(@"faceString:%@",faceString);
             self.inputTextView.text = faceString;
-            [delegate faceBoardTextViewDidChange:self.inputTextView andDelete:NO];
+            [_delegate faceBoardTextViewDidChange:self.inputTextView andDelete:NO];
         }
     }
 }
@@ -177,7 +171,7 @@
         if ([self.send isEqualToString:@"1"]) {
             //
         }else{
-            [delegate faceBoardTextViewDidChange:self.inputTextView andDelete:YES];
+            [_delegate faceBoardTextViewDidChange:self.inputTextView andDelete:YES];
         }
         inputString = self.inputTextView.text;
     }
@@ -209,28 +203,18 @@
         if ( self.inputTextField ) {
             
             self.inputTextField.text = string;
-            [delegate textFieldDidChange:self.inputTextField];
+            [_delegate textFieldDidChange:self.inputTextField];
         }
         
         if ( self.inputTextView ) {
             
             NSLog(@"删除之后的Str:%@",string);
             self.inputTextView.text = string;
-            [delegate faceBoardDeleteFinsish:self.inputTextView];
+            [_delegate faceBoardDeleteFinsish:self.inputTextView];
             //[delegate faceBoardTextViewDidChange:self.inputTextView andDelete:YES];
         }
     }
 }
 
-- (void)dealloc {
-    
-    [_faceMap release];
-    [_inputTextField release];
-    [_inputTextView release];
-    [faceView release];
-    [facePageControl release];
-    
-    [super dealloc];
-}
 
 @end

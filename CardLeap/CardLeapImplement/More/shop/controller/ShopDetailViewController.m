@@ -36,7 +36,6 @@
     NSArray *SJHD;//商家活动
     NSArray *SJSC;//商家商城
     NSArray *SJZS;//商家展示
-    ShopAdviertisementView *adView;
 }
 @property (strong, nonatomic) UITableView *shopDetailTableview;//商家详情tableview
 @property (strong, nonatomic) UIButton *collectButton;//收藏按钮
@@ -60,6 +59,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setHiddenTabbar:YES];
 }
 
@@ -466,19 +466,19 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section==2&&(SJHDP.count!=0||SJZS.count!=0||SJSC.count!=0||SJHD.count!=0)) {
         
-        return adView;
+        return _adView;
     }
     return nil;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    adView=[[ShopAdviertisementView alloc]init];
-    adView.SJHDP=SJHDP;
-    adView.SJZS=SJZS;
-    adView.SJHD=SJHD;
-    adView.SJSC=SJSC;
-    adView.shop_name=detailInfo.shop_name;
-    adView.backgroundColor=[UIColor whiteColor];
+    _adView=[[ShopAdviertisementView alloc]init];
+    _adView.SJHDP=SJHDP;
+    _adView.SJZS=SJZS;
+    _adView.SJHD=SJHD;
+    _adView.SJSC=SJSC;
+    _adView.shop_name=detailInfo.shop_name;
+    _adView.backgroundColor=[UIColor whiteColor];
     CGFloat height=5;
     if (section==2) {
         if (SJHDP.count!=0) {
