@@ -233,7 +233,8 @@ static NSString * const kXMNPhotoPreviewIdentifier = @"XMNPhotoPreviewCell";
             __weak typeof(*&self) self = wSelf;
             NSMutableArray *images = [NSMutableArray array];
             [self.selectedAssets enumerateObjectsUsingBlock:^(XMNAssetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                [images addObject:obj];
+                
+                [images addObject:obj.originImage];
             }];
             self.didFinishPickingBlock ? self.didFinishPickingBlock(images,self.selectedAssets) : nil;
         }];

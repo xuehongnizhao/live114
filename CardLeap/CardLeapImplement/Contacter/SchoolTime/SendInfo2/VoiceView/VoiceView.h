@@ -24,4 +24,5 @@
 @interface VoiceView : UIView<UIGestureRecognizerDelegate,AVAudioRecorderDelegate>
 @property(nonatomic,weak)id<VoiceViewDelegate> delegate;
 
+
 @end
