@@ -40,49 +40,35 @@
     [super viewDidLoad];
     [self setUI];
     [self setUpLoadImageWebBridge];
-//    [self setUpLoadVoiceWebBridge];
+    [self setUpLoadVoiceWebBridge];
     [self setLogInWebBridge];
-//    [self setUpLoadVoiceWebBridgeEnd];
+    [self setUpLoadVoiceWebBridgeEnd];
     [self initRecorder];
-    UIButton *buton=[[UIButton alloc]init];
-    buton.frame=self.view.bounds;
-    [buton setBackgroundColor:[UIColor blueColor]];
-    [self.view addSubview:buton];
-    [buton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-}
-
-- (void)buttonAction:(UIButton *)sender{
-    sender.selected=!sender.selected;
-    if (!sender.selected) {
-        [self.recorder startRecording];
-        
-    }else [self.recorder stopRecording];
     
 }
 
 #pragma mark --- 2016.5 添加webBridge
 
-//- (void)setUpLoadVoiceWebBridge{
-//    [self.bridge registerHandler:@"hd_uploadvoicestart" handler:^(id data, WVJBResponseCallback responseCallback) {
-//        _uuid=data[@"uuid"];
-//        [self.recorder startRecording];
-//        _responseCallBack=responseCallback;
-//    }];
-//}
-//- (void)setUpLoadVoiceWebBridgeEnd{
-//    [self.bridge registerHandler:@"hd_uploadvoiceend" handler:^(id data, WVJBResponseCallback responseCallback) {
-//        _uuid=data[@"uuid"];
-//        [self.recorder stopRecording];
-//        _responseCallBack=responseCallback;
-//    }];
-//}
+- (void)setUpLoadVoiceWebBridge{
+    [self.bridge registerHandler:@"hd_uploadvoicestart" handler:^(id data, WVJBResponseCallback responseCallback) {
+        _uuid=data[@"uuid"];
+        [self.recorder startRecording];
+        _responseCallBack=responseCallback;
+    }];
+}
+- (void)setUpLoadVoiceWebBridgeEnd{
+    [self.bridge registerHandler:@"hd_uploadvoiceend" handler:^(id data, WVJBResponseCallback responseCallback) {
+        _uuid=data[@"uuid"];
+        [self.recorder stopRecording];
+        _responseCallBack=responseCallback;
+    }];
+}
 -(void)sendDataWithFilePath:(NSString*) filePath{
-    
+
     NSString *bigArrayUrl = connect_url(as_comm);
     NSString *upVoiceURL=[bigArrayUrl stringByAppendingPathComponent:hd_upload_voice];
     NSData *voiceData=[NSData dataWithContentsOfFile:filePath];
-    NSDictionary *dict = @{
+    NSDictionary *dict = @{ 
                             @"app_key":upVoiceURL,
                             @"uuid":_uuid
                             };

@@ -6821,7 +6821,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 454FAE6F94508CDEA3CC1397 /* Pods-cityo2o.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -6866,7 +6866,6 @@
 					"\"${PODS_ROOT}/Headers/Public/NJKWebViewProgress\"",
 					"\"${PODS_ROOT}/Headers/Public/RDVTabBarController\"",
 					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
 					"$(SRCROOT)/CardLeap/Resource/alipay",
 				);
@@ -6875,7 +6874,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_4.2.1",
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_Extra_Frameworks/Facebook",
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_Extra_Frameworks/Instagram",
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_Extra_Frameworks/LaiWang",
@@ -6910,7 +6908,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21BE66711596615377878A60 /* Pods-cityo2o.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -6955,7 +6953,6 @@
 					"\"${PODS_ROOT}/Headers/Public/NJKWebViewProgress\"",
 					"\"${PODS_ROOT}/Headers/Public/RDVTabBarController\"",
 					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
 					"$(SRCROOT)/CardLeap/Resource/alipay",
 				);
@@ -6964,7 +6961,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_4.2.1",
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_Extra_Frameworks/Facebook",
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_Extra_Frameworks/Instagram",
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_Extra_Frameworks/LaiWang",

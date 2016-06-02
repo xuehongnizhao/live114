@@ -71,6 +71,7 @@
         [_spike_code_image autoAlignAxis:ALAxisVertical toSameAxisOfView:_pass_word_lable];
         [_spike_code_image autoSetDimension:ALDimensionHeight toSize:150.0f];
         [_spike_code_image autoSetDimension:ALDimensionWidth toSize:150.0f];
+#pragma mark --- 生成二维码
         _spike_code_image.image =  [QRCodeGenerator qrImageForString:dic[@"spike_code"] imageSize:200];
         [_spike_code_image layer].magnificationFilter = kCAFilterNearest;
     }

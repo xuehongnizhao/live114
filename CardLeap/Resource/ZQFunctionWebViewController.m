@@ -11,22 +11,26 @@
 #import "UMSocial.h"
 #import "WebViewJavascriptBridge.h"
 #import "XMNPhotoPickerFramework.h"
+#import "VoiceRecorderBase.h"
+#import "AmrRecordWriter.h"
 #import "VoiceView.h"
 #import "LoginViewController.h"
 #import "UserModel.h"
+#import "MLAudioMeterObserver.h"
 #define NaviItemTag 2016
-@interface ZQFunctionWebViewController()<UIWebViewDelegate,UMSocialUIDelegate,VoiceViewDelegate>
+@interface ZQFunctionWebViewController()<UIWebViewDelegate,UMSocialUIDelegate>
 {
     NSString *_uuid;
     WVJBResponseCallback _responseCallBack;
 }
-@property (strong,nonatomic) UIWebView *detailWeb;
+@property (strong,nonatomic)UIWebView *detailWeb;
 @property (strong, nonatomic) WebViewJavascriptBridge *bridge;
+@property (strong, nonatomic) AmrRecordWriter *amrWriter;
+@property (strong, nonatomic) MLAudioRecorder *recorder;
+@property (nonatomic, strong) MLAudioMeterObserver *meterObserver;
 @end
 
 @implementation ZQFunctionWebViewController
-
-
 /**
  *  页面加载完毕之后调用
  */
@@ -36,35 +40,27 @@
     [self setUpLoadImageWebBridge];
     [self setUpLoadVoiceWebBridge];
     [self setLogInWebBridge];
+    [self setUpLoadVoiceWebBridgeEnd];
+    [self initRecorder];
+    
 }
+
 #pragma mark --- 2016.5 添加webBridge
-/**
- *  @author zq, 16-05-30 13:05:33
- *
- *  添加上传语音的链接
- */
+
 - (void)setUpLoadVoiceWebBridge{
-    [self.bridge registerHandler:@"hd_uploadvoice" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.bridge registerHandler:@"hd_uploadvoicestart" handler:^(id data, WVJBResponseCallback responseCallback) {
         _uuid=data[@"uuid"];
-        VoiceView *vv=[[VoiceView alloc]initForAutoLayout];
-        vv.backgroundColor=[UIColor colorWithRed:0.9793 green:0.9793 blue:0.9793 alpha:1.0];
-        vv.delegate=self;
-        [self.view addSubview:vv];
-        [vv autoPinEdgeToSuperviewEdge:ALEdgeLeft];
-        [vv autoPinEdgeToSuperviewEdge:ALEdgeRight];
-        [vv autoSetDimension:ALDimensionHeight toSize:SCREEN_HEIGHT*3/7];
-        [vv autoPinEdgeToSuperviewEdge:ALEdgeBottom];
+        [self.recorder startRecording];
         _responseCallBack=responseCallback;
     }];
 }
-
-/**
- *  @author zq, 16-05-30 13:05:58
- *
- *  voiceView代理方法
- *
- *  @param filePath 返回语音存放地址以用来上传语音
- */
+- (void)setUpLoadVoiceWebBridgeEnd{
+    [self.bridge registerHandler:@"hd_uploadvoiceend" handler:^(id data, WVJBResponseCallback responseCallback) {
+        _uuid=data[@"uuid"];
+        [self.recorder stopRecording];
+        _responseCallBack=responseCallback;
+    }];
+}
 -(void)sendDataWithFilePath:(NSString*) filePath{
     
     NSString *bigArrayUrl = connect_url(as_comm);
@@ -84,11 +80,6 @@
         [SVProgressHUD showErrorWithStatus:@"网络异常"];
     }];
 }
-/**
- *  @author zq, 16-05-30 13:05:54
- *
- *  添加登录的链接
- */
 - (void)setLogInWebBridge{
     [self.bridge registerHandler:@"hd_login" handler:^(id data, WVJBResponseCallback responseCallback) {
         LoginViewController *firVC = [[LoginViewController alloc] init];
@@ -99,11 +90,6 @@
         _responseCallBack=responseCallback;
     }];
 }
-/**
- *  @author zq, 16-05-30 13:05:14
- *
- *  添加上传图片的链接
- */
 - (void)setUpLoadImageWebBridge{
     [self.bridge registerHandler:@"hd_uploadimg" handler:^(id data, WVJBResponseCallback responseCallback) {
         //    1. 推荐使用XMNPhotoPicker 的单例
@@ -112,9 +98,15 @@
         [XMNPhotoPicker sharePhotoPicker].maxCount=3;
         [XMNPhotoPicker sharePhotoPicker].pickingVideoEnable=NO;
         [[XMNPhotoPicker sharePhotoPicker] setDidFinishPickingPhotosBlock:^(NSArray<UIImage *> *images, NSArray<XMNAssetModel *> *assets) {
-            
-            for (XMNAssetModel *model in assets) {
-                UIImage *image=model.originImage;
+            NSMutableArray *myImages=[NSMutableArray arrayWithArray:images];
+            id image=myImages[0];
+            if (myImages.count<=0||[image isKindOfClass:[XMNAssetModel class]]) {
+                for (XMNAssetModel *model in assets) {
+                    UIImage *image=model.originImage;
+                    [myImages addObject:image];
+                }
+            }
+            for (UIImage *image in myImages) {
                 NSString *bigArrayUrl = connect_url(as_comm);
                 NSString *upImageURL=[bigArrayUrl stringByAppendingPathComponent:hd_upload_img];
                 NSData* imageData=UIImageJPEGRepresentation(image, 0.3);
@@ -140,13 +132,47 @@
         
     }];
 }
-
-/**
- *  @author zq, 16-05-30 13:05:28
- *
- *  block回调放到这里执行
- *
- */
+#pragma mark--------初始化录音控件
+-(void)initRecorder
+{
+    AmrRecordWriter *amrWriter = [[AmrRecordWriter alloc]init];
+    amrWriter.filePath = [VoiceRecorderBase getPathByFileName:@"record.amr"];
+    NSLog(@"filePaht:%@",amrWriter.filePath);
+    amrWriter.maxSecondCount = 12.0;
+    amrWriter.maxFileSize = 1024*100;
+    self.amrWriter = amrWriter;
+    
+    MLAudioMeterObserver *meterObserver = [[MLAudioMeterObserver alloc]init];
+    meterObserver.actionBlock = ^(NSArray *levelMeterStates,MLAudioMeterObserver *meterObserver){
+        DLOG(@"volume:%f",[MLAudioMeterObserver volumeForLevelMeterStates:levelMeterStates]);
+    };
+    meterObserver.errorBlock = ^(NSError *error,MLAudioMeterObserver *meterObserver){
+        [[[UIAlertView alloc]initWithTitle:@"错误" message:error.userInfo[NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"知道了", nil]show];
+    };
+    self.meterObserver = meterObserver;
+    
+    MLAudioRecorder *recorder = [[MLAudioRecorder alloc]init];
+    __weak __typeof(self)weakSelf = self;
+    recorder.receiveStoppedBlock = ^{
+        //发送录音
+        [weakSelf sendDataWithFilePath:weakSelf.amrWriter.filePath];
+        NSLog(@"停止录音代码块");
+        weakSelf.meterObserver.audioQueue = nil;
+    };
+    recorder.receiveErrorBlock = ^(NSError *error){
+        //[weakSelf.recordButton setTitle:@"Record" forState:UIControlStateNormal];
+        weakSelf.meterObserver.audioQueue = nil;
+        NSLog(@"错误代码块");
+        [[[UIAlertView alloc]initWithTitle:@"错误" message:error.userInfo[NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"知道了", nil]show];
+    };
+    
+    //amr
+    recorder.bufferDurationSeconds = 0.5;
+    recorder.fileWriterDelegate = self.amrWriter;
+    
+    self.recorder = recorder;
+    
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
