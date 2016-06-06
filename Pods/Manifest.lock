@@ -1,12 +1,9 @@
 PODS:
-  - IQKeyboardManager (3.2.0.2)
+  - IQKeyboardManager (3.2.4)
   - MKNetworkKit (0.87):
     - Reachability (~> 3.1.0)
-  - RDVTabBarController (1.1.6)
+  - RDVTabBarController (1.1.9)
   - Reachability (3.1.1)
-  - SDWebImage (3.7.6):
-    - SDWebImage/Core (= 3.7.6)
-  - SDWebImage/Core (3.7.6)
   - SVProgressHUD (2.0.3)
   - WebViewJavascriptBridge (5.0.5)
   - XMNPhotoPickerFramework (1.0.3)
@@ -15,21 +12,19 @@ DEPENDENCIES:
   - IQKeyboardManager (~> 3.2.0)
   - MKNetworkKit (~> 0.87)
   - RDVTabBarController (~> 1.1.6)
-  - SDWebImage (~> 3.7.1)
   - SVProgressHUD (~> 2.0.3)
   - WebViewJavascriptBridge (~> 5.0.5)
   - XMNPhotoPickerFramework (~> 1.0.3)
 
 SPEC CHECKSUMS:
-  IQKeyboardManager: 437647780f4de0947e798df33e3e8ae208d718a5
+  IQKeyboardManager: 555b1231fefafb21b19278d7cca72986a27b748b
   MKNetworkKit: 60ad3c83b62183e40ba75ce772c9427c25b520de
-  RDVTabBarController: af40344df4d70c62693edb0d4975fe43855b90d7
+  RDVTabBarController: 67794f7a7a37f8e32f046f85ac67d06ab92d624a
   Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
-  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
   XMNPhotoPickerFramework: 8ba9bf84e34df25939cf57adbe7f1b1547714622
 
-PODFILE CHECKSUM: 2c6b8e910afe141af17ad42a8fd54241887b66da
+PODFILE CHECKSUM: 4c649984120c12ca567b52f92a084c994a524dd2
 
 COCOAPODS: 1.0.0

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8556BDFD0D1BED3FAB0A91D3D9BD0965'
+               BlueprintIdentifier = '7606EE4C757DF177B5E172E61AE8E053'
                BlueprintName = 'XMNPhotoPickerFramework'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libXMNPhotoPickerFramework.a'>
