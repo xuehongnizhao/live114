@@ -398,6 +398,7 @@
 		043468CE1A5FA7D800609AB1 /* ActivityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043468CD1A5FA7D800609AB1 /* ActivityListViewController.m */; };
 		043468D11A5FA7F100609AB1 /* activityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 043468D01A5FA7F100609AB1 /* activityInfo.m */; };
 		043468DA1A5FBAB200609AB1 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043468D91A5FBAB200609AB1 /* ActivityDetailViewController.m */; };
+		04361E811D0A54E9009F7C87 /* shake_sound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 04361E801D0A54E9009F7C87 /* shake_sound.m4a */; };
 		04394B7D1A5E110C00CF0B31 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04394B7C1A5E110C00CF0B31 /* CouponDetailViewController.m */; };
 		04394B801A5E2C9900CF0B31 /* SpikeCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04394B7F1A5E2C9900CF0B31 /* SpikeCodeViewController.m */; };
 		04394B831A5E353E00CF0B31 /* SpikeCodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04394B821A5E353E00CF0B31 /* SpikeCodeTableViewCell.m */; };
@@ -1394,7 +1395,7 @@
 		043468D01A5FA7F100609AB1 /* activityInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = activityInfo.m; sourceTree = "<group>"; };
 		043468D81A5FBAB200609AB1 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		043468D91A5FBAB200609AB1 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
-		04361E7F1D0A41F1009F7C87 /* shake_sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = shake_sound.m4a; sourceTree = "<group>"; };
+		04361E801D0A54E9009F7C87 /* shake_sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = shake_sound.m4a; sourceTree = "<group>"; };
 		04394B7B1A5E110C00CF0B31 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
 		04394B7C1A5E110C00CF0B31 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		04394B7E1A5E2C9900CF0B31 /* SpikeCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpikeCodeViewController.h; sourceTree = "<group>"; };
@@ -5039,7 +5040,7 @@
 		333BDA1E1A1D7EFF009BAB8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				04361E7F1D0A41F1009F7C87 /* shake_sound.m4a */,
+				04361E801D0A54E9009F7C87 /* shake_sound.m4a */,
 				047E0D3C1A381A9B00304FF1 /* PushConfig.plist */,
 				33DB1C801A1F2F33002E463E /* Abberancy.ttf */,
 				33DB1C491A1EE76B002E463E /* Aller_Lt.ttf */,
@@ -6215,6 +6216,7 @@
 				042894EA1A3E6EBD00CC2407 /* issue_ suspend_no@2x.png in Resources */,
 				0428944F1A3E6EBD00CC2407 /* Expression_31@2x.png in Resources */,
 				042894761A3E6EBD00CC2407 /* Expression_67@2x.png in Resources */,
+				04361E811D0A54E9009F7C87 /* shake_sound.m4a in Resources */,
 				04AEF38D1A4BAABF0020B7E2 /* right_no@2x.png in Resources */,
 				042895A31A3E735B00CC2407 /* goods_price_sel@2x.png in Resources */,
 				0428954E1A3E711B00CC2407 /* SelectionCell.xib in Resources */,

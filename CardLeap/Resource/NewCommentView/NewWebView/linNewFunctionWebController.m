@@ -44,7 +44,7 @@
     [self setUpLoadVoiceWebBridge];
     [self setLogInWebBridge];
     [self setUpLoadVoiceWebBridgeEnd];
-    
+    [self setShakeVoiceWebBridge];
     [self initRecorder];
     
 }
@@ -229,11 +229,21 @@
 - (void)naviItemAction:(UIBarButtonItem *)sender{
     switch (sender.tag-NaviItemTag) {
         case 1:{
-            
-            [_detailWeb goBack];
+            if ([_detailWeb canGoBack]) {
+                [_detailWeb goBack];
+
+            }else{
+                NSURL *url=[NSURL URLWithString:@""];
+                NSURLRequest *request=[NSURLRequest requestWithURL:url];
+                [_detailWeb loadRequest:request];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }
             break;
         case 2:{
+            NSURL *url=[NSURL URLWithString:@""];
+            NSURLRequest *request=[NSURLRequest requestWithURL:url];
+            [_detailWeb loadRequest:request];
             [self.navigationController popViewControllerAnimated:YES];
             
         }
