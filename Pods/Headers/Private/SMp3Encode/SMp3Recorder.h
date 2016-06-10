@@ -1,0 +1,1 @@
+../../../SMp3Encode/SMp3Encode/Classes/SMp3Recorder.h

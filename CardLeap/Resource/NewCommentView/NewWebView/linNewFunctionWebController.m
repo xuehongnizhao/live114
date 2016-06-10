@@ -13,10 +13,10 @@
 #import "XMNPhotoPickerFramework.h"
 #import "VoiceRecorderBase.h"
 #import "AmrRecordWriter.h"
-#import "VoiceView.h"
 #import "LoginViewController.h"
 #import "UserModel.h"
 #import "MLAudioMeterObserver.h"
+#import <AVFoundation/AVFoundation.h>
 #define NaviItemTag 2016
 @interface linNewFunctionWebController()<UIWebViewDelegate,UMSocialUIDelegate>
 {
@@ -28,6 +28,7 @@
 @property (strong, nonatomic) AmrRecordWriter *amrWriter;
 @property (strong, nonatomic) MLAudioRecorder *recorder;
 @property (nonatomic, strong) MLAudioMeterObserver *meterObserver;
+@property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
 @implementation linNewFunctionWebController
@@ -43,12 +44,19 @@
     [self setUpLoadVoiceWebBridge];
     [self setLogInWebBridge];
     [self setUpLoadVoiceWebBridgeEnd];
+    
     [self initRecorder];
     
 }
 
 #pragma mark --- 2016.5 添加webBridge
-
+- (void)setShakeVoiceWebBridge{
+    [self.bridge registerHandler:@"hd_playvoice" handler:^(id data, WVJBResponseCallback responseCallback) {
+        
+        [self.player play];
+        _responseCallBack=responseCallback;
+    }];
+}
 - (void)setUpLoadVoiceWebBridge{
     [self.bridge registerHandler:@"hd_uploadvoicestart" handler:^(id data, WVJBResponseCallback responseCallback) {
         _uuid=data[@"uuid"];
@@ -319,4 +327,12 @@
     return _bridge;
 }
 
+- (AVAudioPlayer *)player{
+    if (!_player) {
+        NSString *path=[[NSBundle mainBundle]pathForResource:@"shake_sound" ofType:@"m4a"];
+        NSURL *url=[NSURL fileURLWithPath:path];
+        _player=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+    }
+    return _player;
+}
 @end

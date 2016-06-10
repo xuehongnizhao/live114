@@ -1394,6 +1394,7 @@
 		043468D01A5FA7F100609AB1 /* activityInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = activityInfo.m; sourceTree = "<group>"; };
 		043468D81A5FBAB200609AB1 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		043468D91A5FBAB200609AB1 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
+		04361E7F1D0A41F1009F7C87 /* shake_sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = shake_sound.m4a; sourceTree = "<group>"; };
 		04394B7B1A5E110C00CF0B31 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
 		04394B7C1A5E110C00CF0B31 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		04394B7E1A5E2C9900CF0B31 /* SpikeCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpikeCodeViewController.h; sourceTree = "<group>"; };
@@ -5038,6 +5039,7 @@
 		333BDA1E1A1D7EFF009BAB8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04361E7F1D0A41F1009F7C87 /* shake_sound.m4a */,
 				047E0D3C1A381A9B00304FF1 /* PushConfig.plist */,
 				33DB1C801A1F2F33002E463E /* Abberancy.ttf */,
 				33DB1C491A1EE76B002E463E /* Aller_Lt.ttf */,

@@ -1,0 +1,1 @@
+../../../SMp3Encode/SMp3Encode/Lame/lame.h
