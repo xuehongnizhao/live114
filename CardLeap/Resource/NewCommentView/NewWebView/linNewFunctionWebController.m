@@ -325,7 +325,12 @@
     }
     return NO;
 }
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    [SVProgressHUD showWithStatus:@"正在加载请稍等"];
+    [SVProgressHUD setDefaultMaskType:1];
+}
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [SVProgressHUD dismiss];
     NSLog(@"web页加载已结束");
 }
 
@@ -334,7 +339,6 @@
 {
     if (!_detailWeb) {
         _detailWeb = [[UIWebView alloc] initForAutoLayout];
-        _detailWeb.delegate = self;
         if ([self isPostRequest]) {
             [self loadURLPost];
         }else{
@@ -346,6 +350,7 @@
 - (WebViewJavascriptBridge *)bridge{
     if (!_bridge) {
         _bridge=[WebViewJavascriptBridge bridgeForWebView:self.detailWeb];
+        [_bridge setWebViewDelegate:self];
     }
     return _bridge;
 }
@@ -357,8 +362,5 @@
         _player=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
     }
     return _player;
-}
-- (void)dealloc{
-    self.player=nil;
 }
 @end

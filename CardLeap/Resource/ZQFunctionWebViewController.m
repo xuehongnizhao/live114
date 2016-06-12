@@ -164,7 +164,12 @@
     NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
     [_detailWeb loadRequest:request];
 }
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    [SVProgressHUD showWithStatus:@"正在加载请稍等"];
+    [SVProgressHUD setDefaultMaskType:1];
+}
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [SVProgressHUD dismiss];
     NSLog(@"web页加载已结束");
 }
 
