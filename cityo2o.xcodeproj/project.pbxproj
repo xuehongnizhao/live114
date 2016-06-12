@@ -6996,7 +6996,7 @@
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_4.2.5",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.youdro.live114;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youdro.live11411;
 				PRODUCT_NAME = cityo2o;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
@@ -7083,7 +7083,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_4.2.5",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.youdro.live114;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youdro.live11411;
 				PRODUCT_NAME = cityo2o;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";

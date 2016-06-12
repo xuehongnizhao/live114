@@ -201,11 +201,13 @@
     [self setNavBarTitle:self.title withFont:17.0f];
     [self.view addSubview:self.detailWeb];
 #pragma mark --- 2016.4 添加关闭，返回，主页，分享
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
-    backItem.tag=NaviItemTag +1;
-    UIBarButtonItem *closeItem=[[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
-    closeItem.tag=NaviItemTag +2;
-    UIBarButtonItem *mainItem=[[UIBarButtonItem alloc]initWithTitle:@"主页" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftButton.frame = CGRectMake(0, 0, 32, 26);
+    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 0);//　　设置按钮图片的偏移位置(向左偏移)
+    [leftButton setImage:[UIImage imageNamed:@"shake_back"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.tag=NaviItemTag+1;
+    UIBarButtonItem *mainItem=[[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
     mainItem.tag=NaviItemTag+3;
     
     UIButton *shareButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
@@ -215,10 +217,10 @@
     [shareButton addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
     shareButton.tag=NaviItemTag+4;
     
-    self.navigationItem.leftBarButtonItems=@[closeItem,backItem];
-    self.navigationItem.rightBarButtonItems=@[shareItem,mainItem];
-    
-    
+    //    //    self.navigationItem.leftBarButtonItems=@[closeItem,backItem];
+    //    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItems=@[[[UIBarButtonItem alloc]initWithCustomView:leftButton],mainItem];
+    self.navigationItem.rightBarButtonItem=shareItem;
     [_detailWeb autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0.0f];
     [_detailWeb autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0.0f];
     [_detailWeb autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0.0f];
@@ -229,7 +231,11 @@
 - (void)naviItemAction:(UIBarButtonItem *)sender{
     switch (sender.tag-NaviItemTag) {
         case 1:{
+            [[NSURLCache sharedURLCache] removeAllCachedResponses];
+            [[NSURLCache sharedURLCache] setDiskCapacity:0];
+            [[NSURLCache sharedURLCache] setMemoryCapacity:0];
             if ([_detailWeb canGoBack]) {
+                
                 [_detailWeb goBack];
 
             }else{
@@ -241,20 +247,27 @@
         }
             break;
         case 2:{
-            NSURL *url=[NSURL URLWithString:@""];
-            NSURLRequest *request=[NSURLRequest requestWithURL:url];
-            [_detailWeb loadRequest:request];
-            [self.navigationController popViewControllerAnimated:YES];
+//            NSURL *url=[NSURL URLWithString:@""];
+//            NSURLRequest *request=[NSURLRequest requestWithURL:url];
+//            [_detailWeb loadRequest:request];
+//            [self.navigationController popViewControllerAnimated:YES];
             
         }
             break;
         case 3:{
+            NSURL *url=[NSURL URLWithString:@""];
+            NSURLRequest *request=[NSURLRequest requestWithURL:url];
+            [_detailWeb loadRequest:request];
+            [[NSURLCache sharedURLCache] removeAllCachedResponses];
+            [[NSURLCache sharedURLCache] setDiskCapacity:0];
+            [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+            [self.navigationController popViewControllerAnimated:YES];
             
-            if ([self isPostRequest]) {
-                [self loadURLPost];
-            }else{
-                [self loadURLGet];
-            }
+//            if ([self isPostRequest]) {
+//                [self loadURLPost];
+//            }else{
+//                [self loadURLGet];
+//            }
         }
             break;
         case 4:{
@@ -344,5 +357,8 @@
         _player=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
     }
     return _player;
+}
+- (void)dealloc{
+    self.player=nil;
 }
 @end
