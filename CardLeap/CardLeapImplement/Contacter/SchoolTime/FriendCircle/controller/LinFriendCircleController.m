@@ -73,8 +73,7 @@
 @end
 static NSMutableDictionary* g_nsdicemojiDict = nil;
 @implementation LinFriendCircleController
-@synthesize FriendTableview = _FriendTableview;
-@synthesize friendCircleList = _friendCircleList;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -299,7 +298,6 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
     TenLat = (int)(yGps.latitude*10);
     TenLog = (int)(yGps.longitude*10);
     NSString *sql = [[NSString alloc]initWithFormat:@"select offLat,offLog from gpsT where lat=%d and log = %d",TenLat,TenLog];
-    NSLog(sql);
     sqlite3_stmt* stmtL = [m_sqlite NSRunSql:sql];
     int offLat=0;
     int offLog=0;
@@ -604,7 +602,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
 {
     NSString *string = nil;
     NSLog(@"%@",str );
-    NSLog(@"%d",str.length);
+    NSLog(@"%lu",(unsigned long)str.length);
     NSInteger stringLength = str.length;
     if (stringLength == 0) {
         return 0;
@@ -706,12 +704,12 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
             [lable autoAlignAxisToSuperviewAxis:ALAxisVertical];
             [lable autoSetDimension:ALDimensionWidth toSize:200.0f];
         }else{
-            NSInteger count1 = indexPath.row-1;
+            int count1 = (int)indexPath.row-1;
             UIView *cellView = [cellArray ImageLayout:count1];
             [cell addSubview:cellView];
         }
     }else{
-        int count1 = indexPath.row;
+        int count1 = (int)indexPath.row;
         UIView *cellView = [cellArray ImageLayout:count1];
         [cell addSubview:cellView];
     }

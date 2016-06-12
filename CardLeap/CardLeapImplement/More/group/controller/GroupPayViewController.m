@@ -18,7 +18,6 @@
 @interface GroupPayViewController ()<UITableViewDataSource,UITableViewDelegate,choosePayMethodeDelegate,completeDelegate>
 {
     NSInteger chooseIndex;
-    NSString *order_id;
 }
 @property (strong,nonatomic)UITableView *groupPayTableview;
 @property (strong,nonatomic)UIButton *payButton;

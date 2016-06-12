@@ -41,5 +41,4 @@
 - (void)startAnimation;
 - (void)stopAnimationWithLoadText:(NSString *)text withType:(BOOL)type;
 
--(instancetype)shareInstance;
 @end

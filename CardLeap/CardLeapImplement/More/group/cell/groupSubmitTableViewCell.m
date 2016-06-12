@@ -35,7 +35,7 @@
         [_total_price_lable autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0f];
         [_total_price_lable autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:10.0f];
         [_total_price_lable autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:10.0f];
-        int count = [dic[@"count"] integerValue];
+        int count = [dic[@"count"] intValue];
         float single_price = [dic[@"singel_price"] floatValue];
         NSString *total_price = [NSString stringWithFormat:@"%0.2f",count*single_price];
         _total_price_lable.text = total_price;

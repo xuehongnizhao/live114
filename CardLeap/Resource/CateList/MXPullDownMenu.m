@@ -198,7 +198,7 @@
         如果没有则直接点击
      */
     if (tableView == _tableView) {
-        select_one = indexPath.row;
+        select_one = (int)indexPath.row;
 
       NSString *currentRow = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
         //重新加入数组
@@ -233,7 +233,7 @@
             //[self confiMenuWithSelectRow:indexPath.row isFirst:YES];
             [self.delegate PullDownMenu:self didSelectRowAtColumn:_currentSelectedMenudIndex row:indexPath.row selectText:info.cate_id];
         }
-        select_one = [[selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex] integerValue];
+        select_one = (int)[[selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex] integerValue];
         NSIndexPath *first = [NSIndexPath
                               indexPathForRow:select_one inSection:0];
         [_tableView selectRowAtIndexPath:first
@@ -472,7 +472,7 @@
         [self animateTitle:title show:forward complete:^{
             [self animateBackGroundView:background show:forward complete:^{
                 [self animateTableView:tableView show:forward complete:^{
-                    select_one = [[selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex] integerValue];
+                    select_one = (int)[[selectRowAtTableview objectAtIndex:_currentSelectedMenudIndex] integerValue];
                     NSIndexPath *first = [NSIndexPath
                                           indexPathForRow:select_one inSection:0];
                     [tableView selectRowAtIndexPath:first

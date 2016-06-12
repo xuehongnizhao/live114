@@ -215,7 +215,8 @@
         
         if (![_u_lat isEqualToString:@"0"] && ![_u_lng isEqualToString:@"0"])
         {
-            [SVProgressHUD showWithStatus:@"搜索中..." maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:@"搜索中..." ];
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
             NSString *city_id = [[NSUserDefaults standardUserDefaults]objectForKey:KCityID];
             if (city_id == nil) {
                 city_id = @"0";

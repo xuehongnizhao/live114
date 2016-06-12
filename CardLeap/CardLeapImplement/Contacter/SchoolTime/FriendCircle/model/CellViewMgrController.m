@@ -235,9 +235,7 @@ static NSMutableDictionary* g_nsdicemojiDict = nil;
     UIImageView *com_image_view = nil;
     UIView * LinTest2 = nil;
     UILabel *user_name_label = nil;
-    UILabel *user_review_lable = nil;
     UILabel *timeLable = nil;
-    UIImageView *timeImageView = nil;
     UIImageView *messageImageView = nil;
     //添加用户头像 用户名
     LinFriendCircleInfo *info = [[LinFriendCircleInfo alloc] init];

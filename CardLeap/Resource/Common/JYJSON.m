@@ -50,7 +50,7 @@
     
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     
-    return [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves|| NSJSONReadingMutableContainers error:nil];
+    return [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
 }
 
 
@@ -61,7 +61,7 @@
         return nil;
     }
     
-    return [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves|| NSJSONReadingMutableContainers error:nil];
+    return [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
 }
 
 

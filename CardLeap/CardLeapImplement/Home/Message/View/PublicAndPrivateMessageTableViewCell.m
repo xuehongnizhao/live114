@@ -41,7 +41,7 @@
 + (instancetype) publicAndPrivateMessageWithTableView:(UITableView *)tableView {
     
     static NSString *cellName = @"messageCell";
-    PublicAndPrivateMessageTableViewCell *cell = [tableView dequeueReusableHeaderFooterViewWithIdentifier:cellName];
+    PublicAndPrivateMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
     if (cell == nil) {
         cell = [[PublicAndPrivateMessageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
     }

@@ -80,11 +80,6 @@ static NSString *pageCount = @"10";
 
 @implementation OrderSeatMapViewController
 
-@synthesize myLocation;
-@synthesize identifer;
-@synthesize url;
-@synthesize myData;
-@synthesize count;
 - (UIView *)coverView
 {
     if (!_coverView) {
@@ -175,10 +170,6 @@ static NSString *pageCount = @"10";
     [_thumbImageView sd_setImageWithURL:[NSURL URLWithString:imageURLStr] placeholderImage:nil];
     self.shopNameLabel.text = [self getName:dic];
     self.distanceLabel.text = [NSString stringWithFormat:@"%@m",[self getDistance:dic]] ;
-    //NSInteger starNumber = [[self getScore:dic] integerValue] ;
-    //[self setStar:[self getScore:dic] ];
-    //CGRect frame = CGRectMake(0, 0, self.myLevel.frame.size.width, self.myLevel.frame.size.height);
-    //[self setupStartsWithFrame:frame rating:starNumber fractionalOrNot:YES andEnabled:NO];
 }
 //设置星星
 -(void)setStar :(NSString*)score
@@ -323,16 +314,6 @@ static NSString *pageCount = @"10";
     return annotations;
 }
 
-#pragma mark Net work
-
-/**
- *	@brief	根据当前位置，请求到附近的商铺信息.请求成功后更新界面上的数据Ω
- */
-- (void)getLocationsFromNetwork :(double)lng :(double)lat
-{
-    //被废弃的方法
-}
-
 #pragma mark - Actions
 //点击pane跳转至商家商品列表界面
 - (IBAction)gotoShop:(id)sender
@@ -357,7 +338,6 @@ static NSString *pageCount = @"10";
 {
     if (page>1) {
         page --;
-        [self getLocationsFromNetwork:baidu_lng :baidu_lat];
     }
     [self settingOperationView];
 }
@@ -370,7 +350,6 @@ static NSString *pageCount = @"10";
     }else{
         page ++;
         [self settingOperationView];
-        [self getLocationsFromNetwork:baidu_lng :baidu_lat];
     }
 }
 
@@ -421,7 +400,6 @@ static NSString *pageCount = @"10";
     if ([view conformsToProtocol:@protocol(JPSThumbnailAnnotationViewProtocol)]) {
         JPSThumbnailAnnotationView *thumbnailView = (JPSThumbnailAnnotationView *)view;
         
-        //[thumbnailView setImage:[UIImage imageNamed:@"store_map_smallimg_sel.png"]];
         [thumbnailView setColor:@"1"];
         NSInteger tag = thumbnailView.tag;
         [self showShopPane:tag];
@@ -512,16 +490,6 @@ static NSString *pageCount = @"10";
     }];
 }
 
-
-#pragma mark - Lifecycle
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {

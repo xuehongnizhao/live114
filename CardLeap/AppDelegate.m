@@ -71,9 +71,6 @@
     [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    //    self.window.tintColor = [UIColor whiteColor];
-    //    self.window.backgroundColor = [UIColor whiteColor];
-    //    self.window.userInteractionEnabled = YES;
     
     //-----------极光推送----------------------
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
@@ -89,8 +86,8 @@
     [application setApplicationIconBadgeNumber:0];
     
     //修改HUD背景颜色和字体颜色
-//    SVProgressHUD setDefaultStyle:<#(SVProgressHUDStyle)#>
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setMinimumDismissTimeInterval:2.f];
+    [SVProgressHUD setDefaultMaskType:1];
     //加载字体
     [[FontManager sharedManager] loadFont:@"Aller_Lt"];
     [[FontManager sharedManager] loadFont:@"OpenSans-Light"];

@@ -147,7 +147,7 @@
             }
             
             CGFloat deltaH = [self heightForContentBreakView];
-            int currentCount = [self totalDataCountInScrollView];
+            int currentCount = (int)[self totalDataCountInScrollView];
             // 刚刷新完毕
             if (MJRefreshStateRefreshing == oldState && deltaH > 0 && currentCount != self.lastRefreshCount) {
                 self.scrollView.mj_contentOffsetY = self.scrollView.mj_contentOffsetY;
@@ -166,7 +166,7 @@
         case MJRefreshStateRefreshing:
         {
             // 记录刷新前的数量
-            self.lastRefreshCount = [self totalDataCountInScrollView];
+            self.lastRefreshCount = (int)[self totalDataCountInScrollView];
             
             [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
                 CGFloat bottom = self.mj_height + self.scrollViewOriginalInset.bottom;
