@@ -188,7 +188,7 @@
                 height = 40.0;
             }else{
                 //通过计算得到
-                int line = self.info.shop_take_desc.length / 21+1;
+                int line = (int)self.info.shop_take_desc.length / 21+1;
                 int height_lable = line*15;
                 if (height_lable>280) {
                     height = height_lable;

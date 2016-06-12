@@ -17,14 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    //[self setHiddenTabbar:YES];
     [self setUI];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark-------set UI
@@ -32,45 +25,95 @@
 {
     [self.view addSubview:self.activityDetailWeb];
 #pragma mark --- 2016.4 添加关闭，返回，主页，分享
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
-    backItem.tag=NaviItemTag +1;
-    UIBarButtonItem *closeItem=[[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
-    closeItem.tag=NaviItemTag +2;
-    UIBarButtonItem *mainItem=[[UIBarButtonItem alloc]initWithTitle:@"主页" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftButton.frame = CGRectMake(0, 0, 32, 26);
+    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 0);//　　设置按钮图片的偏移位置(向左偏移)
+    [leftButton setImage:[UIImage imageNamed:@"shake_back"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.tag=NaviItemTag+1;
+    UIBarButtonItem *mainItem=[[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
     mainItem.tag=NaviItemTag+3;
-    //    UIBarButtonItem *shareItem=[[UIBarButtonItem alloc]initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
+    
     UIButton *shareButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     UIBarButtonItem *shareItem=[[UIBarButtonItem alloc]initWithCustomView:shareButton];
     [shareButton setImage:[UIImage imageNamed:@"coupon_share_no"] forState:UIControlStateNormal];
     [shareButton setImage:[UIImage imageNamed:@"coupon_share_sel"] forState:UIControlStateHighlighted];
     [shareButton addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
-    //    UIBarButtonItem *shareItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"coupon_share_no"] style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
     shareButton.tag=NaviItemTag+4;
-    self.navigationItem.leftBarButtonItems=@[closeItem,backItem];
-    self.navigationItem.rightBarButtonItems=@[shareItem,mainItem];
-    
+    self.navigationItem.leftBarButtonItems=@[[[UIBarButtonItem alloc]initWithCustomView:leftButton],mainItem];
+    self.navigationItem.rightBarButtonItem=shareItem;
     [_activityDetailWeb autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0.0f];
     [_activityDetailWeb autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0.0f];
     [_activityDetailWeb autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0.0f];
     [_activityDetailWeb autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0.0f];
     //加载网页
-    [self loadURL];
+    if ([self isPostRequest]) {
+        [self loadURLPost];
+    }else{
+        [self loadURLGet];
+    }
+}
+#pragma --- mark 2016.4 在request中添加三个参数
+-(void)loadURLPost
+{
+    NSString *user_tel=[UserModel shareInstance].user_tel;
+    NSString *u_id=[UserModel shareInstance].u_id;
+    NSString *session_key=[UserModel shareInstance].session_key;
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL: [NSURL URLWithString:self.url]];
+    request.HTTPMethod=@"POST";
+    request.HTTPBody = [[NSString stringWithFormat:@"tel=%@&u_id=%@&session_key=%@",user_tel,u_id,session_key] dataUsingEncoding:NSUTF8StringEncoding];
+    [_activityDetailWeb loadRequest:request];
+    NSLog(@"%@",request);
+}
+- (void)loadURLGet{
+    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
+    [_activityDetailWeb loadRequest:request];
+}
+- (BOOL)isPostRequest{
+    NSArray *urlFilters=[[NSUserDefaults standardUserDefaults]objectForKey:URLFilter];
+    for (NSDictionary *dic in urlFilters) {
+        NSString *string=dic[@"url"];
+        if ([self.url rangeOfString:string].location!=NSNotFound) {
+            return YES;
+        }
+    }
+    return NO;
+}
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    [SVProgressHUD showWithStatus:@"正在加载请稍等"];
+    [SVProgressHUD setDefaultMaskType:1];
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [SVProgressHUD dismiss];
+    NSLog(@"web页加载已结束");
 }
 - (void)naviItemAction:(UIBarButtonItem *)sender{
     switch (sender.tag-NaviItemTag) {
         case 1:{
-            
-            [_activityDetailWeb goBack];
-        }
-            break;
-        case 2:{
-            [self.navigationController popViewControllerAnimated:YES];
-            
+            [[NSURLCache sharedURLCache] removeAllCachedResponses];
+            [[NSURLCache sharedURLCache] setDiskCapacity:0];
+            [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+            if ([_activityDetailWeb canGoBack]) {
+                
+                [_activityDetailWeb goBack];
+                
+            }else{
+                NSURL *url=[NSURL URLWithString:@""];
+                NSURLRequest *request=[NSURLRequest requestWithURL:url];
+                [_activityDetailWeb loadRequest:request];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }
             break;
         case 3:{
+            NSURL *url=[NSURL URLWithString:@""];
+            NSURLRequest *request=[NSURLRequest requestWithURL:url];
+            [_activityDetailWeb loadRequest:request];
+            [[NSURLCache sharedURLCache] removeAllCachedResponses];
+            [[NSURLCache sharedURLCache] setDiskCapacity:0];
+            [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+            [self.navigationController popViewControllerAnimated:YES];
             
-            [self loadURL];
         }
             break;
         case 4:{
@@ -83,16 +126,16 @@
                                         shareToSnsNames:@[UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession,UMShareToQzone]
                                                delegate:self];
             
-            [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = @"详情";
+            [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = self.title;
             [UMSocialData defaultData].extConfig.wechatTimelineData.url = self.url;
             
-            [UMSocialData defaultData].extConfig.wechatSessionData.title = @"详情";
+            [UMSocialData defaultData].extConfig.wechatSessionData.title = self.title;
             [UMSocialData defaultData].extConfig.wechatSessionData.url = self.url;
             
-            [UMSocialData defaultData].extConfig.qzoneData.title = @"详情";
+            [UMSocialData defaultData].extConfig.qzoneData.title = self.title;
             [UMSocialData defaultData].extConfig.qzoneData.url = self.url;
             
-            [UMSocialData defaultData].extConfig.sinaData.shareText = @"详情";
+            [UMSocialData defaultData].extConfig.sinaData.shareText = self.title;
             //            [UMSocialData defaultData].extConfig.sinaData.url= self.url;
             
         }
@@ -110,6 +153,7 @@
 {
     if (!_activityDetailWeb) {
         _activityDetailWeb = [[UIWebView alloc] initForAutoLayout];
+        _activityDetailWeb.delegate=self;
     }
     return _activityDetailWeb;
 }

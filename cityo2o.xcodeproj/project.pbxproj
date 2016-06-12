@@ -6925,6 +6925,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6996,9 +6997,10 @@
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_4.2.5",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.youdro.live11411;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youdro.live114;
 				PRODUCT_NAME = cityo2o;
 				PROVISIONING_PROFILE = "";
+				STRIP_PNG_TEXT = NO;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -7013,6 +7015,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7083,9 +7086,10 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/CardLeap/Resource/Library/UMSocial_Sdk_4.2.5",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.youdro.live11411;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youdro.live114;
 				PRODUCT_NAME = cityo2o;
 				PROVISIONING_PROFILE = "";
+				STRIP_PNG_TEXT = NO;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};

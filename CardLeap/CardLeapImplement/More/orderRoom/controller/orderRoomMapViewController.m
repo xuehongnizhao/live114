@@ -79,11 +79,6 @@ static NSString *pageCount = @"10";
 
 @implementation orderRoomMapViewController
 
-@synthesize myLocation;
-@synthesize url;
-@synthesize identifer;
-@synthesize myData;
-@synthesize count;
 - (UIView *)coverView
 {
     if (!_coverView) {

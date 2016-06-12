@@ -27,7 +27,7 @@
     _user_pic.layer.cornerRadius = _user_pic.frame.size.height/2;
     CGFloat height = 0;
     NSString *com_text = dic.com_text;
-    int count = com_text.length;
+    int count = (int)com_text.length;
     height = ((count/16)+1) * 18;
     CGRect rect;
 //    = _com_text_view.frame;
@@ -48,9 +48,8 @@
     
     
     //照片高度
-    height = 0;
     NSArray *picList = dic.com_pic;
-    count = [picList count]/3;
+    count = (int)[picList count]/3;
     int lin = [picList count] % 3;
     if (lin) {
         count ++;
@@ -78,12 +77,11 @@
     height = 0;
     NSArray *com_list = dic.com_list;
     NSString *review_num = dic.review_num;
-    count = [review_num intValue];
     for (NSDictionary *ele in com_list) {
         //NSString *user_name = [ele objectForKey:@"user_name"];
        // NSLog(@"%@",user_name);
         NSString *rev_text = [ele objectForKey:@"rev_text"];
-        int rev_count =  rev_text.length;
+        int rev_count =  (int)rev_text.length;
         int col_num = rev_count / 18 +2;
         if (col_num>4) {
             col_num = 4;

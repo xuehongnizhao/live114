@@ -527,6 +527,7 @@ const double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=NO;
 }
 #pragma mark -mapViewDelegate

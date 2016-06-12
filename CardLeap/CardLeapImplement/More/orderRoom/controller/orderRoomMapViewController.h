@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface orderRoomMapViewController : BaseViewController
+@interface orderRoomMapViewController : BaseViewController<MKMapViewDelegate>
 //@property (strong, nonatomic) id<gotoShopDelegate> myDelegate;
 //用户当前经纬度
 @property (assign, nonatomic) CLLocationCoordinate2D myCoordinate;

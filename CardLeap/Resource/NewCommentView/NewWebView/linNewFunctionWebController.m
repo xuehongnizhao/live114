@@ -170,7 +170,6 @@
         weakSelf.meterObserver.audioQueue = nil;
     };
     recorder.receiveErrorBlock = ^(NSError *error){
-        //[weakSelf.recordButton setTitle:@"Record" forState:UIControlStateNormal];
         weakSelf.meterObserver.audioQueue = nil;
         NSLog(@"错误代码块");
         [[[UIAlertView alloc]initWithTitle:@"错误" message:error.userInfo[NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"知道了", nil]show];
@@ -216,9 +215,6 @@
     [shareButton setImage:[UIImage imageNamed:@"coupon_share_sel"] forState:UIControlStateHighlighted];
     [shareButton addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
     shareButton.tag=NaviItemTag+4;
-    
-    //    //    self.navigationItem.leftBarButtonItems=@[closeItem,backItem];
-    //    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItems=@[[[UIBarButtonItem alloc]initWithCustomView:leftButton],mainItem];
     self.navigationItem.rightBarButtonItem=shareItem;
     [_detailWeb autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0.0f];
@@ -246,14 +242,6 @@
             }
         }
             break;
-        case 2:{
-//            NSURL *url=[NSURL URLWithString:@""];
-//            NSURLRequest *request=[NSURLRequest requestWithURL:url];
-//            [_detailWeb loadRequest:request];
-//            [self.navigationController popViewControllerAnimated:YES];
-            
-        }
-            break;
         case 3:{
             NSURL *url=[NSURL URLWithString:@""];
             NSURLRequest *request=[NSURLRequest requestWithURL:url];
@@ -262,12 +250,6 @@
             [[NSURLCache sharedURLCache] setDiskCapacity:0];
             [[NSURLCache sharedURLCache] setMemoryCapacity:0];
             [self.navigationController popViewControllerAnimated:YES];
-            
-//            if ([self isPostRequest]) {
-//                [self loadURLPost];
-//            }else{
-//                [self loadURLGet];
-//            }
         }
             break;
         case 4:{
