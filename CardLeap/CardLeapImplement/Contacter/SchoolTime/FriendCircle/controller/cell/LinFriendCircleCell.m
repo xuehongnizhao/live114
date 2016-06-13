@@ -115,7 +115,7 @@
             //加回复
             user_review_lable = nil;
             user_review_lable = [[UILabel alloc] initWithFrame:CGRectMake(80, y1+n*14+20, 232, 16)];
-            int lines = rev_text.length / 18 + 1;
+            int lines = (int)rev_text.length / 18 + 1;
             [user_review_lable setFont:[UIFont fontWithName:@"Helvetica" size:12.0]];//格式
             [user_review_lable setNumberOfLines: lines];//行数，只有设为0才能自适应
             user_review_lable.text = rev_text;

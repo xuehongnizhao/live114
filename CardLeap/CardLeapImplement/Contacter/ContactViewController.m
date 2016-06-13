@@ -13,7 +13,7 @@
 //firend circle
 #import "LinFriendCircleController.h"
 
-@interface ContactViewController ()<SINavigationMenuDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ContactViewController ()<SINavigationMenuDelegate>
 
 @end
 
@@ -21,11 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    //set Circle
     [self setFriendCircle];
-    //set pull down menu
-    //[self setPullDownMenu];
 }
 
 #pragma mark----------跳转到朋友圈
@@ -36,16 +32,6 @@
     [self.navigationController pushViewController:firVC animated:YES];
 }
 
-#pragma mark - setpullDownMenu
--(void)setPullDownMenu
-{
-//    CGRect frame = CGRectMake(0.0, 0.0, 200.0, self.navigationController.navigationBar.bounds.size.height);
-//    SINavigationMenuView *menu = [[SINavigationMenuView alloc] initWithFrame:frame title:@"Menu"];
-//    [menu displayMenuInView:self.navigationController.view];
-//    menu.items = @[@"News", @"Top Articles", @"Messages", @"Account", @"Settings", @"Top Articles", @"Messages"];
-//    menu.delegate = self;
-//    self.navigationItem.titleView = menu;
-}
 
 #pragma mark - navgationmenuviewDelegate
 - (void)didSelectItemAtIndex:(NSUInteger)index
@@ -58,14 +44,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

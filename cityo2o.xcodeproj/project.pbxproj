@@ -2427,7 +2427,6 @@
 		042892621A3E6EBC00CC2407 /* FriendCircle */ = {
 			isa = PBXGroup;
 			children = (
-				042892631A3E6EBC00CC2407 /* Classes */,
 				042892641A3E6EBC00CC2407 /* controller */,
 				0428926E1A3E6EBD00CC2407 /* downLoad */,
 				042892711A3E6EBD00CC2407 /* FaceBoard */,
@@ -2438,13 +2437,6 @@
 				042893481A3E6EBD00CC2407 /* view */,
 			);
 			path = FriendCircle;
-			sourceTree = "<group>";
-		};
-		042892631A3E6EBC00CC2407 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		042892641A3E6EBC00CC2407 /* controller */ = {
@@ -2482,32 +2474,15 @@
 		042892711A3E6EBD00CC2407 /* FaceBoard */ = {
 			isa = PBXGroup;
 			children = (
-				042892721A3E6EBD00CC2407 /* class */,
 				042892741A3E6EBD00CC2407 /* image */,
 			);
 			path = FaceBoard;
-			sourceTree = "<group>";
-		};
-		042892721A3E6EBD00CC2407 /* class */ = {
-			isa = PBXGroup;
-			children = (
-				042892731A3E6EBD00CC2407 /* MessageListCell */,
-			);
-			path = class;
-			sourceTree = "<group>";
-		};
-		042892731A3E6EBD00CC2407 /* MessageListCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MessageListCell;
 			sourceTree = "<group>";
 		};
 		042892741A3E6EBD00CC2407 /* image */ = {
 			isa = PBXGroup;
 			children = (
 				042892751A3E6EBD00CC2407 /* chatCell */,
-				0428927A1A3E6EBD00CC2407 /* expression */,
 				0428927B1A3E6EBD00CC2407 /* faceBoard */,
 			);
 			path = image;
@@ -2522,13 +2497,6 @@
 				042892791A3E6EBD00CC2407 /* chat_bg_own@2x.png */,
 			);
 			path = chatCell;
-			sourceTree = "<group>";
-		};
-		0428927A1A3E6EBD00CC2407 /* expression */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = expression;
 			sourceTree = "<group>";
 		};
 		0428927B1A3E6EBD00CC2407 /* faceBoard */ = {
