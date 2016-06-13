@@ -7,7 +7,7 @@
 //
 
 #import "ShopActivityViewController.h"
-#import "ActivityDetailViewController.h"
+#import "ZQFunctionWebController.h"
 #import "AcitvityTableViewCell.h"
 #import "activityInfo.h"
 
@@ -98,11 +98,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"干嘛的-----");
     activityInfo *info = [activityArray objectAtIndex:indexPath.row];
-    ActivityDetailViewController *firVC = [[ActivityDetailViewController alloc] init];
+    ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
     [firVC setHiddenTabbar:YES];
     [firVC setNavBarTitle:info.activity_name withFont:14.0f];
-//    [firVC.navigationItem setTitle:info.activity_name];
-    firVC.info = info;
     firVC.url = info.message_url;
     [self.navigationController pushViewController:firVC animated:YES];
 }

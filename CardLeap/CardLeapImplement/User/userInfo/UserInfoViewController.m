@@ -22,7 +22,7 @@
 #import "APService.h"
 #import "myPointGiftViewController.h"
 #import "myPointDetailViewController.h"//记录获取记录
-#import "linNewFunctionWebController.h"
+#import "ZQFunctionWebController.h"
 #pragma mark 2016.4 我的页面
 @interface UserInfoViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (strong, nonatomic) UITableView *userInfoTableview;//个人中心显示列表
@@ -254,7 +254,7 @@
 #pragma mark --- 这里设置个人业务跳转页面
     }else if([text isEqualToString:@"my_business"]){
         
-        linNewFunctionWebController *firVC=[[linNewFunctionWebController alloc]init];
+        ZQFunctionWebController *firVC=[[ZQFunctionWebController alloc]init];
         firVC.url=_myBusinessURL;
         firVC.title=@"个人业务";
         [self.navigationController pushViewController:firVC animated:YES];

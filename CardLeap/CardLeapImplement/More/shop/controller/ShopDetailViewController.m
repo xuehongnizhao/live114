@@ -26,7 +26,7 @@
 #import "myOrderCenterInfo.h"
 #import "RviewDishListViewController.h"
 #import "ShopAdviertisementView.h"
-#import "linNewFunctionWebController.h"
+#import "ZQFunctionWebController.h"
 @interface ShopDetailViewController ()<UITableViewDataSource,UITableViewDelegate,shopPicDelegate,UIAlertViewDelegate,UMSocialUIDelegate,UIActionSheetDelegate>
 {
     shopDetailInfo *detailInfo;//商家详情实体类
@@ -440,7 +440,7 @@
                 
             }else if(row ==3){
 #pragma mark --- 跳转360全景视图
-                linNewFunctionWebController *panoramaVC=[[linNewFunctionWebController alloc]init];
+                ZQFunctionWebController *panoramaVC=[[ZQFunctionWebController alloc]init];
                 panoramaVC.title=@"360全景视图";
                 panoramaVC.url=panorama;
                 [self.navigationController pushViewController:panoramaVC animated:YES];

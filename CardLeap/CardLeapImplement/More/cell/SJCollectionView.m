@@ -1,20 +1,20 @@
 //
-//  SJZCCollectionView.m
+//  SJCollectionView.m
 //  cityo2o
 //
 //  Created by mac on 16/4/25.
 //  Copyright © 2016年 Sky. All rights reserved.
 //
 
-#import "SJZCCollectionView.h"
-#import "ZQFunctionWebViewController.h"
+#import "SJCollectionView.h"
+#import "ZQFunctionWebController.h"
 #import "UIView+UIViewController.h"
-@interface SJZCCollectionView()
+@interface SJCollectionView()
 {
     NSMutableArray *imageList;
 }
 @end
-@implementation SJZCCollectionView
+@implementation SJCollectionView
 
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -54,7 +54,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    ZQFunctionWebViewController *firVC=[[ZQFunctionWebViewController alloc]init];
+    ZQFunctionWebController *firVC=[[ZQFunctionWebController alloc]init];
     NSMutableArray *urlList=[NSMutableArray array];
     for (NSDictionary *dic in _dataList) {
         NSString *shopURL=[dic objectForKey:@"shop_url"];

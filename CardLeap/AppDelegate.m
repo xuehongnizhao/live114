@@ -23,7 +23,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 //推送接收跳转页面
 #import "MessageViewController.h"
-#import "ActivityDetailViewController.h"
+#import "ZQFunctionWebController.h"
 #import "mySeatSuccessViewController.h"
 #import "myRoomSuccessViewController.h"
 #import "OrderDetailViewController.h"
@@ -214,8 +214,8 @@ fetchCompletionHandler:
         NSInteger my_type = [[userInfo objectForKey:@"type"] integerValue];
         if (my_type == 1) {//公告
             NSString *message_url = [userInfo objectForKey:@"url"];
-            if (![currentViewCtrl isKindOfClass:[ActivityDetailViewController class]]) {
-                ActivityDetailViewController *message = [[ActivityDetailViewController alloc] init];
+            if (![currentViewCtrl isKindOfClass:[ZQFunctionWebController class]]) {
+                ZQFunctionWebController *message = [[ZQFunctionWebController alloc] init];
                 message.url = message_url;
                 [firVC setTabBarHidden:YES animated:YES];
                 [message setNavBarTitle:@"公告详情" withFont:14.0f];
@@ -289,8 +289,8 @@ fetchCompletionHandler:
         NSInteger type = [[userInfo objectForKey:@"type"] integerValue];
         if (type == 1) {//公告
             NSString *message_url = [userInfo objectForKey:@"url"];
-            if (![currentViewCtrl isKindOfClass:[ActivityDetailViewController class]]) {
-                ActivityDetailViewController *message = [[ActivityDetailViewController alloc] init];
+            if (![currentViewCtrl isKindOfClass:[ZQFunctionWebController class]]) {
+                ZQFunctionWebController *message = [[ZQFunctionWebController alloc] init];
                 message.url = message_url;
                 [firVC setTabBarHidden:YES animated:YES];
                 [message setNavBarTitle:@"公告详情" withFont:14.0f];
@@ -629,8 +629,8 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
             BaseViewController *indexViewController = [firVC.viewControllers objectAtIndex:index];
             UIViewController *currentViewCtrl = ((UINavigationController*)indexViewController).topViewController;
             if (my_type == 1) {//公告
-                if (![indexViewController isKindOfClass:[ActivityDetailViewController class]]) {
-                    ActivityDetailViewController *message = [[ActivityDetailViewController alloc] init];
+                if (![indexViewController isKindOfClass:[ZQFunctionWebController class]]) {
+                    ZQFunctionWebController *message = [[ZQFunctionWebController alloc] init];
                     message.url = self.url;
                     [firVC setTabBarHidden:YES animated:YES];
                     [message setNavBarTitle:@"公告详情" withFont:14.0f];

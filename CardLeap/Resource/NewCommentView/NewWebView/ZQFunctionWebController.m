@@ -1,12 +1,12 @@
 //
-//  linNewFunctionWebController.m
+//  ZQFunctionWebController.m
 //  cityo2o
 //
 //  Created by mac on 15/7/8.
-//  Copyright (c) 2015年 Sky. All rights reserved.
+//  Copyright (c) 2016年 ZQ All rights reserved.
 //
 
-#import "linNewFunctionWebController.h"
+#import "ZQFunctionWebController.h"
 #import "UserModel.h"
 #import "UMSocial.h"
 #import "WebViewJavascriptBridge.h"
@@ -18,7 +18,7 @@
 #import "MLAudioMeterObserver.h"
 #import <AVFoundation/AVFoundation.h>
 #define NaviItemTag 2016
-@interface linNewFunctionWebController()<UIWebViewDelegate,UMSocialUIDelegate>
+@interface ZQFunctionWebController()<UIWebViewDelegate,UMSocialUIDelegate>
 {
     NSString *_uuid;
     WVJBResponseCallback _responseCallBack;
@@ -31,7 +31,7 @@
 @property (strong, nonatomic) AVAudioPlayer *player;
 @end
 
-@implementation linNewFunctionWebController
+@implementation ZQFunctionWebController
 
 
 /**
@@ -289,6 +289,11 @@
     NSString *session_key=[UserModel shareInstance].session_key;
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL: [NSURL URLWithString:self.url]];
     request.HTTPMethod=@"POST";
+    if (self.shop_id) {
+    request.HTTPBody = [[NSString stringWithFormat:@"tel=%@&u_id=%@&session_key=%@&shop_id=%@",user_tel,u_id,session_key,self.shop_id] dataUsingEncoding:NSUTF8StringEncoding];
+        [_detailWeb loadRequest:request];
+        return;
+    }
     request.HTTPBody = [[NSString stringWithFormat:@"tel=%@&u_id=%@&session_key=%@",user_tel,u_id,session_key] dataUsingEncoding:NSUTF8StringEncoding];
     [_detailWeb loadRequest:request];
     NSLog(@"%@",request);

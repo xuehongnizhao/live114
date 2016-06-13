@@ -1,5 +1,5 @@
 //
-//  SJZCCollectionView.h
+//  SJCollectionView.h
 //  cityo2o
 //
 //  Created by mac on 16/4/25.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SJZCCollectionView : UICollectionView<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface SJCollectionView : UICollectionView<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (copy, nonatomic) NSArray *dataList;
 @property (copy, nonatomic) NSString *shop_id;
 @property (copy, nonatomic) NSString *shop_name;

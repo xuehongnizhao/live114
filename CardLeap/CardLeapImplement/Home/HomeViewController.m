@@ -47,7 +47,7 @@
 #import "CouponDetailViewController.h"
 #import "orderSeatDetailViewController.h"
 #import "orderRoomDetailViewController.h"
-#import "ActivityDetailViewController.h"
+#import "ZQFunctionWebController.h"
 
 //城市选择
 #import "HomeSelectedCityViewController.h"
@@ -62,7 +62,7 @@
 #import "MJExtension.h"
 #import "ccDisplayModel.h"
 //--------新添加分类跳转web-----
-#import "linNewFunctionWebController.h"
+#import "ZQFunctionWebController.h"
 //新轮播
 #import "SkyBannerView.h"
 //行业专区 View
@@ -215,7 +215,7 @@ linHangyeCommendViewDelegate>
 //点击全屏广告
 - (void) gotoFullScreen {
     self.fullScreenImage.hidden = YES;
-    linNewFunctionWebController *firVC = [[linNewFunctionWebController alloc] init];
+    ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
     firVC.url = fullScreenDict[@"a_url"];
     firVC.title = @"详情";
     [self.navigationController pushViewController:firVC animated:YES];
@@ -422,7 +422,7 @@ linHangyeCommendViewDelegate>
     if ([module.index_type integerValue]==0)
     {
         //跳网页
-        linNewFunctionWebController *firVC = [[linNewFunctionWebController alloc] init];
+        ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
         firVC.url = module.i_url;
         firVC.title = module.index_name;
         [self.navigationController pushViewController:firVC animated:YES];
@@ -493,7 +493,7 @@ linHangyeCommendViewDelegate>
 
 -(void) moreDisplay{
     NSLog(@"点击了查看更多");
-    linNewFunctionWebController *firVC = [[linNewFunctionWebController alloc] init];
+    ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
     firVC.url   = moreDisplayUrl;
     firVC.title = @"精品推荐";
     [self.navigationController pushViewController:firVC animated:YES];
@@ -527,7 +527,7 @@ linHangyeCommendViewDelegate>
 
 -(void)disPlayCenterClickButtonToPushViewController:(ccDisplayModel *)module
 {
-    linNewFunctionWebController *firVC = [[linNewFunctionWebController alloc] init];
+    ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
     firVC.url = module.url;
     firVC.title = module.goods_name;
     [self.navigationController pushViewController:firVC animated:YES];
@@ -655,7 +655,7 @@ linHangyeCommendViewDelegate>
     {
         //跳网页
         //跳网页
-        linNewFunctionWebController *firVC = [[linNewFunctionWebController alloc] init];
+        ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
         firVC.url = module.i_url;
         firVC.title = module.index_name;
         [self.navigationController pushViewController:firVC animated:YES];
@@ -1327,7 +1327,7 @@ linHangyeCommendViewDelegate>
         bannerView.tapHandler=^(SkyBannerView* bannerView,NSInteger index){
             NSLog(@"在这写中部广告栏的点击逻辑处理 :%ld",index);
             NSString *url = [descBillboardsArray objectAtIndex:index];
-            ActivityDetailViewController *firVC = [[ActivityDetailViewController alloc] init];
+            ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
             [firVC setHiddenTabbar:YES];
             
             [firVC setNavBarTitle:@"详情" withFont:14.0f];
@@ -1491,7 +1491,7 @@ linHangyeCommendViewDelegate>
         firVC.shop_id = info.goods_id;
         [self.navigationController pushViewController:firVC animated:YES];
     }else if ([info.type integerValue] == 5) {//活动
-        ActivityDetailViewController *firVC = [[ActivityDetailViewController alloc] init];
+        ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
         [firVC setHiddenTabbar:YES];
         [firVC setNavBarTitle:@"商家订座" withFont:14.0f];
         firVC.url = info.top_desc;
@@ -1504,7 +1504,7 @@ linHangyeCommendViewDelegate>
         [self.navigationController pushViewController:firVC animated:YES];
     }else{
         NSLog(@"跳转到web详情页面");
-        ActivityDetailViewController *firVC = [[ActivityDetailViewController alloc] init];
+        ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
         [firVC setHiddenTabbar:YES];
         
         [firVC setNavBarTitle:@"详情" withFont:14.0f];

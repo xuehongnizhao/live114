@@ -8,10 +8,10 @@
 
 #import "ShopAdviertisementView.h"
 #import "SDCycleScrollView.h"
-#import "ZQFunctionWebViewController.h"
+#import "ZQFunctionWebController.h"
 #import "UIView+UIViewController.h"
-#import "SJZCCollectionView.h"
-#import "SJHDCollectionView.h"
+#import "SJCollectionView.h"
+#import "SJCollectionView.h"
 #import "SJSCTableViewCell.h"
 @interface ShopAdviertisementView ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -19,9 +19,9 @@
 }
 @property (strong, nonatomic) SDCycleScrollView *SJHDPView;
 @property (strong, nonatomic) UIImageView *pinZhi;
-@property (strong, nonatomic) SJZCCollectionView *SJZSView;
+@property (strong, nonatomic) SJCollectionView *SJZSView;
 @property (strong, nonatomic) UIImageView *huoDong;
-@property (strong, nonatomic) SJHDCollectionView *SJHDView;
+@property (strong, nonatomic) SJCollectionView *SJHDView;
 @property (strong, nonatomic) UIImageView *shangCheng;
 @property (strong, nonatomic) UITableView *shopList;
 @end
@@ -68,7 +68,7 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ZQFunctionWebViewController *firVC=[[ZQFunctionWebViewController alloc]init];
+    ZQFunctionWebController *firVC=[[ZQFunctionWebController alloc]init];
     NSMutableArray *urlList=[NSMutableArray array];
     for (NSDictionary *dic in _SJSC) {
         NSString *shopURL=[dic objectForKey:@"shop_url"];
@@ -94,7 +94,7 @@
             [self addSubview:_huoDong];
         }
 
-        _SJHDView=[[SJHDCollectionView alloc]initWithFrame:CGRectMake(0, _huoDong.frame.origin.y+_huoDong.frame.size.height, SCREEN_WIDTH, .3*SCREEN_WIDTH*_SJHD.count/2)];
+        _SJHDView=[[SJCollectionView alloc]initWithFrame:CGRectMake(0, _huoDong.frame.origin.y+_huoDong.frame.size.height, SCREEN_WIDTH, .3*SCREEN_WIDTH*_SJHD.count/2)];
         [self addSubview:_SJHDView];
         _SJHDView.dataList=_SJHD;
         _SJHDView.backgroundColor=[UIColor clearColor];
@@ -112,7 +112,7 @@
         if (_pinZhi.frame.size.height!=0) {
             [self addSubview:_pinZhi];
         }
-        _SJZSView=[[SJZCCollectionView alloc]initWithFrame:CGRectMake(0, _pinZhi.frame.origin.y+_pinZhi.frame.size.height,SCREEN_WIDTH, 0.3*SCREEN_WIDTH*_SJZS.count/2)];
+        _SJZSView=[[SJCollectionView alloc]initWithFrame:CGRectMake(0, _pinZhi.frame.origin.y+_pinZhi.frame.size.height,SCREEN_WIDTH, 0.3*SCREEN_WIDTH*_SJZS.count/2)];
         [self addSubview:_SJZSView];
         _SJZSView.dataList=_SJZS;
         _SJHDView.shop_name=self.shop_name;
@@ -142,7 +142,7 @@
         NSString *str=[dic objectForKey:@"shop_url"];
         [arr addObject:str];
     }
-    ZQFunctionWebViewController*firVC=[[ZQFunctionWebViewController alloc]init];
+    ZQFunctionWebController*firVC=[[ZQFunctionWebController alloc]init];
     firVC.shop_id=self.shop_id;
     firVC.url=arr[index];
     firVC.title=self.shop_name;

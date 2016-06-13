@@ -12,7 +12,7 @@
 #import "MXPullDownMenu.h"
 #import "UIScrollView+MJRefresh.h"
 #import "cateInfo.h"
-#import "ActivityDetailViewController.h"
+#import "ZQFunctionWebController.h"
 
 @interface ActivityListViewController ()<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate>
 {
@@ -302,7 +302,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"干嘛的-----");
     activityInfo *info = [activityArray objectAtIndex:indexPath.row];
-    ActivityDetailViewController *firVC = [[ActivityDetailViewController alloc] init];
+    ZQFunctionWebController *firVC = [[ZQFunctionWebController alloc] init];
     [firVC setHiddenTabbar:YES];
     [firVC setNavBarTitle:@"活动详情" withFont:14.0f];
 //    [firVC.navigationItem setTitle:@"活动详情"];
