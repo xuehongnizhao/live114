@@ -4,7 +4,7 @@
 //
 //  Created by hm－02 on 15/7/9.
 //  Copyright (c) 2015年 Sky. All rights reserved.
-//
+//精品推荐
 
 #import "SkyServerCenterView.h"
 #import "linServicemodel.h"
@@ -113,7 +113,7 @@ typedef NS_ENUM(NSUInteger, kButtonViewDirection) {
     
     //添加PageControl
     _facePageControl = [[GrayPageControl alloc]initForAutoLayout];
-    //    _facePageControl.hidesForSinglePage=YES;
+        _facePageControl.hidesForSinglePage=YES;
     [self addSubview:_facePageControl];
     [_facePageControl autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0.0f];
     [_facePageControl autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0.0f];
@@ -121,7 +121,6 @@ typedef NS_ENUM(NSUInteger, kButtonViewDirection) {
     [_facePageControl autoSetDimension:ALDimensionHeight toSize:20.f];
     _facePageControl.numberOfPages = pages;
     _facePageControl.currentPage = 0;
-    
     //更新页面
     [self setAutolayout:@"server"];
     
@@ -177,7 +176,7 @@ typedef NS_ENUM(NSUInteger, kButtonViewDirection) {
     
     //添加PageControl
     _facePageControl = [[GrayPageControl alloc]initForAutoLayout];
-    //    _facePageControl.hidesForSinglePage=YES;
+    _facePageControl.hidesForSinglePage=YES;
     [self addSubview:_facePageControl];
     [_facePageControl autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0.0f];
     [_facePageControl autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0.0f];
@@ -185,7 +184,6 @@ typedef NS_ENUM(NSUInteger, kButtonViewDirection) {
     [_facePageControl autoSetDimension:ALDimensionHeight toSize:20.f];
     _facePageControl.numberOfPages = pages;
     _facePageControl.currentPage = 0;
-    
     //更新页面
     [self setAutolayout:@"display"];
     
@@ -199,6 +197,7 @@ typedef NS_ENUM(NSUInteger, kButtonViewDirection) {
 
 -(void)addLineImageDisplay
 {
+    
     [self.cateArray enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL *stop) {
         if (idx%4 == 0 && idx/12==0) {//第一页第一行第一个第二个
             UIImageView *line = [[UIImageView alloc] initForAutoLayout];

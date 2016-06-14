@@ -706,7 +706,7 @@ linHangyeCommendViewDelegate>
                           };
     [Base64Tool postSomethingToServe:index_data andParams:dic isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
         indexDic = [[NSMutableDictionary alloc] initWithDictionary:(NSDictionary*)param];
-        //NSLog(@"获取的数据为:%@",indexDic);
+        NSLog(@"获取的数据为:%@",indexDic);
         //如果距离上次更新时间超过4小时 更新ud的数据
         //解析数据 做显示
         if ([self isRefresh:0]) {
@@ -912,12 +912,7 @@ linHangyeCommendViewDelegate>
     //显示数据
     [myView setBackgroundColor:UIColorFromRGB(0xf3f3f3)];
     [self addBanderView:adbanderHeight pView:myView ViewY:0];
-    
-    //    [myView addSubview:self.myScrollView];
-    //    [_myScrollView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0.0f];
-    //    [_myScrollView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0.0f];
-    //    [_myScrollView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0.0f];
-    //    [_myScrollView autoSetDimension:ALDimensionHeight toSize:adbanderHeight];
+
     
     //添加服务中心view
     CGRect frame=self.serverView.frame;
@@ -932,13 +927,6 @@ linHangyeCommendViewDelegate>
     industryFrame.size.height = industryViewHeight;
     self.industryView.frame=industryFrame;
     [myView addSubview:self.industryView];
-    //    [myView addSubview:self.industryView];
-    //    [_industryView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.serverView];
-    //    [_industryView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0.0f];
-    //    [_industryView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0.0f];
-    //    [_industryView autoSetDimension:ALDimensionHeight toSize:industryViewHeight];
-    
-    
     //添加商品展示区//commodityDisplayViewHeight
     CGRect commodityDisplayFrame    = self.commodityDisplayView.frame;
     commodityDisplayFrame.origin.y  = adbanderHeight+serverViewHeight+industryViewHeight+5+5;
@@ -1127,18 +1115,6 @@ linHangyeCommendViewDelegate>
         _messageButton.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     }
     return _messageButton;
-}
-//-------废弃------------
--(UIButton*)appNameButton
-{
-    if (!_appNameButton) {
-        _appNameButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-        _appNameButton.enabled = YES;
-        _appNameButton.userInteractionEnabled = NO;
-        _appNameButton.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
-        [_appNameButton setImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
-    }
-    return _appNameButton;
 }
 
 #pragma mark--------设置navigation首页显示

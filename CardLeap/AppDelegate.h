@@ -16,9 +16,7 @@
 #define connect_url(key) [[[[[JSONOfNetWork getDictionaryFromPlist] objectForKey:@"obj"]objectForKey:@"api"]objectForKey:key] substringFromIndex:29]
 //获取NSUserDefault中的数据
 #define userDefault(key) [[NSUserDefaults standardUserDefaults] objectForKey:key]
-//要与AFNetWork的baseURL区分开
-//#define baseUrl @"192.168.1.60/youzhi"
-//#define baseUrl @"121.42.194.206:8083/life114"
+
 
 #pragma mark --- 2016.1.5 修改服务器地址为本地
 //#define baseUrl @"manager.114lives.com"

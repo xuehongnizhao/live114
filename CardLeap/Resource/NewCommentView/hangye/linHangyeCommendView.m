@@ -103,7 +103,7 @@
     
     //添加PageControl
     _facePageControl = [[GrayPageControl alloc]initForAutoLayout];
-//    _facePageControl.hidesForSinglePage=YES;
+    _facePageControl.hidesForSinglePage=YES;
     [self addSubview:_facePageControl];
     [_facePageControl autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0.0f];
     [_facePageControl autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0.0f];
