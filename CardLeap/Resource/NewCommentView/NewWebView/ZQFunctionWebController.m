@@ -200,22 +200,27 @@
     [self setNavBarTitle:self.title withFont:17.0f];
     [self.view addSubview:self.detailWeb];
 #pragma mark --- 2016.4 添加关闭，返回，主页，分享
-    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(0, 0, 32, 26);
-    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 0);//　　设置按钮图片的偏移位置(向左偏移)
-    [leftButton setImage:[UIImage imageNamed:@"shake_back"] forState:UIControlStateNormal];
-    [leftButton addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
-    leftButton.tag=NaviItemTag+1;
-    UIBarButtonItem *mainItem=[[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(naviItemAction:)];
-    mainItem.tag=NaviItemTag+3;
+    UIButton *backItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    backItem.frame = CGRectMake(0, 0, 40, 40);
+    backItem.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 0);//　　设置按钮图片的偏移位置(向左偏移)
+    [backItem setImage:[UIImage imageNamed:@"shake_back"] forState:UIControlStateNormal];
+    [backItem addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
+    backItem.tag=NaviItemTag+1;
+    
+    UIButton *closeItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    closeItem.frame = CGRectMake(0, 0, 40, 40);
+    closeItem.imageEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);//　　设置按钮图片的偏移位置(向左偏移)
+    [closeItem setImage:[UIImage imageNamed:@"web_back"] forState:UIControlStateNormal];
+    [closeItem addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
+    closeItem.tag=NaviItemTag+2;
     
     UIButton *shareButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     UIBarButtonItem *shareItem=[[UIBarButtonItem alloc]initWithCustomView:shareButton];
     [shareButton setImage:[UIImage imageNamed:@"coupon_share_no"] forState:UIControlStateNormal];
     [shareButton setImage:[UIImage imageNamed:@"coupon_share_sel"] forState:UIControlStateHighlighted];
     [shareButton addTarget:self action:@selector(naviItemAction:) forControlEvents:UIControlEventTouchUpInside];
-    shareButton.tag=NaviItemTag+4;
-    self.navigationItem.leftBarButtonItems=@[[[UIBarButtonItem alloc]initWithCustomView:leftButton],mainItem];
+    shareButton.tag=NaviItemTag+3;
+    self.navigationItem.leftBarButtonItems=@[[[UIBarButtonItem alloc]initWithCustomView:backItem], [[UIBarButtonItem alloc]initWithCustomView:closeItem]];
     self.navigationItem.rightBarButtonItem=shareItem;
     [_detailWeb autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0.0f];
     [_detailWeb autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0.0f];
@@ -242,7 +247,7 @@
             }
         }
             break;
-        case 3:{
+        case 2:{
             NSURL *url=[NSURL URLWithString:@""];
             NSURLRequest *request=[NSURLRequest requestWithURL:url];
             [_detailWeb loadRequest:request];
@@ -252,7 +257,7 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
             break;
-        case 4:{
+        case 3:{
             
             
             [UMSocialSnsService presentSnsIconSheetView:self
