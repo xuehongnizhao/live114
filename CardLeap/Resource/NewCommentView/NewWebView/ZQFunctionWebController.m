@@ -318,8 +318,22 @@
     return NO;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    [SVProgressHUD showWithStatus:@"正在加载请稍等"];
-    [SVProgressHUD setDefaultMaskType:1];
+    /*
+     判断当前网络环境
+     */
+    Reachability *r = [Reachability reachabilityWithHostname:@"www.baidu.com"];
+    switch ([r currentReachabilityStatus]) {
+        case NotReachable:{
+            [SVProgressHUD showErrorWithStatus:@"网络异常"];
+        }
+            break;
+        default:{
+            [SVProgressHUD showWithStatus:@"正在加载请稍等"];
+            [SVProgressHUD setDefaultMaskType:1];
+        }
+            break;
+    }
+
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [SVProgressHUD dismiss];

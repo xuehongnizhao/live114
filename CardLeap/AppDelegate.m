@@ -439,6 +439,8 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
         }
     } andErrorBlock:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"网络不给力"];
+        [self performSelectorOnMainThread:@selector(getURLFilter) withObject:nil waitUntilDone:YES];
+        [self setIndex];
     }];
 
 }

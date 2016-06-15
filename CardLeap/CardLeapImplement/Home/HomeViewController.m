@@ -583,8 +583,14 @@ linHangyeCommendViewDelegate>
             //            self.industryView=[self crateIndustryViewFromNetwork:moduleArray];
         }
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"CommodityDisplayInfo"]) {
-            //            NSDictionary* dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"CommodityDisplayInfo"];
+            NSDictionary* param = [[NSUserDefaults standardUserDefaults] objectForKey:@"CommodityDisplayInfo"];
             //这应该写商品展示 对数据的处理
+            NSArray* moduleArray=[ccDisplayModel objectArrayWithKeyValuesArray:param[@"obj"]];
+            if (moduleArray.count!=0)
+            {
+                self.commodityDisplayView =  [self createDisplayViewWithModuleArray:moduleArray];
+            }
+            //
         }
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"BillboardsInfo"]) {
             NSDictionary* param = [[NSUserDefaults standardUserDefaults] objectForKey:@"BillboardsInfo"];

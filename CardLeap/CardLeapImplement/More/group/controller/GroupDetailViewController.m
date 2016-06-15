@@ -372,7 +372,7 @@
 -(void)shareAction:(UIButton*)sender
 {
     [self UserSharePoint];
-    //NSString *url = @"www.baidu.com";
+    
     NSString *sinaText = [NSString stringWithFormat:@"如e生活 %@",detailInfo.share_url];
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:nil

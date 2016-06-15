@@ -209,7 +209,7 @@
 {
     NSLog(@"点击分享");
     [self UserSharePoint];
-    //NSString *url = @"www.baidu.com";
+    
     NSString *sinaText;
     sinaText = [NSString stringWithFormat:@"如e生活 %@",self.share_url];
 

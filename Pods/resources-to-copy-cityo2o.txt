@@ -1,0 +1,2 @@
+/Users/mac/live114/Pods/IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle
+/Users/mac/live114/Pods/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle
