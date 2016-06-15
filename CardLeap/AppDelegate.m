@@ -434,14 +434,27 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
                 NSLog(@"写入完成了，该干什么就干什么吧");
                 [self performSelectorOnMainThread:@selector(getURLFilter) withObject:nil waitUntilDone:YES];
                 [self setIndex];//暂时不做
-                //                [self checkVersion];
+//                [self checkVersion];
             }
         }
     } andErrorBlock:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"网络不给力"];
-        [self performSelectorOnMainThread:@selector(getURLFilter) withObject:nil waitUntilDone:YES];
-        [self setIndex];
+
+        if ([JSONOfNetWork getDictionaryFromPlist]) {
+            [SVProgressHUD showErrorWithStatus:@"网络不给力"];
+            [self performSelectorOnMainThread:@selector(getURLFilter) withObject:nil waitUntilDone:YES];
+            [self setIndex];
+        }else{
+//            UIWindow *window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+//            UIImageView *imagView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"1"]];
+//            [window addSubview:imagView];
+//            [window makeKeyAndVisible];
+//            self.window=window;
+            [SVProgressHUD showErrorWithStatus:@"请链接网络"];
+        }
+        
+
     }];
+    
 
 }
 /**

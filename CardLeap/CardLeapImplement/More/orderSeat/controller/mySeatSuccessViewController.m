@@ -206,17 +206,6 @@
                                 shareToSnsNames:@[UMShareToSms,UMShareToWechatSession]
                                        delegate:self];
     
-//    [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = @"城市o2o";
-//    [UMSocialData defaultData].extConfig.wechatTimelineData.url = url;
-//    
-//    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"城市o2o";
-//    [UMSocialData defaultData].extConfig.wechatSessionData.url = url;
-//    
-//    [UMSocialData defaultData].extConfig.qzoneData.title = @"城市o2o";
-//    [UMSocialData defaultData].extConfig.qzoneData.url = url;
-//    
-//    [UMSocialData defaultData].extConfig.sinaData.shareText = @"城市o2o";
-//    [UMSocialData defaultData].extConfig.sinaData.urlResource.url = @"www.baidu.com";
 }
 #pragma mark --- 11.28 点击分享按钮就加积分
 - (void) UserSharePoint {

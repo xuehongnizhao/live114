@@ -73,7 +73,6 @@
 {
     NSLog(@"分享什么东西");
     [self UserSharePoint];
-    //NSString *url = @"www.baidu.com";
     NSString *sinaText = [NSString stringWithFormat:@"如e生活%@",self.info.share_url];
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:nil
