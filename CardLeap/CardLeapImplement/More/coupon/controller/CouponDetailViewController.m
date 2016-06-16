@@ -11,7 +11,7 @@
 #import "LoginViewController.h"
 #import "UMSocial.h"
 
-@interface CouponDetailViewController ()<UIWebViewDelegate,UMSocialDataDelegate>
+@interface CouponDetailViewController ()<UIWebViewDelegate,UMSocialUIDelegate>
 @property (strong, nonatomic) UIView *operationView;
 @property (strong, nonatomic) UIWebView *spikeDetailWeb;
 @property (strong, nonatomic) UIButton *downloadButton;
@@ -212,7 +212,7 @@
     
     NSString *sinaText;
     sinaText = [NSString stringWithFormat:@"如e生活 %@",self.share_url];
-
+    
     
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:nil

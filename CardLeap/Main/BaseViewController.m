@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 #import "FontLabel.h"
 
-@interface BaseViewController ()
+@interface BaseViewController ()<UIGestureRecognizerDelegate>
 @property(nonatomic,strong)UIImageView* backgroundImageview;
 @property (nonatomic, weak)	UIView* scrollableView;
 @property (assign, nonatomic) float lastContentOffset;
@@ -26,9 +26,7 @@
 {
     [super viewDidLoad];
     //设置bar的风格，控制字体颜色
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    // Do any additional setup after loading the view.
     self.edgesForExtendedLayout=UIRectEdgeNone;
     //添加背景图片
     [self.view addSubview:self.backgroundImageview];
@@ -36,7 +34,6 @@
     [_backgroundImageview autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0.0f];
     [_backgroundImageview autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0.0f];
     [_backgroundImageview autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0.0f];
-    //[self settingBackButtonImage:@"navbar_return_no" andSelectedImage:@"navbar_return_sel"];
 }
 
 #pragma mark---------设置返回按钮
@@ -136,12 +133,9 @@
     
     self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [self.panGesture setMaximumNumberOfTouches:1];
-    
     [self.panGesture setDelegate:self];
     [self.scrollableView addGestureRecognizer:self.panGesture];
     
-    /* The navbar fadeout is achieved using an overlay view with the same barTintColor.
-     this might be improved by adjusting the alpha component of every navbar child */
     CGRect frame = self.navigationController.navigationBar.frame;
     frame.origin = CGPointZero;
     self.overlay = [[UIView alloc] initWithFrame:frame];
@@ -240,9 +234,6 @@
             self.isCollapsed = NO;
             
             [self updateSizingWithDelta:delta];
-            
-            // This line needs tweaking
-            // [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y - delta) animated:YES];
         }];
     } else {
         // And back up
@@ -279,21 +270,6 @@
     frame.size.height += delta;
     self.scrollableView.layer.frame = frame;
 }
-//---------------------------------
 
-#pragma mark -
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

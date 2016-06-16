@@ -45,7 +45,7 @@
 #define LinPercent SCREEN_WIDTH/320.0
 #define LinHeightPercent SCREEN_HEIGHT/621.0
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
@@ -57,6 +57,7 @@
 @property (strong,nonatomic ) NSDictionary   * baseDict;
 @property (assign, nonatomic) BOOL islogin;                     /*!< 是否登录 */
 @property (strong, nonatomic) NSString *deviceID;
+-(void)getDataFromNet;
 //- (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 @end

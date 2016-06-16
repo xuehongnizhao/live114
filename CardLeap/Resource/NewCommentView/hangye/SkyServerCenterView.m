@@ -191,7 +191,7 @@ typedef NS_ENUM(NSUInteger, kButtonViewDirection) {
 
 -(void)displayButtonviewClick:(UIButton*) sender
 {
-    linServicemodel* module=[self.moduleArray objectAtIndex:sender.tag];
+    ccDisplayModel* module=[self.moduleArray objectAtIndex:sender.tag];
     [self.delegate disPlayCenterClickButtonToPushViewController:module];
 }
 
@@ -235,11 +235,6 @@ typedef NS_ENUM(NSUInteger, kButtonViewDirection) {
         
     }];
 }
-
-
-#pragma mark - CC 新方法结束
-
-
 
 #pragma mark - Autolayout
 -(void)setAutolayout:(NSString *)string
@@ -387,14 +382,7 @@ typedef NS_ENUM(NSUInteger, kButtonViewDirection) {
 #pragma mark - Helpul Method
 -(void)createLineDirection:(kButtonViewDirection) lineDirection  withView:(UIView*) view
 {
-    //    kButtonViewDirectionTop = 1,
-    //    kButtonViewDirectionTopLeft = 2,
-    //    kButtonViewDirectionLeft = 3,
-    //    kButtonViewDirectionBottomLeft = 4,
-    //    kButtonViewDirectionBottom = 5,
-    //    kButtonViewDirectionBottomRight = 6,
-    //    kButtonViewDirectionRight = 7,
-    //    kButtonViewDirectionTopRight = 8,
+
     if (lineDirection==1)
     {
         CAShapeLayer* shapLayer=[CAShapeLayer layer];

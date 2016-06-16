@@ -153,22 +153,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 didRegisterUserNotificationSettings:
 (UIUserNotificationSettings *)notificationSettings {
 }
-// Called when your app has been activated by the user selecting an action from
-// a local notification.
-// A nil action identifier indicates the default action.
-// You should call the completion handler as soon as you've finished handling
-// the action.
+
 - (void)application:(UIApplication *)application
 handleActionWithIdentifier:(NSString *)identifier
 forLocalNotification:(UILocalNotification *)notification
   completionHandler:(void (^)())completionHandler {
 }
 
-// Called when your app has been activated by the user selecting an action from
-// a remote notification.
-// A nil action identifier indicates the default action.
-// You should call the completion handler as soon as you've finished handling
-// the action.
+
 - (void)application:(UIApplication *)application
 handleActionWithIdentifier:(NSString *)identifier
 forRemoteNotification:(NSDictionary *)userInfo
@@ -441,15 +433,32 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
 
         if ([JSONOfNetWork getDictionaryFromPlist]) {
             [SVProgressHUD showErrorWithStatus:@"网络不给力"];
-            [self performSelectorOnMainThread:@selector(getURLFilter) withObject:nil waitUntilDone:YES];
+            [self getURLFilter];
             [self setIndex];
         }else{
-//            UIWindow *window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-//            UIImageView *imagView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"1"]];
-//            [window addSubview:imagView];
-//            [window makeKeyAndVisible];
-//            self.window=window;
-            [SVProgressHUD showErrorWithStatus:@"请链接网络"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self getDataFromNet];
+            });
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                UIView *iView=[[UIView alloc]initWithFrame:CGRectMake(0, self.window.frame.size.height*2/3, self.window.frame.size.width, 70)];
+                
+                iView.backgroundColor=Color(255, 255, 240, .2);
+                UILabel *lebel1=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.window.frame.size.width, 40)];
+                lebel1.text=@"亲,您的手机网络不太顺畅哦~";
+                lebel1.font=[UIFont systemFontOfSize:20];
+                lebel1.textAlignment=NSTextAlignmentCenter;
+                lebel1.textColor=[UIColor whiteColor];
+                UILabel *lebel2=[[UILabel alloc]initWithFrame:CGRectMake(0, 40, self.window.frame.size.width, 30)];
+                lebel2.text=@"请检查您的手机是否联网";
+                lebel2.textAlignment=NSTextAlignmentCenter;
+                lebel2.font=[UIFont systemFontOfSize:15];
+                lebel2.textColor=[UIColor whiteColor];
+                [iView addSubview:lebel2];
+                [iView addSubview:lebel1];
+                [self.window addSubview:iView];
+            });
+      
         }
         
 
