@@ -31,7 +31,7 @@
 #import "orderRoomListViewController.h"
 //消息按钮界面
 #import "HomeNavigationView.h"
-
+#import "WXApi.h"
 #import "AppUpdatesController.h"    //APP更新链接
 #define AppVersion @"AppVersion"    //APP版本号
 
@@ -127,6 +127,44 @@
         }];
     }
     return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}
+#warning 3.支付结果回调
+- (void)onResp:(BaseResp *)resp
+{
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    NSString *strTitle;
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+    }
+    if([resp isKindOfClass:[PayResp class]]){
+#warning 4.支付返回结果，实际支付结果需要去自己的服务器端查询  由于demo的局限性这里直接使用返回的结果
+        strTitle = [NSString stringWithFormat:@"支付结果"];
+        // 返回码参考：https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=9_12
+        switch (resp.errCode) {
+            case WXSuccess:{
+                strMsg = @"支付结果：成功！";
+                NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+                NSNotification *notification = [NSNotification notificationWithName:@"ORDER_PAY_NOTIFICATION" object:@"success"];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+                break;
+            }
+            default:{
+                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+                NSNotification *notification = [NSNotification notificationWithName:@"ORDER_PAY_NOTIFICATION"object:@"fail"];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+                break;
+            }
+        }
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:strTitle message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"知道了");
+    }];
+    [alert addAction:action];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    NSLog(@"title = %@ message = %@", strTitle, strMsg);
 }
 
 /**

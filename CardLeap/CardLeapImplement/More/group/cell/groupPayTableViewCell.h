@@ -8,11 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol choosePayMethodeDelegate <NSObject>
--(void)choosePayAction:(NSInteger)indexPath;
-@end
 
 @interface groupPayTableViewCell : UITableViewCell
-@property (strong,nonatomic)id<choosePayMethodeDelegate> delegate;
--(void)confirgureCell:(NSInteger)row param:(NSDictionary*)dic index:(NSInteger)index;
+-(void)confirgureCell:(NSInteger)row param:(NSDictionary*)dic;
 @end

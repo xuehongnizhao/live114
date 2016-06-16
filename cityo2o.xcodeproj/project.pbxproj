@@ -634,7 +634,6 @@
 		04C87E961BD9CC8800E6B75E /* libSocialWhatsapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C87E7A1BD9CC8800E6B75E /* libSocialWhatsapp.a */; };
 		04C87E971BD9CC8800E6B75E /* libSocialYiXin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C87E7D1BD9CC8800E6B75E /* libSocialYiXin.a */; };
 		04C87E981BD9CC8800E6B75E /* libYixinSDK_V2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C87E7E1BD9CC8800E6B75E /* libYixinSDK_V2.2.a */; };
-		04C94FBB1D0FD55E0027503A /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C94FBA1D0FD55E0027503A /* x.png */; };
 		04D02A411A5B83F500A6188D /* RviewDishListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D02A401A5B83F500A6188D /* RviewDishListViewController.m */; };
 		04D02A451A5BAD1100A6188D /* TQStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D02A441A5BAD1100A6188D /* TQStarRatingView.m */; };
 		04D02A481A5BAD3200A6188D /* UserReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D02A471A5BAD3200A6188D /* UserReviewViewController.m */; };
@@ -1825,7 +1824,6 @@
 		04C87E7F1BD9CC8800E6B75E /* UMSocialYiXinHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialYiXinHandler.h; sourceTree = "<group>"; };
 		04C87E801BD9CC8800E6B75E /* YXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApi.h; sourceTree = "<group>"; };
 		04C87E811BD9CC8800E6B75E /* YXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApiObject.h; sourceTree = "<group>"; };
-		04C94FBA1D0FD55E0027503A /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
 		04D02A3F1A5B83F500A6188D /* RviewDishListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RviewDishListViewController.h; sourceTree = "<group>"; };
 		04D02A401A5B83F500A6188D /* RviewDishListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RviewDishListViewController.m; sourceTree = "<group>"; };
 		04D02A431A5BAD1100A6188D /* TQStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQStarRatingView.h; sourceTree = "<group>"; };
@@ -4989,7 +4987,6 @@
 				333BDA231A1D7EFF009BAB8E /* AppDelegate.m */,
 				33DB1C651A1EFEE8002E463E /* LaunchScreen.xib */,
 				333BDA2E1A1D7EFF009BAB8E /* Images.xcassets */,
-				04C94FBA1D0FD55E0027503A /* x.png */,
 				333BDA1E1A1D7EFF009BAB8E /* Supporting Files */,
 			);
 			path = CardLeap;
@@ -5955,7 +5952,6 @@
 				042894E41A3E6EBD00CC2407 /* del_emoji_select.png in Resources */,
 				042894451A3E6EBD00CC2407 /* Expression_22@2x.png in Resources */,
 				042894731A3E6EBD00CC2407 /* Expression_64@2x.png in Resources */,
-				04C94FBB1D0FD55E0027503A /* x.png in Resources */,
 				0428944B1A3E6EBD00CC2407 /* Expression_28@2x.png in Resources */,
 				042894361A3E6EBD00CC2407 /* Expression_101@2x.png in Resources */,
 				042894261A3E6EBD00CC2407 /* board_emoji.png in Resources */,

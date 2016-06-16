@@ -43,7 +43,12 @@
  *  @brief  是否进入选择城市
  */
 #define isShowCityChose     @"isShowCityChose"
-
+/**
+ *  @author zq, 16-06-16 13:06:57
+ *
+ * 微信appid
+ */
+#define WXAPPID             @"wxadf37d5562adeb69"
 //url分类
 #define URLFilter           @"URLFilter"
 

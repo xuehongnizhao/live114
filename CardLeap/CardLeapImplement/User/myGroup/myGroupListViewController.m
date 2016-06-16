@@ -19,7 +19,7 @@
 
 @interface myGroupListViewController ()<UITableViewDataSource,UITableViewDelegate,
                                         cateButtonDelegate,myGroupCellDelegate,
-                                        GroupRefreshDelegate,completeDelegate>
+                                        GroupRefreshDelegate>
 {
     NSMutableArray *myGroupArray;//我的团购列表
     NSString *cate_id;//分类id
@@ -29,20 +29,13 @@
 @end
 
 @implementation myGroupListViewController
--(void)completeAction{
-    NSLog(@"completeDelegate ");
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initData];
     [self setUI];
     [self.myGroupTableview headerBeginRefreshing];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark-----set UI
@@ -173,14 +166,14 @@
         myGroupSpikeCodeViewController *firVC = [[myGroupSpikeCodeViewController alloc] init];
         [firVC setHiddenTabbar:YES];
         [firVC setNavBarTitle:@"团购成功" withFont:14.0f];
-//        [firVC.navigationItem setTitle:@"团购成功"];
+
         firVC.info = info;
         [self.navigationController pushViewController:firVC animated:YES];
     }else{
         myGroupDetailViewController *firVC = [[myGroupDetailViewController alloc] init];
         [firVC setHiddenTabbar:YES];
         [firVC setNavBarTitle:@"订单详情" withFont:14.0f];
-//        [firVC.navigationItem setTitle:@"订单详情"];
+
         firVC.info = info;
         [self.navigationController pushViewController:firVC animated:YES];
     }

@@ -117,7 +117,6 @@
                           };
     [cell configureCell:dic row:indexPath.row];
     cell.delegate = self;
-    //[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -135,7 +134,6 @@
         LoginViewController *firVC = [[LoginViewController alloc] init];
         [firVC setHiddenTabbar:YES];
         [firVC setNavBarTitle:@"登录" withFont:14.0f];
-        //        [firVC.navigationItem setTitle:@"登录"];
         [self.navigationController pushViewController:firVC animated:YES];
     }else{
         [self updateSuccessAndJump];
@@ -169,18 +167,8 @@
     [firVC setHiddenTabbar:YES];
     [firVC setNavBarTitle:@"确认支付" withFont:14.0f];
     firVC.dict = dic;
-//    firVC.order_id = self.myUpdateInfo.order_id;
-//    firVC.passArray = self.myUpdateInfo.pass_array;
     [self.navigationController pushViewController:firVC animated:YES];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

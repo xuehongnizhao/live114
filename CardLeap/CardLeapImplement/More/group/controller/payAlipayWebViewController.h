@@ -8,12 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol  completeDelegate<NSObject>
--(void)completeAction;
-@end
-
 @interface payAlipayWebViewController : BaseViewController
-@property (strong,nonatomic)id<completeDelegate> delegate;
 @property (strong,nonatomic)NSString *pay_url;
 @property (strong,nonatomic)NSString *pass_code;
 @end

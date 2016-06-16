@@ -175,35 +175,13 @@
 #pragma mark------向服务器提交生成订单号码 验证码数组
 -(void)submitGetOrderId :(NSDictionary*)dic
 {
-//    NSLog(@"去支付");
-//    NSString *url = connect_url(@"group_grab_insert");
-//    NSString *totalPrice = [NSString stringWithFormat:@"%f",[dic[@"singel_price"] floatValue]*[dic[@"count"] integerValue]];
-//    NSDictionary *dict = @{
-//                          @"app_key":url,
-//                          @"session_key":[UserModel shareInstance].session_key,
-//                          @"u_id":[UserModel shareInstance].u_id,
-//                          @"group_id":dic[@"group_id"],
-//                          @"grab_num":dic[@"count"],
-//                          @"grab_price":totalPrice
-//                          };
-//    [SVProgressHUD showWithStatus:@"正在提交订单" maskType:SVProgressHUDMaskTypeNone];
-//    [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
-//        if ([param[@"code"]integerValue]==200) {
-//            NSArray *passArray = [param[@"obj"] objectForKey:@"group_pass"];
-//            NSString *order_id = [NSString stringWithFormat:@"%@",[param[@"obj"] objectForKey:@"order_id"]];
-            //----生成订单  传如下一级订单号  groupPassArray-----------
+
             GroupPayViewController *firVC = [[GroupPayViewController alloc] init];
             [firVC setHiddenTabbar:YES];
             [firVC setNavBarTitle:@"确认支付" withFont:14.0f];
             firVC.dict = dic;
             [self.navigationController pushViewController:firVC animated:YES];
-//            [SVProgressHUD dismiss];
-//        }else{
-//            [SVProgressHUD showErrorWithStatus:param[@"message"]];
-//        }
-//    } andErrorBlock:^(NSError *error) {
-//        [SVProgressHUD showErrorWithStatus:@"网络异常"];
-//    }];
+
 }
 
 -(void)buttonActionAddSub:(NSInteger)index

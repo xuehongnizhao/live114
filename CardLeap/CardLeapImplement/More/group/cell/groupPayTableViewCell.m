@@ -11,23 +11,11 @@
 @interface groupPayTableViewCell()
 @property (strong,nonatomic)UILabel *countLable;
 @property (strong,nonatomic)UILabel *totalPriceLable;
-@property (strong,nonatomic)UIButton *alipayWebButton;
-@property (strong,nonatomic)UIButton *alipayClientButton;
 @end
 
 @implementation groupPayTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
--(void)confirgureCell:(NSInteger)row param:(NSDictionary*)dic index:(NSInteger)index
+-(void)confirgureCell:(NSInteger)row param:(NSDictionary*)dic
 {
     if (row == 0) {
         self.backgroundColor = UIColorFromRGB(0xf3f3f3);
@@ -103,23 +91,52 @@
         UILabel *tmpLable = [[UILabel alloc] initForAutoLayout];
         tmpLable.font = [UIFont systemFontOfSize:14.0f];
         tmpLable.textColor = UIColorFromRGB(0x484848);
-        tmpLable.text = @"支付宝客户端支付";
+        tmpLable.text = @"支付宝支付";
         [self.contentView addSubview:tmpLable];
         [tmpLable autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:imageView withOffset:5.0f];
         [tmpLable autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
         [tmpLable autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5.0f];
         [tmpLable autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0f];
+
+    }else if (row == 5){
+        UIImageView *imageView = [[UIImageView alloc] initForAutoLayout];
+        imageView.image = [UIImage imageNamed:@"login_wx"];
+        [self.contentView addSubview:imageView];
+        [imageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
+        [imageView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5.0f];
+        [imageView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10.0f];
+        [imageView autoSetDimension:ALDimensionWidth toSize:30.0f];
         
-        [self.contentView addSubview:self.alipayClientButton];
-        [_alipayClientButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0f];
-        [_alipayClientButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
-        [_alipayClientButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5.0f];
-        [_alipayClientButton autoSetDimension:ALDimensionWidth toSize:40.0f];
-        if (index == 0) {
-            [_alipayClientButton setImage:[UIImage imageNamed:@"paymenyt_sel"] forState:UIControlStateNormal];
-        }else{
-            [_alipayClientButton setImage:[UIImage imageNamed:@"paymenyt_no"] forState:UIControlStateNormal];
-        }
+        UILabel *tmpLable = [[UILabel alloc] initForAutoLayout];
+        tmpLable.font = [UIFont systemFontOfSize:14.0f];
+        tmpLable.textColor = UIColorFromRGB(0x484848);
+        tmpLable.text = @"微信支付";
+        [self.contentView addSubview:tmpLable];
+        [tmpLable autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:imageView withOffset:5.0f];
+        [tmpLable autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
+        [tmpLable autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5.0f];
+        [tmpLable autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0f];
+
+    }
+    else{
+        UIImageView *imageView = [[UIImageView alloc] initForAutoLayout];
+        imageView.image = [UIImage imageNamed:@"login_wx"];
+        [self.contentView addSubview:imageView];
+        [imageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
+        [imageView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5.0f];
+        [imageView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10.0f];
+        [imageView autoSetDimension:ALDimensionWidth toSize:30.0f];
+        
+        UILabel *tmpLable = [[UILabel alloc] initForAutoLayout];
+        tmpLable.font = [UIFont systemFontOfSize:14.0f];
+        tmpLable.textColor = UIColorFromRGB(0x484848);
+        tmpLable.text = @"银联支付";
+        [self.contentView addSubview:tmpLable];
+        [tmpLable autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:imageView withOffset:5.0f];
+        [tmpLable autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5.0f];
+        [tmpLable autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5.0f];
+        [tmpLable autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0f];
+
     }
 }
 
@@ -142,41 +159,6 @@
         _totalPriceLable.textAlignment = NSTextAlignmentRight;
     }
     return _totalPriceLable;
-}
-
--(UIButton *)alipayWebButton
-{
-    if (!_alipayWebButton) {
-        _alipayWebButton = [[UIButton alloc] initForAutoLayout];
-        _alipayWebButton.tag = 0;
-        [_alipayWebButton addTarget:self action:@selector(choosePayAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _alipayWebButton;
-}
-
--(UIButton *)alipayClientButton
-{
-    if (!_alipayClientButton) {
-        _alipayClientButton = [[UIButton alloc] initForAutoLayout];
-        _alipayClientButton.tag = 1;
-        [_alipayClientButton addTarget:self action:@selector(choosePayAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _alipayClientButton;
-}
-
-#pragma mark-----chooseAction
--(void)choosePayAction:(UIButton*)sender
-{
-    NSLog(@"选择支付方式");
-//    [self.alipayClientButton setImage:[UIImage imageNamed:@"adreess_no"] forState:UIControlStateNormal];
-//    [self.alipayWebButton setImage:[UIImage imageNamed:@"adreess_no"] forState:UIControlStateNormal];
-//    
-//    if (sender.tag == 1) {
-//        [_alipayWebButton setImage:[UIImage imageNamed:@"adreess_sel"] forState:UIControlStateNormal];
-//    }else if (sender.tag == 2){
-//        [_alipayClientButton setImage:[UIImage imageNamed:@"adreess_sel"] forState:UIControlStateNormal];
-//    }
-    [self.delegate choosePayAction:sender.tag];
 }
 
 @end

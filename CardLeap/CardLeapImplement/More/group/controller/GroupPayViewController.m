@@ -13,11 +13,12 @@
 #import "Order.h"
 #import "DataSigner.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "WXApi.h"
 #import "APAuthV2Info.h"
 
-@interface GroupPayViewController ()<UITableViewDataSource,UITableViewDelegate,choosePayMethodeDelegate,completeDelegate>
+@interface GroupPayViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSInteger chooseIndex;
+    
 }
 @property (strong,nonatomic)UITableView *groupPayTableview;
 @property (strong,nonatomic)UIButton *payButton;
@@ -27,20 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self initData];
     [self setUI];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark-----init data
--(void)initData
-{
-    chooseIndex = 0;
 }
 
 #pragma mark-----set UI
@@ -50,7 +38,7 @@
     [_groupPayTableview autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0.0f];
     [_groupPayTableview autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0.0f];
     [_groupPayTableview autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0.0f];
-    [_groupPayTableview autoSetDimension:ALDimensionHeight toSize:240.0f];
+    [_groupPayTableview autoSetDimension:ALDimensionHeight toSize:300.0f];
     
     [self.view addSubview:self.payButton];
     [_payButton autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10.0f];
@@ -79,34 +67,17 @@
     return _groupPayTableview;
 }
 
--(UIButton *)payButton
-{
-    if (!_payButton) {
-        _payButton = [[UIButton alloc] initForAutoLayout];
-        _payButton.layer.masksToBounds = YES;
-        _payButton.layer.cornerRadius = 4.0f;
-        [_payButton setTitle:@"确认支付" forState:UIControlStateNormal];
-        [_payButton setTitle:@"确认支付" forState:UIControlStateHighlighted];
-        [_payButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_payButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-        [_payButton setBackgroundColor:UIColorFromRGB(0x79c5d3)];
-        [_payButton addTarget:self action:@selector(payAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _payButton;
-}
-
 #pragma mark-----tableview delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"干嘛的-----");
-    
+    [self payAction:indexPath.row];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat height = 40.0;
-    return height;
+    return 40;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,52 +97,101 @@
     while ([cell.contentView.subviews lastObject]!= nil) {
         [[cell.contentView.subviews lastObject]removeFromSuperview];
     }
-    [cell confirgureCell:indexPath.row param:self.dict index:chooseIndex
-     ];
-    cell.delegate = self;
-//    NSDictionary *dic = @{
-//                          @"count":[NSString stringWithFormat:@"%d",count],
-//                          @"singel_price":self.submitInfo.now_price,
-//                          @"group_name":self.submitInfo.group_name
-//                          };
-//    [cell configureCell:dic row:indexPath.row];
-//    cell.delegate = self;
-    //[cell setAc -- cessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    [cell confirgureCell:indexPath.row param:self.dict];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 7;
 }
 
 #pragma mark-----pay action
--(void)payAction:(UIButton*)sender
+-(void)payAction:(NSInteger)chooseIndex
 {
-    //跳转支付宝
-    if (chooseIndex == 0) {
-        NSString *url = connect_url(@"group_grab_insert");
-        NSString *totalPrice = [NSString stringWithFormat:@"%f",[self.dict[@"singel_price"] floatValue]*[self.dict[@"count"] integerValue]];
-        NSDictionary *myDic = @{
-                               @"app_key":url,
-                               @"session_key":[UserModel shareInstance].session_key,
-                               @"u_id":[UserModel shareInstance].u_id,
-                               @"group_id":self.dict[@"group_id"],
-                               @"grab_num":self.dict[@"count"],
-                               @"grab_price":totalPrice
-                               };
-        [Base64Tool postSomethingToServe:url andParams:myDic isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
-            if ([param[@"code"] integerValue]==200) {
-                NSArray *passArray = [param[@"obj"] objectForKey:@"group_pass"];
-                NSString *order_ids = [NSString stringWithFormat:@"%@",[param[@"obj"] objectForKey:@"order_id"]];
-                [self clientAlipay:order_ids passArray:passArray];
-            }else{
-                [SVProgressHUD showErrorWithStatus:param[@"message"]];
-            }
-        } andErrorBlock:^(NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"网络异常"];
-        }];
+    switch (chooseIndex) {
+        case 4:{
+            //跳转支付宝
+            
+            NSString *url = connect_url(@"group_grab_insert");
+            NSString *totalPrice = [NSString stringWithFormat:@"%f",[self.dict[@"singel_price"] floatValue]*[self.dict[@"count"] integerValue]];
+            NSDictionary *myDic = @{
+                                    @"app_key":url,
+                                    @"session_key":[UserModel shareInstance].session_key,
+                                    @"u_id":[UserModel shareInstance].u_id,
+                                    @"group_id":self.dict[@"group_id"],
+                                    @"grab_num":self.dict[@"count"],
+                                    @"grab_price":totalPrice
+                                    };
+            [Base64Tool postSomethingToServe:url andParams:myDic isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
+                if ([param[@"code"] integerValue]==200) {
+                    NSArray *passArray = [param[@"obj"] objectForKey:@"group_pass"];
+                    NSString *order_ids = [NSString stringWithFormat:@"%@",[param[@"obj"]objectForKey:@"order_id"]];
+                    [self clientAlipay:order_ids passArray:passArray];
+                    
+                    
+                }else{
+                    [SVProgressHUD showErrorWithStatus:param[@"message"]];
+                }
+            } andErrorBlock:^(NSError *error) {
+                [SVProgressHUD showErrorWithStatus:@"网络异常"];
+            }];
+            
+        }
+            break;
+        case 5:{
+            //跳转微信
+            
+            NSString *url = connect_url(@"group_grab_insert");
+            NSString *totalPrice = [NSString stringWithFormat:@"%f",[self.dict[@"singel_price"] floatValue]*[self.dict[@"count"] integerValue]];
+            NSDictionary *myDic = @{
+                                    @"app_key":url,
+                                    @"session_key":[UserModel shareInstance].session_key,
+                                    @"u_id":[UserModel shareInstance].u_id,
+                                    @"group_id":self.dict[@"group_id"],
+                                    @"grab_num":self.dict[@"count"],
+                                    @"grab_price":totalPrice
+                                    };
+            [Base64Tool postSomethingToServe:url andParams:myDic isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
+                if ([param[@"code"] integerValue]==200) {
+                    NSDictionary *dic=[param objectForKey:@"obj"];
+                    [self weChatPay:dic];
+                    
+                }else{
+                    [SVProgressHUD showErrorWithStatus:param[@"message"]];
+                }
+            } andErrorBlock:^(NSError *error) {
+                [SVProgressHUD showErrorWithStatus:@"网络异常"];
+            }];
+        }
+            break;
+        default:
+            break;
+    }
+
+
+}
+
+#pragma mark - 微信支付
+- (void)weChatPay:(NSDictionary *)dict
+{
+#warning 1.向自己的服务器请求订单生成预支付订单信息
+        // 具体参数根据自己后台来,这里不做示范
+        // 后台可以参考：https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=9_12
+    if (dict != nil) {
+        NSMutableString *stamp  = [dict objectForKey:@""];
+        
+        // 生成预支付订单信息
+        PayReq *req             = [[PayReq alloc] init];
+        req.openID              = [dict objectForKey:@""];
+        req.partnerId           = @"";
+        req.prepayId            = [dict objectForKey:@""];
+        req.nonceStr            = [dict objectForKey:@""];
+        req.timeStamp           = stamp.intValue;
+        req.package             = [dict objectForKey:@""];
+        req.sign                = [dict objectForKey:@""];
     }
 }
 
@@ -267,7 +287,6 @@
                     break;
                 }
             }
-            
             //判断支付成功 去跳转到支付成功页面  ---访问后台接口为准
             if ([resultDic[@"resultStatus"] integerValue] == 9000 && is_success) {
                 GroupPaySuccessViewController *firVC = [[GroupPaySuccessViewController alloc] init];
@@ -276,66 +295,11 @@
                 firVC.passArray = array;
                 firVC.order_id = order_ids;
                 firVC.messageDict  = self.dict;
-                //firVC.info = self.info;
                 [self.navigationController pushViewController:firVC animated:YES];
             }
         }];
     }
 }
 
--(void)choosePayAction:(NSInteger)indexPath
-{
-    chooseIndex = indexPath;
-    [self.groupPayTableview reloadData];
-}
-
-/**
- 这个是做网页支付点击完成之后的返回验证
- */
-#pragma mark------complete actino delegate
--(void)completeAction
-{
-//    NSLog(@"点击完成，返回验证");
-//    //[NSThread sleepForTimeInterval:2.5];
-//    [SVProgressHUD showWithStatus:@"正在验证,请稍等" maskType:SVProgressHUDMaskTypeNone];
-//    NSString *url = connect_url(@"group_check");
-//    NSDictionary *dict = @{
-//                           @"app_key":url,
-//                           @"order_id":self.order_id
-//                           };
-//    [Base64Tool postSomethingToServe:url andParams:dict isBase64:[IS_USE_BASE64 boolValue] CompletionBlock:^(id param) {
-//        if ([param[@"code"] integerValue]==200) {
-//            [SVProgressHUD dismiss];
-//            if ([[param[@"obj"] objectForKey:@"is_pay"] integerValue]==0) {
-//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您尚未支付该订单" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
-//                [alert show];
-//            }else{
-//                GroupPaySuccessViewController *firVC = [[GroupPaySuccessViewController alloc] init];
-//                [firVC setHiddenTabbar:YES];
-//                [firVC setNavBarTitle:@"支付成功" withFont:14.0f];
-////                [firVC.navigationItem setTitle:@"支付成功"];
-//                firVC.passArray = self.passArray;
-//                firVC.order_id = order_id;
-//                firVC.messageDict = self.dict;
-//                //firVC.info = self.info;
-//                [self.navigationController pushViewController:firVC animated:YES];
-//            }
-//        }else{
-//            [SVProgressHUD showErrorWithStatus:param[@"message"]];
-//        }
-//    } andErrorBlock:^(NSError *error) {
-//        [SVProgressHUD showErrorWithStatus:@"网络异常"];
-//    }];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
