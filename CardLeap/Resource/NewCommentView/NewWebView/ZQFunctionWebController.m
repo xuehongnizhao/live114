@@ -194,7 +194,12 @@
     }
     [self.rdv_tabBarController setTabBarHidden:YES animated:YES];
 }
-
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    [[NSURLCache sharedURLCache] setDiskCapacity:0];
+    [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+}
 -(void)setUI
 {
     [self setNavBarTitle:self.title withFont:17.0f];
@@ -232,11 +237,8 @@
 - (void)naviItemAction:(UIBarButtonItem *)sender{
     switch (sender.tag-NaviItemTag) {
         case 1:{
-            [[NSURLCache sharedURLCache] removeAllCachedResponses];
-            [[NSURLCache sharedURLCache] setDiskCapacity:0];
-            [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+
             if ([_detailWeb canGoBack]) {
-                
                 [_detailWeb goBack];
 
             }else{
@@ -251,15 +253,10 @@
             NSURL *url=[NSURL URLWithString:@""];
             NSURLRequest *request=[NSURLRequest requestWithURL:url];
             [_detailWeb loadRequest:request];
-            [[NSURLCache sharedURLCache] removeAllCachedResponses];
-            [[NSURLCache sharedURLCache] setDiskCapacity:0];
-            [[NSURLCache sharedURLCache] setMemoryCapacity:0];
             [self.navigationController popViewControllerAnimated:YES];
         }
             break;
         case 3:{
-            
-            
             [UMSocialSnsService presentSnsIconSheetView:self
                                                  appKey:nil
                                               shareText:@"如e生活"
